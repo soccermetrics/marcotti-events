@@ -1,0 +1,418 @@
+[
+  {
+    "modifier": "Left foot",
+    "category": "Body Part"
+  },
+  {
+    "modifier": "Right foot",
+    "category": "Body Part"
+  },
+  {
+    "modifier": "Foot",
+    "category": "Body Part"
+  },
+  {
+    "modifier": "Head",
+    "category": "Body Part"
+  },
+  {
+    "modifier": "Chest",
+    "category": "Body Part"
+  },
+  {
+    "modifier": "Hand",
+    "category": "Body Part"
+  },
+  {
+    "modifier": "Unknown",
+    "category": "Body Part"
+  },
+  {
+    "modifier": "Center Flank",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Central Goal Area",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Central Penalty Area",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Left Byline",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Left Channel",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Left Flank",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Left Goal Area",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Left Penalty Area",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Left Wing",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Own Half",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Penalty Spot",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Right Byline",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Right Channel",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Right Flank",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Right Goal Area",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Right Penalty Area",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Right Wing",
+    "category": "Field Sector"
+  },
+  {
+    "modifier": "Unknown",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Handball",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Holding",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Off-ball infraction",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Dangerous play",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Reckless challenge",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Excessive celebration",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Simulation",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Dissent",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Persistent infringement",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Delaying restart",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Dead ball encroachment",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Unauthorized field entry/exit",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Serious foul play",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Violent conduct",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Offensive/abusive language or gestures",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Spitting",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Professional foul",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Unsporting behavior",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Handball denied obvious scoring opportunity",
+    "category": "Foul Type"
+  },
+  {
+    "modifier": "Yellow",
+    "category": "Card Type"
+  },
+  {
+    "modifier": "Yellow/Red",
+    "category": "Card Type"
+  },
+  {
+    "modifier": "Red",
+    "category": "Card Type"
+  },
+  {
+    "modifier": "Lower Center",
+    "category": "Goal Region"
+  },
+  {
+    "modifier": "Lower Left",
+    "category": "Goal Region"
+  },
+  {
+    "modifier": "Lower Right",
+    "category": "Goal Region"
+  },
+  {
+    "modifier": "Upper Center",
+    "category": "Goal Region"
+  },
+  {
+    "modifier": "Upper Left",
+    "category": "Goal Region"
+  },
+  {
+    "modifier": "Upper Right",
+    "category": "Goal Region"
+  },
+  {
+    "modifier": "Catch",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Block",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Smother",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Deflect away",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Goalkeeper kick away",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Fumble",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Parry",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Punch",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Tip over bar",
+    "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Attacking",
+    "category": "Set-piece Type"
+  },
+  {
+    "modifier": "Defending",
+    "category": "Set-piece Type"
+  },
+  {
+    "modifier": "Direct",
+    "category": "Set-piece Type"
+  },
+  {
+    "modifier": "Indirect",
+    "category": "Set-piece Type"
+  },
+  {
+    "modifier": "Far post",
+    "category": "Shot Direction"
+  },
+  {
+    "modifier": "Inswinger",
+    "category": "Shot Direction"
+  },
+  {
+    "modifier": "Near post",
+    "category": "Shot Direction"
+  },
+  {
+    "modifier": "Outswinger",
+    "category": "Shot Direction"
+  },
+  {
+    "modifier": "Wide of left post",
+    "category": "Shot Direction"
+  },
+  {
+    "modifier": "Wide of right post",
+    "category": "Shot Direction"
+  },
+  {
+    "modifier": "Goal",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Mishit",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Blocked",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Saved",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Wide of posts",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Over crossbar",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Hit post",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Hit crossbar",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Hit defensive wall",
+    "category": "Shot Outcome"
+  },
+  {
+    "modifier": "Curled",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Deflected",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Floated",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Header",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Lob",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Overhead kick",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Placed",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Power",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Goalmouth scramble",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Close-range redirection",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Volley",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Half-volley",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Shot from corner kick",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Shot from free kick",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Shot from throw in",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Shot from counterattack play",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Injury",
+    "category": "Substitution"
+  },
+  {
+    "modifier": "Subbed off",
+    "category": "Substitution"
+  },
+  {
+    "modifier": "Subbed on",
+    "category": "Substitution"
+  },
+  {
+    "modifier": "Tactical",
+    "category": "Substitution"
+  },
+  {
+    "modifier": "Player injury stops play",
+    "category": "Miscellaneous"
+  },
+  {
+    "modifier": "Crowd disturbance/invasion",
+    "category": "Miscellaneous"
+  },
+  {
+    "modifier": "Play restarted",
+    "category": "Miscellaneous"
+  }
+]

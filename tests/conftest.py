@@ -240,12 +240,44 @@ def national_data():
 def modifiers():
     return [
         {
+            'modifier': "Left foot",
+            'category': "Body Part"
+        },
+        {
+            'modifier': "Right foot",
+            'category': "Body Part"
+        },
+        {
+            'modifier': "Foot",
+            'category': "Body Part"
+        },
+        {
+            'modifier': "Head",
+            'category': "Body Part"
+        },
+        {
+            'modifier': "Center Flank",
+            'category': "Field Sector"
+        },
+        {
+            'modifier': "Central Goal Area",
+            'category': "Field Sector"
+        },
+        {
+            'modifier': "Central Penalty Area",
+            'category': "Field Sector"
+        },
+        {
             'modifier': "Volley",
             'category': "Shot Type"
         },
         {
             'modifier': "Saved",
             'category': "Shot Outcome"
+        },
+        {
+            'modifier': "Lower Right",
+            'category': "Goal Region"
         },
         {
             'modifier': "Wide of right post",

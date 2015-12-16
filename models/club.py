@@ -3,6 +3,7 @@ from copy import deepcopy
 
 from sqlalchemy import Column, ForeignKey, Unicode, select, join, text
 from sqlalchemy.orm import relationship, backref
+from sqlalchemy.sql.expression import label
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
 
 from models import GUID, view
@@ -221,9 +222,9 @@ class ClubPenaltyShootoutOpeners(ClubMixin, ClubSchema, mce.PenaltyShootoutOpene
 
 
 goals_view = view("goals_view", BaseSchema.metadata,
-                  select([ClubMatchEvents.id, ClubMatchEvents.match_id, ClubMatchEvents.team_id,
-                          ClubMatchEvents.period, ClubMatchEvents.period_secs, mce.MatchActions.lineup_id,
-                          ClubMatchEvents.x, ClubMatchEvents.y]).
+                  select([ClubMatchEvents.id, label('action_id', mce.MatchActions.id), ClubMatchEvents.match_id,
+                          ClubMatchEvents.team_id, ClubMatchEvents.period, ClubMatchEvents.period_secs,
+                          mce.MatchActions.lineup_id, ClubMatchEvents.x, ClubMatchEvents.y]).
                   select_from(join(ClubMatchEvents, mce.MatchActions)).
                   where(mce.MatchActions.type == text("'Goal'")))
 

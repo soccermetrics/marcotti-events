@@ -1,10 +1,10 @@
 import uuid
 
-from sqlalchemy import Column, Boolean, Integer, Numeric, String, Sequence, ForeignKey, select, join, text
+from sqlalchemy import Column, Boolean, Integer, Numeric, String, Sequence, ForeignKey
 from sqlalchemy.schema import CheckConstraint
 from sqlalchemy.orm import relationship, backref
 
-from models import GUID, view
+from models import GUID
 from models.common import BaseSchema
 import models.common.enums as enums
 

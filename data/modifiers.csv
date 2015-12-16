@@ -1,11 +1,14 @@
 modifier,category
+Chest,Body Part
+Foot,Body Part
+Hand,Body Part
+Head,Body Part
 Left foot,Body Part
 Right foot,Body Part
-Foot,Body Part
-Head,Body Part
-Chest,Body Part
-Hand,Body Part
 Unknown,Body Part
+Red,Card Type
+Yellow,Card Type
+Yellow/Red,Card Type
 Center Flank,Field Sector
 Central Goal Area,Field Sector
 Central Penalty Area,Field Sector
@@ -23,44 +26,53 @@ Right Flank,Field Sector
 Right Goal Area,Field Sector
 Right Penalty Area,Field Sector
 Right Wing,Field Sector
-Unknown,Foul Type
+Dangerous play,Foul Type
+Dead ball encroachment,Foul Type
+Delaying restart,Foul Type
+Dissent,Foul Type
+Excessive celebration,Foul Type
 Handball,Foul Type
+Handball denied obvious scoring opportunity,Foul Type
 Holding,Foul Type
 Off-ball infraction,Foul Type
-Dangerous play,Foul Type
-Reckless challenge,Foul Type
-Excessive celebration,Foul Type
-Simulation,Foul Type
-Dissent,Foul Type
-Persistent infringement,Foul Type
-Delaying restart,Foul Type
-Dead ball encroachment,Foul Type
-Unauthorized field entry/exit,Foul Type
-Serious foul play,Foul Type
-Violent conduct,Foul Type
 Offensive/abusive language or gestures,Foul Type
-Spitting,Foul Type
+Persistent infringement,Foul Type
 Professional foul,Foul Type
+Reckless challenge,Foul Type
+Serious foul play,Foul Type
+Simulation,Foul Type
+Spitting,Foul Type
+Unauthorized field entry/exit,Foul Type
+Unknown,Foul Type
 Unsporting behavior,Foul Type
-Handball denied obvious scoring opportunity,Foul Type
-Yellow,Card Type
-Yellow/Red,Card Type
-Red,Card Type
+Violent conduct,Foul Type
 Lower Center,Goal Region
 Lower Left,Goal Region
 Lower Right,Goal Region
 Upper Center,Goal Region
 Upper Left,Goal Region
 Upper Right,Goal Region
-Catch,Goalkeeper Action
 Block,Goalkeeper Action
-Smother,Goalkeeper Action
+Catch,Goalkeeper Action
 Deflect away,Goalkeeper Action
-Goalkeeper kick away,Goalkeeper Action
 Fumble,Goalkeeper Action
+Goalkeeper kick away,Goalkeeper Action
 Parry,Goalkeeper Action
 Punch,Goalkeeper Action
+Smother,Goalkeeper Action
 Tip over bar,Goalkeeper Action
+Crowd disturbance/invasion,Miscellaneous
+Play restarted,Miscellaneous
+Player injury stops play,Miscellaneous
+Ball Out,Play Outcome
+Clearance,Play Outcome
+Cross,Play Outcome
+Foul,Play Outcome
+Free Kick,Play Outcome
+Open Play,Play Outcome
+Pass,Play Outcome
+Penalty,Play Outcome
+Shot,Play Outcome
 Attacking,Set-piece Type
 Defending,Set-piece Type
 Direct,Set-piece Type
@@ -71,35 +83,32 @@ Near post,Shot Direction
 Outswinger,Shot Direction
 Wide of left post,Shot Direction
 Wide of right post,Shot Direction
-Goal,Shot Outcome
-Mishit,Shot Outcome
 Blocked,Shot Outcome
-Saved,Shot Outcome
-Wide of posts,Shot Outcome
-Over crossbar,Shot Outcome
-Hit post,Shot Outcome
+Goal,Shot Outcome
 Hit crossbar,Shot Outcome
 Hit defensive wall,Shot Outcome
+Hit post,Shot Outcome
+Mishit,Shot Outcome
+Over crossbar,Shot Outcome
+Saved,Shot Outcome
+Wide of posts,Shot Outcome
+Close-range redirection,Shot Type
 Curled,Shot Type
 Deflected,Shot Type
 Floated,Shot Type
+Goalmouth scramble,Shot Type
+Half-volley,Shot Type
 Header,Shot Type
 Lob,Shot Type
 Overhead kick,Shot Type
 Placed,Shot Type
 Power,Shot Type
-Goalmouth scramble,Shot Type
-Close-range redirection,Shot Type
-Volley,Shot Type
-Half-volley,Shot Type
 Shot from corner kick,Shot Type
+Shot from counterattack play,Shot Type
 Shot from free kick,Shot Type
 Shot from throw in,Shot Type
-Shot from counterattack play,Shot Type
+Volley,Shot Type
 Injury,Substitution
 Subbed off,Substitution
 Subbed on,Substitution
 Tactical,Substitution
-Player injury stops play,Miscellaneous
-Crowd disturbance/invasion,Miscellaneous
-Play restarted,Miscellaneous

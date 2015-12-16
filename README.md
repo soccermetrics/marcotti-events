@@ -1,24 +1,25 @@
 Marcotti-Events
 ===============
 
-Marcotti-Events (formerly named the Football Match Event Database) is a data schema that captures match result data in 
-order to support football research activities.  Match result data is defined as historical and publicly-available 
-data that includes the following:
+Marcotti-Events (formerly named the Football Match Event Database) is a data schema that captures historical data 
+and the individual micro events that make up a football match.  Data captured include the following:
 
 * Friendly matches and matches that make up league, knockout or hybrid (group + knockout) football competitions, and 
 involve either clubs or national team selections.
-* Complete data on participating personnel such as players, managers, and match officials.
-* Complete top-level data on the football match, including match date, competition name, participating teams, venues, 
+* Participating personnel such as players, managers, and match officials.
+* Top-level data on the football match, including match date, competition name, participating teams, venues, 
 and environmental conditions.
-* Complete data on every event that occurs in the match, parameterized by match time, field coordinates, the players involved, and the player actions.
+* Every event -- touch or non-touch -- that occurs in the match, parametrized by match time, field coordinates, the 
+players involved, and the player actions.
+* All modifying information specific to player actions.
 
-The Marcotti data schema is made up of backend-independent SQLAlchemy objects, and club and national team databases are 
-built from these objects.
+The Marcotti-Events data schema is made up of backend-independent SQLAlchemy objects, and club and national team 
+databases are built from these objects.
 
 
 ## Installation
 
-Marcotti is written in Python and uses the SQLAlchemy package heavily.
+Marcotti-Events is written in Python and uses the SQLAlchemy package heavily.
 
 While not required, [virtualenv](https://pypi.python.org/pypi/virtualenv) is strongly recommended and
 [virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper) is very convenient.
@@ -92,7 +93,11 @@ The common data models are classified into four categories:
 
 #### Events
 
-To be completed.
+* MatchEvents
+* MatchActions
+* MatchActionModifiers
+* Modifiers
+* PenaltyShootoutOpeners
 
 ### Club-Specific Data Models
 
@@ -102,7 +107,12 @@ To be completed.
 * ClubKnockoutMatches
 * ClubLeagueMatches
 * ClubMatchLineups
-* ClubGoals
+* ClubMatchEvents
+* ClubGoals (read-only view)
+* ClubPenalties (read-only view)
+* ClubBookables (read-only view)
+* ClubSubstitutions (read-only view)
+* ClubPenaltyShootouts (read-only view)
 * ClubPenaltyShootoutOpeners
 
 ### National Team-Specific Data Models
@@ -111,27 +121,31 @@ To be completed.
 * NationalGroupMatches
 * NationalKnockoutMatches
 * NationalMatchLineups
-* NationalGoals
+* NationalMatchEvents
+* NationalGoals (read-only view)
+* NationalPenalties (read-only view)
+* NationalBookables (read-only view)
+* NationalSubstitutions (read-only view)
+* NationalPenaltyShootouts (read-only view)
 * NationalPenaltyShootoutOpeners
 
 ### Enumerated Types
 
-* BodypartType
-* CardType
+* ActionType
 * ConfederationType
-* FoulEventType
 * GroupRoundType
 * KnockoutRoundType
+* ModifierCategoryType
+* ModifierType
 * NameOrderType
 * PositionType
-* ShotEventType
-* ShotOutcomeType
 * SurfaceType
 * WeatherConditionType
 
 ## Validation Data
 
-Marcotti ships with data that is used to populate the remaining validation models that can't be converted to enumerated types.  The data is in CSV and JSON formats.
+Marcotti-Events ships with data that is used to populate the remaining validation models that can't be converted to 
+enumerated types.  The data is in CSV and JSON formats. 
 
 Data File            | Data Model
 -------------------- | ----------
@@ -139,6 +153,7 @@ countries.[csv,json] | Countries
 positions.[csv,json] | Positions
 surfaces.[csv,json]  | Surfaces
 timezones.[csv,json] | Timezones
+modifiers.[csv,json] | Modifiers
 
 
 ## Testing

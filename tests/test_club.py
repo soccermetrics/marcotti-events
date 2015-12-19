@@ -189,7 +189,7 @@ def test_club_match_lineup_insert(session, club_data, person_data, position_data
 
 
 @club_only
-def test_club_match_event_insert(session, club_match_lineup):
+def test_club_match_action_insert(session, club_match_lineup):
     club, match, lineups = club_match_lineup
 
     events = [
@@ -209,9 +209,16 @@ def test_club_match_event_insert(session, club_match_lineup):
 
     start_event = session.query(mce.MatchActions).filter_by(type=enums.ActionType.start_period).one()
     assert start_event.event == events[0].event
+    assert start_event.lineup_id is None
 
     end_event = session.query(mce.MatchActions).filter_by(type=enums.ActionType.end_period).one()
     assert end_event.event == events[1].event
+    assert end_event.lineup_id is None
+
+    non_touch_events = session.query(mce.MatchActions).join(mc.ClubMatchEvents)\
+        .filter(mc.ClubMatchEvents.x.is_(None), mc.ClubMatchEvents.y.is_(None))
+    assert non_touch_events.count() == 2
+    assert set([rec.type for rec in non_touch_events]) == {enums.ActionType.start_period, enums.ActionType.end_period}
 
 
 @club_only
@@ -224,14 +231,14 @@ def test_club_match_action_insert(session, club_match_lineup):
             type=enums.ActionType.start_period
         ),
         mce.MatchActions(
-            event=mc.ClubMatchEvents(match_id=match.id, period=1, period_secs=1143, x=67.3, y=62.1),
+            event=mc.ClubMatchEvents(match_id=match.id, team_id=club.id, period=1, period_secs=1143, x=67.3, y=62.1),
             type=enums.ActionType.ball_pass,
             lineup_id=lineups[0].id,
             x_end=82.2,
             y_end=50.0
         ),
         mce.MatchActions(
-            event=mc.ClubMatchEvents(match_id=match.id, period=1, period_secs=1150, x=84.0, y=48.8),
+            event=mc.ClubMatchEvents(match_id=match.id, team_id=club.id, period=1, period_secs=1150, x=84.0, y=48.8),
             type=enums.ActionType.goal,
             lineup_id=lineups[1].id,
             x_end=100.0,
@@ -331,11 +338,62 @@ def test_club_goal_modifier_insert(session, club_match_lineup, modifiers):
     session.commit()
 
     action_from_db = session.query(mc.ClubGoals).filter_by(action_id=goal_action.id).one()
+
     goal_body_part = session.query(mce.Modifiers).join(mce.MatchActionModifiers)\
         .filter(mce.MatchActionModifiers.action_id == action_from_db.action_id,
                 mce.Modifiers.category == enums.ModifierCategoryType.bodypart)
     assert goal_body_part.count() == 1
     assert goal_body_part[0].type.value == "Head"
+
+    goal_sector = session.query(mce.Modifiers).join(mce.MatchActionModifiers)\
+        .filter(mce.MatchActionModifiers.action_id == action_from_db.action_id,
+                mce.Modifiers.category == enums.ModifierCategoryType.field_sector)
+    assert goal_sector.count() == 1
+    assert goal_sector[0].type.value == "Central Penalty Area"
+
+    goal_goal_region = session.query(mce.Modifiers).join(mce.MatchActionModifiers)\
+        .filter(mce.MatchActionModifiers.action_id == action_from_db.action_id,
+                mce.Modifiers.category == enums.ModifierCategoryType.goal_region)
+    assert goal_goal_region.count() == 1
+    assert goal_goal_region[0].type.value == "Lower Right"
+
+
+@club_only
+def test_club_missed_pass_event(session, club_match_lineup, modifiers):
+    club, match, lineups = club_match_lineup
+
+    modifier_objs = [mce.Modifiers(type=enums.ModifierType.from_string(record['modifier']),
+                                   category=enums.ModifierCategoryType.from_string(record['category']))
+                     for record in modifiers]
+    session.add_all(modifier_objs)
+    session.commit()
+
+    events = [
+        mce.MatchActions(
+            event=mc.ClubMatchEvents(match_id=match.id, team_id=club.id, period=1, period_secs=921, x=75.3, y=98.4),
+            type=enums.ActionType.ball_pass,
+            lineup_id=lineups[0].id,
+            x_end=82.2,
+            y_end=75.0,
+        ),
+        mce.MatchActions(
+            event=mc.ClubMatchEvents(match_id=match.id, team_id=club.id, period=1, period_secs=1143, x=67.3, y=62.1),
+            type=enums.ActionType.ball_pass,
+            lineup_id=lineups[0].id,
+            x_end=82.2,
+            y_end=50.0,
+            is_success=False
+        )
+    ]
+    session.add_all(events)
+    session.commit()
+
+    pass_actions = session.query(mce.MatchActions).join(mc.ClubMatchEvents).\
+        filter(mce.MatchActions.type == enums.ActionType.ball_pass)
+    assert pass_actions.count() == 2
+
+    missed_passes = pass_actions.filter(mce.MatchActions.is_success.in_([False]))
+    assert missed_passes.count() == 1
 
 
 @club_only

@@ -2,6 +2,7 @@ from copy import deepcopy
 
 from sqlalchemy import Column, ForeignKey, select, join, text
 from sqlalchemy.orm import relationship, backref
+from sqlalchemy.sql.expression import label
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
 
 from models import GUID, view
@@ -174,36 +175,37 @@ class NationalPenaltyShootoutOpeners(NationalMixin, NatlSchema, mce.PenaltyShoot
             self.match_id, self.team.name)
 
 
-goals_view = view("goals_view", BaseSchema.metadata,
-                  select([NationalMatchEvents.id, NationalMatchEvents.match_id, NationalMatchEvents.team_id,
-                          NationalMatchEvents.period, NationalMatchEvents.period_secs, mce.MatchActions.lineup_id,
+goals_view = view("natl_goals_view", BaseSchema.metadata,
+                  select([NationalMatchEvents.id, label('action_id', mce.MatchActions.id),
+                          NationalMatchEvents.match_id, NationalMatchEvents.team_id, NationalMatchEvents.period,
+                          NationalMatchEvents.period_secs, mce.MatchActions.lineup_id,
                           NationalMatchEvents.x, NationalMatchEvents.y]).
                   select_from(join(NationalMatchEvents, mce.MatchActions)).
                   where(mce.MatchActions.type == text("'Goal'")))
 
 
-penalty_view = view("penalty_view", BaseSchema.metadata,
+penalty_view = view("natl_penalty_view", BaseSchema.metadata,
                     select([NationalMatchEvents.id, NationalMatchEvents.match_id, NationalMatchEvents.team_id,
                             NationalMatchEvents.period, NationalMatchEvents.period_secs, mce.MatchActions.lineup_id]).
                     select_from(join(NationalMatchEvents, mce.MatchActions)).
                     where(mce.MatchActions.type == text("'Penalty'")))
 
 
-booking_view = view("booking_view", BaseSchema.metadata,
+booking_view = view("natl_booking_view", BaseSchema.metadata,
                     select([NationalMatchEvents.id, NationalMatchEvents.match_id, NationalMatchEvents.team_id,
                             NationalMatchEvents.period, NationalMatchEvents.period_secs, mce.MatchActions.lineup_id]).
                     select_from(join(NationalMatchEvents, mce.MatchActions)).
                     where(mce.MatchActions.type == text("'Card'")))
 
 
-subs_view = view("subs_view", BaseSchema.metadata,
+subs_view = view("natl_subs_view", BaseSchema.metadata,
                  select([NationalMatchEvents.id, NationalMatchEvents.match_id, NationalMatchEvents.team_id,
                          NationalMatchEvents.period, NationalMatchEvents.period_secs, mce.MatchActions.lineup_id]).
                  select_from(join(NationalMatchEvents, mce.MatchActions)).
                  where(mce.MatchActions.type == text("'Substitution'")))
 
 
-shootout_view = view("shootout_view", BaseSchema.metadata,
+shootout_view = view("natl_shootout_view", BaseSchema.metadata,
                      select([NationalMatchEvents.id, NationalMatchEvents.match_id, NationalMatchEvents.team_id,
                              NationalMatchEvents.period, NationalMatchEvents.period_secs, mce.MatchActions.lineup_id]).
                      select_from(join(NationalMatchEvents, mce.MatchActions)).

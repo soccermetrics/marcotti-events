@@ -221,7 +221,7 @@ class ClubPenaltyShootoutOpeners(ClubMixin, ClubSchema, mce.PenaltyShootoutOpene
         return u"<ClubPenaltyShootoutOpener(match={}, team={})>".format(self.match_id, self.team.name)
 
 
-goals_view = view("goals_view", BaseSchema.metadata,
+goals_view = view("club_goals_view", BaseSchema.metadata,
                   select([ClubMatchEvents.id, label('action_id', mce.MatchActions.id), ClubMatchEvents.match_id,
                           ClubMatchEvents.team_id, ClubMatchEvents.period, ClubMatchEvents.period_secs,
                           mce.MatchActions.lineup_id, ClubMatchEvents.x, ClubMatchEvents.y]).
@@ -229,28 +229,28 @@ goals_view = view("goals_view", BaseSchema.metadata,
                   where(mce.MatchActions.type == text("'Goal'")))
 
 
-penalty_view = view("penalty_view", BaseSchema.metadata,
+penalty_view = view("club_penalty_view", BaseSchema.metadata,
                     select([ClubMatchEvents.id, ClubMatchEvents.match_id, ClubMatchEvents.team_id,
                             ClubMatchEvents.period, ClubMatchEvents.period_secs, mce.MatchActions.lineup_id]).
                     select_from(join(ClubMatchEvents, mce.MatchActions)).
                     where(mce.MatchActions.type == text("'Penalty'")))
 
 
-booking_view = view("booking_view", BaseSchema.metadata,
+booking_view = view("club_booking_view", BaseSchema.metadata,
                     select([ClubMatchEvents.id, ClubMatchEvents.match_id, ClubMatchEvents.team_id,
                             ClubMatchEvents.period, ClubMatchEvents.period_secs, mce.MatchActions.lineup_id]).
                     select_from(join(ClubMatchEvents, mce.MatchActions)).
                     where(mce.MatchActions.type == text("'Card'")))
 
 
-subs_view = view("subs_view", BaseSchema.metadata,
+subs_view = view("club_subs_view", BaseSchema.metadata,
                  select([ClubMatchEvents.id, ClubMatchEvents.match_id, ClubMatchEvents.team_id,
                          ClubMatchEvents.period, ClubMatchEvents.period_secs, mce.MatchActions.lineup_id]).
                  select_from(join(ClubMatchEvents, mce.MatchActions)).
                  where(mce.MatchActions.type == text("'Substitution'")))
 
 
-shootout_view = view("shootout_view", BaseSchema.metadata,
+shootout_view = view("club_shootout_view", BaseSchema.metadata,
                      select([ClubMatchEvents.id, ClubMatchEvents.match_id, ClubMatchEvents.team_id,
                              ClubMatchEvents.period, ClubMatchEvents.period_secs, mce.MatchActions.lineup_id]).
                      select_from(join(ClubMatchEvents, mce.MatchActions)).

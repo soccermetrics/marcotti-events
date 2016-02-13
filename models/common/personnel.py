@@ -31,7 +31,7 @@ class Persons(BaseSchema):
     """
     __tablename__ = 'persons'
 
-    id = Column(GUID, primary_key=True, default=uuid.uuid4)
+    person_id = Column(GUID, primary_key=True, default=uuid.uuid4)
     first_name = Column(Unicode(40), nullable=False)
     middle_name = Column(Unicode(40))
     last_name = Column(Unicode(40), nullable=False)
@@ -112,7 +112,7 @@ class Persons(BaseSchema):
         delta = reference - self.birth_date
         years = int(delta.days/365.25)
         days = int(delta.days - years*365.25 + 0.5)
-        return (years, days)
+        return years, days
 
     @hybrid_method
     def age(self, reference):
@@ -149,8 +149,8 @@ class Players(Persons):
     __tablename__ = 'players'
     __mapper_args__ = {'polymorphic_identity': 'players'}
 
-    player_id = Column(GUID, primary_key=True, default=uuid.uuid4)
-    person_id = Column(GUID, ForeignKey('persons.id'))
+    id = Column(GUID, primary_key=True, default=uuid.uuid4)
+    person_id = Column(GUID, ForeignKey('persons.person_id'))
 
     position_id = Column(Integer, ForeignKey('positions.id'))
     position = relationship('Positions', backref=backref('players'))
@@ -171,7 +171,7 @@ class PlayerHistory(BaseSchema):
     __tablename__ = 'player_histories'
 
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
-    player_id = Column(GUID, ForeignKey('players.player_id'))
+    player_id = Column(GUID, ForeignKey('players.id'))
     date = Column(Date, doc="Effective date of player physical record")
     height = Column(Numeric(3, 2), CheckConstraint('height >= 0 AND height <= 2.50'), nullable=False,
                     doc="Height of player in meters")
@@ -198,8 +198,8 @@ class Managers(Persons):
     __tablename__ = 'managers'
     __mapper_args__ = {'polymorphic_identity': 'managers'}
 
-    manager_id = Column(GUID, primary_key=True, default=uuid.uuid4)
-    person_id = Column(GUID, ForeignKey('persons.id'))
+    id = Column(GUID, primary_key=True, default=uuid.uuid4)
+    person_id = Column(GUID, ForeignKey('persons.person_id'))
 
     def __repr__(self):
         return u"<Manager(name={}, DOB={}, country={})>".format(
@@ -219,8 +219,8 @@ class Referees(Persons):
     __tablename__ = 'referees'
     __mapper_args__ = {'polymorphic_identity': 'referees'}
 
-    referee_id = Column(GUID, primary_key=True, default=uuid.uuid4)
-    person_id = Column(GUID, ForeignKey('persons.id'))
+    id = Column(GUID, primary_key=True, default=uuid.uuid4)
+    person_id = Column(GUID, ForeignKey('persons.person_id'))
 
     def __repr__(self):
         return u"<Referee(name={}, DOB={}, country={})>".format(

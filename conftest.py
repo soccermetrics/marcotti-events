@@ -1,8 +1,7 @@
 import pytest
-from sqlalchemy.orm.session import Session
+from local import LocalConfig
 from sqlalchemy.engine import create_engine
-
-from models.config.local import LocalConfig
+from sqlalchemy.orm.session import Session
 
 
 class TestConfig(LocalConfig):

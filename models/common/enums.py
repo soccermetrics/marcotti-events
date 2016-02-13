@@ -154,6 +154,7 @@ class ModifierCategoryType(DeclEnum):
     shot_distance = "Shot Distance", "Shot Distance"
     goalkeeper = "Goalkeeper Action", "Goalkeeper Action"
     shot_outcome = "Shot Outcome", "Shot Outcome"
+    important = "Important Play", "Important Play"
     misc = "Miscellaneous", "Miscellaneous"
 
 
@@ -165,7 +166,8 @@ class ModifierType(DeclEnum):
     head = "Head", "Head"
     chest = "Chest", "Chest"
     hand = "Hand", "Hand"
-    unknown_body_part = "Unknown", "Unknown"
+    other_body_part = "Other body part", "Other Body Part"
+    unknown_body_part = "Unknown body part", "Unknown Body Part"
     # Field Sector
     center_flank = "Center Flank", "Center Flank"
     center_goal_area = "Central Goal Area", "Central Goal Area"
@@ -185,7 +187,7 @@ class ModifierType(DeclEnum):
     right_penalty_area = "Right Penalty Area", "Right Penalty Area"
     right_wing = "Right Wing", "Right Wing"
     # Foul Type
-    unknown_foul = "Unknown", "Unknown"
+    unknown_foul = "Unknown Foul", "Unknown"
     handball = "Handball", "Handball"
     holding = "Holding", "Holding"
     off_ball = "Off-ball infraction", "Off-ball infraction"
@@ -280,6 +282,11 @@ class ModifierType(DeclEnum):
     sub_off = "Subbed off", "Subbed off"
     sub_on = "Subbed on", "Subbed on"
     tactical = "Tactical", "Tactical"
+    withdrawal = "Withdrawal", "Withdrawal"
+    # Important
+    free = "Undefended", "Player left undefended"
+    kpi = "KPI", "Internal KPI"
+    anti = "Anti KPI", "Internal negative KPI"
     # Misc
     player_injury = "Player injury stops play", "Player injury stops play"
     crowd_disturbance = "Crowd disturbance/invasion", "Crowd disturbance/invasion"

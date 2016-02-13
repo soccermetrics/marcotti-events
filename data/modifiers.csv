@@ -5,7 +5,8 @@ Hand,Body Part
 Head,Body Part
 Left foot,Body Part
 Right foot,Body Part
-Unknown,Body Part
+Other body part,Body Part
+Unknown body part,Body Part
 Red,Card Type
 Yellow,Card Type
 Yellow/Red,Card Type
@@ -43,7 +44,7 @@ Serious foul play,Foul Type
 Simulation,Foul Type
 Spitting,Foul Type
 Unauthorized field entry/exit,Foul Type
-Unknown,Foul Type
+Unknown Foul,Foul Type
 Unsporting behavior,Foul Type
 Violent conduct,Foul Type
 Lower Center,Goal Region
@@ -61,6 +62,9 @@ Parry,Goalkeeper Action
 Punch,Goalkeeper Action
 Smother,Goalkeeper Action
 Tip over bar,Goalkeeper Action
+Anti KPI,Important Play
+KPI,Important Play
+Undefended,Important Play
 Crowd disturbance/invasion,Miscellaneous
 Play restarted,Miscellaneous
 Player injury stops play,Miscellaneous
@@ -112,3 +116,4 @@ Injury,Substitution
 Subbed off,Substitution
 Subbed on,Substitution
 Tactical,Substitution
+Withdrawal,Substitution

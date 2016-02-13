@@ -107,7 +107,7 @@ class KnockoutMixin(object):
 
 class ClubFriendlyMatches(FriendlyMixin, ClubMatchMixin, ClubSchema, mcm.Matches):
     __tablename__ = "club_friendly_matches"
-    __mapper_args__ = {'polymorphic_identity': 'friendly'}
+    __mapper_args__ = {'polymorphic_identity': 'club_friendly'}
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
 
@@ -141,7 +141,7 @@ class ClubLeagueMatches(LeagueMixin, ClubMatchMixin, ClubSchema, mcm.LeagueMatch
 
 class ClubGroupMatches(GroupMixin, ClubMatchMixin, ClubSchema, mcm.GroupMatches, mcm.Matches):
     __tablename__ = "club_group_matches"
-    __mapper_args__ = {'polymorphic_identity': 'group'}
+    __mapper_args__ = {'polymorphic_identity': 'club_group'}
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
 
@@ -160,7 +160,7 @@ class ClubGroupMatches(GroupMixin, ClubMatchMixin, ClubSchema, mcm.GroupMatches,
 
 class ClubKnockoutMatches(KnockoutMixin, ClubMatchMixin, ClubSchema, mcm.KnockoutMatches, mcm.Matches):
     __tablename__ = "club_knockout_matches"
-    __mapper_args__ = {'polymorphic_identity': 'knockout'}
+    __mapper_args__ = {'polymorphic_identity': 'club_knockout'}
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
 

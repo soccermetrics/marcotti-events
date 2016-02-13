@@ -62,7 +62,7 @@ def venue_config():
         "width": 68,
         "capacity": 60361,
         "seats": 60361,
-        "surface": mco.Surfaces(description="Desso GrassMaster", type=enums.SurfaceType.hybrid)
+        "surface": mco.Surfaces(description=u"Desso GrassMaster", type=enums.SurfaceType.hybrid)
     }
 
 

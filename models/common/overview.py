@@ -105,7 +105,7 @@ class Competitions(BaseSchema):
     """
     __tablename__ = 'competitions'
 
-    id = Column(GUID(), primary_key=True, default=uuid.uuid4)
+    id = Column(GUID, primary_key=True, default=uuid.uuid4)
 
     name = Column(Unicode(80))
     level = Column(Integer)

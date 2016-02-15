@@ -24,7 +24,11 @@
     "category": "Body Part"
   },
   {
-    "modifier": "Unknown",
+    "modifier": "Other body part",
+    "category": "Body Part"
+  },
+  {
+    "modifier": "Unknown body part",
     "category": "Body Part"
   },
   {
@@ -176,7 +180,7 @@
     "category": "Foul Type"
   },
   {
-    "modifier": "Unknown",
+    "modifier": "Unknown Foul",
     "category": "Foul Type"
   },
   {
@@ -246,6 +250,18 @@
   {
     "modifier": "Tip over bar",
     "category": "Goalkeeper Action"
+  },
+  {
+    "modifier": "Anti KPI",
+    "category": "Important Play"
+  },
+  {
+    "modifier": "KPI",
+    "category": "Important Play"
+  },
+  {
+    "modifier": "Undefended",
+    "category": "Important Play"
   },
   {
     "modifier": "Crowd disturbance/invasion",
@@ -449,6 +465,10 @@
   },
   {
     "modifier": "Tactical",
+    "category": "Substitution"
+  },
+  {
+    "modifier": "Withdrawal",
     "category": "Substitution"
   }
 ]

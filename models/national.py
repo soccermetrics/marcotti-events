@@ -206,8 +206,8 @@ subs_view = view("natl_subs_view", BaseSchema.metadata,
 
 
 shootout_view = view("natl_shootout_view", BaseSchema.metadata,
-                     select([NationalMatchEvents.id, NationalMatchEvents.match_id, NationalMatchEvents.team_id,
-                             NationalMatchEvents.period, NationalMatchEvents.period_secs, mce.MatchActions.lineup_id]).
+                     select([NationalMatchEvents.id, NationalMatchEvents.match_id,
+                             NationalMatchEvents.team_id, mce.MatchActions.lineup_id]).
                      select_from(join(NationalMatchEvents, mce.MatchActions)).
                      where(mce.MatchActions.type == text("'Shootout Penalty'")))
 

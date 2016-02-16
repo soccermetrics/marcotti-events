@@ -251,8 +251,8 @@ subs_view = view("club_subs_view", BaseSchema.metadata,
 
 
 shootout_view = view("club_shootout_view", BaseSchema.metadata,
-                     select([ClubMatchEvents.id, ClubMatchEvents.match_id, ClubMatchEvents.team_id,
-                             ClubMatchEvents.period, ClubMatchEvents.period_secs, mce.MatchActions.lineup_id]).
+                     select([ClubMatchEvents.id, ClubMatchEvents.match_id,
+                             ClubMatchEvents.team_id, mce.MatchActions.lineup_id]).
                      select_from(join(ClubMatchEvents, mce.MatchActions)).
                      where(mce.MatchActions.type == text("'Shootout Penalty'")))
 

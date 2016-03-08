@@ -3,3 +3,4 @@ coverage>=4.0.1
 pytest>=2.8.2
 SQLAlchemy>=1.0.9
 lxml>=3.5.0
+pandas>=0.16.0

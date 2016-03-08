@@ -25,3 +25,21 @@ class LocalConfig(Config):
     DBPASSWD = ''
     HOSTNAME = ''
     PORT = 5432
+
+    # XML file containing granular match data
+    XML_DATA_DIR = '/path/to/xml_files'
+    XML_FILE = ''
+
+    # CSV files that will be combined with XML file
+    CSV_DATA_DIR = '/path/to/csv_files'
+    CSV_FILES = {
+        'suppliers': 'Suppliers.csv',
+        'competitions': 'Competitions.csv',
+        'clubs': 'Clubs.csv',
+        'venues': 'Venues.csv',
+        'positions': 'Positions.csv',
+        'players': 'Players.csv',
+        'managers': 'Managers.csv',
+        'referees': 'Referees.csv',
+        'matches': 'Matches.csv'
+    }

@@ -4,4 +4,6 @@ __pycache__
 
 *.pyc
 local.py
+loader.py
 sandbox/
+opta/

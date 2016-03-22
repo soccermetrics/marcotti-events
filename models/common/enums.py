@@ -133,6 +133,7 @@ class ActionType(DeclEnum):
     challenge = "Challenge", "Challenge"
     block = "Block", "Block"
     interception = "Interception", "Interception"
+    goalkeeper = "Goalkeeper Action", "Goalkeeper Action"
     clearance = "Clearance", "Clearance"
     corner_kick = "Corner Kick", "Corner Kick"
     free_kick = "Free Kick", "Free Kick"

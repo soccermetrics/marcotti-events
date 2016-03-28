@@ -132,13 +132,16 @@ class ActionType(DeclEnum):
     error = "Error", "Error"
     challenge = "Challenge", "Challenge"
     block = "Block", "Block"
+    tackle = "Tackle", "Tackle"
     interception = "Interception", "Interception"
     goalkeeper = "Goalkeeper Action", "Goalkeeper Action"
     clearance = "Clearance", "Clearance"
     corner_kick = "Corner Kick", "Corner Kick"
     free_kick = "Free Kick", "Free Kick"
+    goal_kick = "Goal Kick", "Goal Kick"
     substitution = "Substitution", "Substitution"
     shootout = "Shootout Penalty", "Shootout Penalty"
+    stopped = "Match Stoppage", "Match Stoppage"
 
 
 class ModifierCategoryType(DeclEnum):

@@ -66,9 +66,18 @@ Keeper throw,Goalkeeper Action
 Anti KPI,Important Play
 KPI,Important Play
 Undefended,Important Play
+Referee delays play,Miscellaneous
+Referee stops play,Miscellaneous
+Weather stops play,Miscellaneous
 Crowd disturbance/invasion,Miscellaneous
 Play restarted,Miscellaneous
 Player injury stops play,Miscellaneous
+Long ball,Pass Type
+Crossing ball,Pass Type
+Head pass,Pass Type
+Through ball,Pass Type
+Free kick,Pass Type
+Corner kick,Pass Type
 Ball Out,Play Outcome
 Clearance,Play Outcome
 Cross,Play Outcome
@@ -78,6 +87,7 @@ Open Play,Play Outcome
 Pass,Play Outcome
 Penalty,Play Outcome
 Shot,Play Outcome
+Goal Disallowed,Play Outcome
 Attacking,Set-piece Type
 Defending,Set-piece Type
 Direct,Set-piece Type
@@ -93,6 +103,7 @@ Goal,Shot Outcome
 Hit crossbar,Shot Outcome
 Hit defensive wall,Shot Outcome
 Hit post,Shot Outcome
+Hit woodwork,Shot Outcome
 Mishit,Shot Outcome
 Over crossbar,Shot Outcome
 Saved,Shot Outcome
@@ -108,13 +119,15 @@ Lob,Shot Type
 Overhead kick,Shot Type
 Placed,Shot Type
 Power,Shot Type
+Own goal,Shot Type
+Shot from open play,Shot Type
 Shot from corner kick,Shot Type
 Shot from counterattack play,Shot Type
 Shot from free kick,Shot Type
 Shot from throw in,Shot Type
 Volley,Shot Type
-Injury,Substitution
+Injury substitution,Substitution
 Subbed off,Substitution
 Subbed on,Substitution
-Tactical,Substitution
-Withdrawal,Substitution
+Tactical substitution,Substitution
+Withdrawn player,Substitution

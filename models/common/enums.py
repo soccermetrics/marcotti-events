@@ -150,6 +150,7 @@ class ModifierCategoryType(DeclEnum):
     goal_region = "Goal Region", "Goal Region"
     shot_direction = "Shot Direction", "Shot Direction"
     field_sector = "Field Sector", "Field Sector"
+    pass_type = "Pass Type", "Pass Type"
     play_outcome = "Play Outcome", "Play Outcome"
     setpiece_type = "Set-piece Type", "Set-piece Type"
     shot_type = "Shot Type", "Shot Type"

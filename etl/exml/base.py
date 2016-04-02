@@ -10,6 +10,7 @@ class BaseXML(object):
     def __init__(self, settings):
         self.directory = settings.XML_DATA_DIR
         self.data_file = settings.XML_FILE
+        self.supplier = None
         self.feed_class = None
 
     def extract(self):

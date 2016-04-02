@@ -1,7 +1,7 @@
 import uuid
 from copy import deepcopy
 
-from sqlalchemy import Column, ForeignKey, Unicode, select, join, text
+from sqlalchemy import Column, ForeignKey, Integer, Unicode, select, join, text
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.sql.expression import label
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
@@ -33,6 +33,20 @@ class Clubs(ClubSchema):
 
     def __unicode__(self):
         return u"<Club(name={0}, country={1})>".format(self.name, self.country.name)
+
+
+class ClubMap(BaseSchema):
+    __tablename__ = "club_mapper"
+
+    id = Column(GUID, ForeignKey('clubs.id'), primary_key=True)
+    remote_id = Column(Integer, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('club'))
+
+    def __repr__(self):
+        return "<ClubMap(local={}, remote={}, supplier={})>".format(
+            self.id, self.remote_id, self.supplier.name)
 
 
 class ClubMixin(object):

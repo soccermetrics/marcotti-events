@@ -20,10 +20,6 @@ class Matches(BaseSchema):
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
 
     date = Column(Date)
-    first_half_length = Column(Integer, CheckConstraint('first_half_length > 0'), default=45)
-    second_half_length = Column(Integer, CheckConstraint('second_half_length >= 0'), default=45)
-    first_extra_length = Column(Integer, CheckConstraint('first_extra_length >= 0'), default=0)
-    second_extra_length = Column(Integer, CheckConstraint('second_extra_length >= 0'), default=0)
     attendance = Column(Integer, CheckConstraint('attendance >= 0'), default=0)
     phase = Column(String)
 

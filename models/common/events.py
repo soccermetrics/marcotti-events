@@ -15,6 +15,7 @@ class MatchEvents(BaseSchema):
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
 
     domain = Column(String)
+    timestamp = Column(String)
     period = Column(Integer, CheckConstraint('period >= 1 AND period <= 4'))
     period_secs = Column(Integer)
     x = Column(Numeric(4, 1, asdecimal=False, decimal_return_scale=1), nullable=True)

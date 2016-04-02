@@ -66,15 +66,3 @@ class Modifiers(BaseSchema):
 
     type = Column(enums.ModifierType.db_type())
     category = Column(enums.ModifierCategoryType.db_type())
-
-
-class PenaltyShootoutOpeners(BaseSchema):
-    __tablename__ = "penalty_shootout_openers"
-
-    match_id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
-    domain = Column(String)
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'penalty_shootout_openers',
-        'polymorphic_on': domain
-    }

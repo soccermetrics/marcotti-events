@@ -205,22 +205,6 @@ class ClubMatchEvents(ClubMixin, ClubSchema, mce.MatchEvents):
     team = relationship('Clubs', foreign_keys="ClubMatchEvents.team_id", backref=backref("match_events"))
 
 
-class ClubPenaltyShootoutOpeners(ClubMixin, ClubSchema, mce.PenaltyShootoutOpeners):
-    __tablename__ = 'club_penalty_shootout_openers'
-    __mapper_args__ = {'polymorphic_identity': 'club'}
-
-    match_id = Column(GUID, ForeignKey('penalty_shootout_openers.match_id'), primary_key=True)
-
-    team = relationship('Clubs', foreign_keys="ClubPenaltyShootoutOpeners.team_id",
-                        backref=backref("shootout_openers"))
-
-    def __repr__(self):
-        return u"<ClubPenaltyShootoutOpener(match={}, team={})>".format(self.match_id, self.team.name).decode('utf-8')
-
-    def __unicode__(self):
-        return u"<ClubPenaltyShootoutOpener(match={}, team={})>".format(self.match_id, self.team.name)
-
-
 goals_view = view("club_goals_view", BaseSchema.metadata,
                   select([ClubMatchEvents.id, label('action_id', mce.MatchActions.id), ClubMatchEvents.match_id,
                           ClubMatchEvents.team_id, ClubMatchEvents.period, ClubMatchEvents.period_secs,

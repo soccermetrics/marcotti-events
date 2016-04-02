@@ -157,24 +157,6 @@ class NationalMatchEvents(NationalMixin, NatlSchema, mce.MatchEvents):
     team = relationship('Countries', foreign_keys="NationalMatchEvents.team_id", backref=backref("match_events"))
 
 
-class NationalPenaltyShootoutOpeners(NationalMixin, NatlSchema, mce.PenaltyShootoutOpeners):
-    __tablename__ = 'natl_penalty_shootout_openers'
-    __mapper_args__ = {'polymorphic_identity': 'national'}
-
-    match_id = Column(GUID, ForeignKey('penalty_shootout_openers.match_id'), primary_key=True)
-
-    team = relationship('Countries', foreign_keys="NationalPenaltyShootoutOpeners.team_id",
-                        backref=backref("shootout_openers"))
-
-    def __repr__(self):
-        return u"<NationalPenaltyShootoutOpener(match={}, team={})>".format(
-            self.match_id, self.team.name).decode('utf-8')
-
-    def __unicode__(self):
-        return u"<NationalPenaltyShootoutOpener(match={}, team={})>".format(
-            self.match_id, self.team.name)
-
-
 goals_view = view("natl_goals_view", BaseSchema.metadata,
                   select([NationalMatchEvents.id, label('action_id', mce.MatchActions.id),
                           NationalMatchEvents.match_id, NationalMatchEvents.team_id, NationalMatchEvents.period,

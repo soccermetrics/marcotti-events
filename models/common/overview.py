@@ -22,10 +22,12 @@ class Countries(BaseSchema):
 
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
     name = Column(Unicode(60))
+    code = Column(String(3))
     confederation = Column(enums.ConfederationType.db_type())
 
     def __repr__(self):
-        return "<Country(id={0}, name={1}, confed={2})>".format(self.id, self.name, self.confederation.value)
+        return u"<Country(id={0}, name={1}, trigram={2}, confed={3})>".format(
+            self.id, self.name, self.code, self.confederation.value).encode('utf-8')
 
 
 class Years(BaseSchema):

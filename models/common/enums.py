@@ -215,6 +215,7 @@ class ModifierType(DeclEnum):
     # Play Outcome
     result_ball_out = "Ball Out", "Ball Out"
     result_clearance = "Clearance", "Clearance"
+    result_corner = "Corner Kick Conceded", "Corner Kick Conceded"
     result_cross = "Cross", "Cross"
     result_foul = "Foul", "Foul"
     result_free_kick = "Free Kick", "Free Kick"
@@ -293,6 +294,7 @@ class ModifierType(DeclEnum):
     shot_freekick = "Shot from free kick", "Shot from free kick"
     shot_throwin = "Shot from throw in", "Shot from throw in"
     shot_counter = "Shot from counterattack play", "Shot from counterattack play"
+    shot_penalty = "Penalty kick", "Penalty kick"
     # Sub Type
     injury = "Injury substitution", "Injury substitution"
     sub_off = "Subbed off", "Subbed off"

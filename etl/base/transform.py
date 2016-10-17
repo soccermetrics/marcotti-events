@@ -1,7 +1,8 @@
 import pandas as pd
 
 from models.common.enums import ConfederationType, ActionType, ModifierType
-from models.common.suppliers import MatchEventMap, MatchMap, CompetitionMap, SeasonMap, PlayerMap
+from models.common.suppliers import (MatchEventMap, MatchMap, CompetitionMap, SeasonMap,
+                                     VenueMap, PlayerMap, ManagerMap, RefereeMap)
 from models.common.overview import Countries, Timezones, Competitions, Seasons, Venues
 from models.common.personnel import Players, Managers, Referees, Positions
 from models.common.match import MatchLineups
@@ -115,16 +116,17 @@ class MarcottiEventTransform(MarcottiTransform):
         lambdafunc = lambda x: pd.Series([
             self.get_id(CompetitionMap, remote_id=x['remote_competition_id'], supplier_id=self.supplier_id),
             self.get_id(SeasonMap, remote_id=x['remote_season_id'], supplier_id=self.supplier_id),
+            self.get_id(VenueMap, remote_id=x['remote_venue_id'], supplier_id=self.supplier_id),
             self.get_id(MatchMap, remote_id=x['remote_match_id'], supplier_id=self.supplier_id),
             self.get_id(ClubMap, remote_id=x['remote_home_team_id'], supplier_id=self.supplier_id),
             self.get_id(ClubMap, remote_id=x['remote_away_team_id'], supplier_id=self.supplier_id),
-            self.get_id(Managers, full_name=x['home_manager']),
-            self.get_id(Managers, full_name=x['away_manager']),
-            self.get_id(Referees, full_name=x['referee'])
+            self.get_id(ManagerMap, full_name=x['remote_home_manager_id'], supplier_id=self.supplier_id),
+            self.get_id(ManagerMap, full_name=x['remote_away_manager_id'], supplier_id=self.supplier_id),
+            self.get_id(RefereeMap, full_name=x['remote_referee_id'], supplier_id=self.supplier_id)
         ])
         ids_frame = data_frame.apply(lambdafunc, axis=1)
-        ids_frame.columns = ['competition_id', 'season_id', 'match_id', 'home_team_id', 'away_team_id',
-                             'home_manager_id', 'away_manager_id', 'referee_id']
+        ids_frame.columns = ['competition_id', 'season_id', 'venue_id', 'match_id', 'home_team_id',
+                             'away_team_id', 'home_manager_id', 'away_manager_id', 'referee_id']
         return data_frame.join(ids_frame)
 
     def lineups(self, data_frame):

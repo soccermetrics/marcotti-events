@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Unicode, ForeignKey, Sequence
+from sqlalchemy import Column, Integer, String, Unicode, ForeignKey, Sequence
 from sqlalchemy.orm import relationship, backref
 
 from models import GUID
@@ -20,7 +20,7 @@ class CompetitionMap(BaseSchema):
     __tablename__ = "competition_mapper"
 
     id = Column(GUID, ForeignKey('competitions.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('competitions'))
@@ -34,7 +34,7 @@ class SeasonMap(BaseSchema):
     __tablename__ = "season_mapper"
 
     id = Column(Integer, ForeignKey('seasons.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('seasons'))
@@ -48,7 +48,7 @@ class VenueMap(BaseSchema):
     __tablename__ = "venue_mapper"
 
     id = Column(GUID, ForeignKey('venues.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('venues'))
@@ -62,7 +62,7 @@ class PlayerMap(BaseSchema):
     __tablename__ = "player_mapper"
 
     id = Column(GUID, ForeignKey('players.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('players'))
@@ -76,7 +76,7 @@ class ManagerMap(BaseSchema):
     __tablename__ = "manager_mapper"
 
     id = Column(GUID, ForeignKey('managers.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('managers'))
@@ -90,7 +90,7 @@ class RefereeMap(BaseSchema):
     __tablename__ = "referee_mapper"
 
     id = Column(GUID, ForeignKey('referees.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('referees'))
@@ -104,7 +104,7 @@ class PositionMap(BaseSchema):
     __tablename__ = "position_mapper"
 
     id = Column(Integer, ForeignKey('positions.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('positions'))
@@ -118,7 +118,7 @@ class MatchMap(BaseSchema):
     __tablename__ = "match_mapper"
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('matches'))
@@ -132,7 +132,7 @@ class MatchEventMap(BaseSchema):
     __tablename__ = "event_mapper"
 
     id = Column(GUID, ForeignKey('match_events.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('match_events'))
@@ -146,7 +146,7 @@ class ActionMap(BaseSchema):
     __tablename__ = "action_type_mapper"
 
     id = Column(enums.ActionType.db_type(), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('actions'))
@@ -160,7 +160,7 @@ class ModifierMap(BaseSchema):
     __tablename__ = "modifier_type_mapper"
 
     id = Column(Integer, ForeignKey('modifiers.id'), primary_key=True)
-    remote_id = Column(Integer, nullable=False, primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
     supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
 
     supplier = relationship('Suppliers', backref=backref('modifiers'))

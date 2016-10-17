@@ -80,6 +80,7 @@ Free kick,Pass Type
 Corner kick,Pass Type
 Ball Out,Play Outcome
 Clearance,Play Outcome
+Corner Kick Conceded,Play Outcome
 Cross,Play Outcome
 Foul,Play Outcome
 Free Kick,Play Outcome
@@ -117,6 +118,7 @@ Half-volley,Shot Type
 Header,Shot Type
 Lob,Shot Type
 Overhead kick,Shot Type
+Penalty kick,Shot Type
 Placed,Shot Type
 Power,Shot Type
 Own goal,Shot Type

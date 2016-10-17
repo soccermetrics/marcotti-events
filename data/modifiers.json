@@ -284,6 +284,10 @@
     "category": "Play Outcome"
   },
   {
+    "modifier": "Corner Kick Conceded",
+    "category": "Play Outcome"
+  },
+  {
     "modifier": "Cross",
     "category": "Play Outcome"
   },
@@ -421,6 +425,10 @@
   },
   {
     "modifier": "Overhead kick",
+    "category": "Shot Type"
+  },
+  {
+    "modifier": "Penalty kick",
     "category": "Shot Type"
   },
   {

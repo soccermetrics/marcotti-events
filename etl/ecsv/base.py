@@ -24,8 +24,8 @@ def extract(func):
 
 
 class BaseCSV(object):
-    def __init__(self, settings):
-        self.directory = settings.CSV_DATA_DIR
+    def __init__(self, settings, dir_override=None):
+        self.directory = dir_override or settings.CSV_DATA_DIR
 
     @staticmethod
     def column(field, **kwargs):

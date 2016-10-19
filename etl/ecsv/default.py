@@ -4,9 +4,14 @@ from .base import BaseCSV, extract
 class CSVExtractor(BaseCSV):
 
     @extract
+    def suppliers(self, *args, **kwargs):
+        return [dict(name=self.column_unicode("Name", **keys)) for keys in kwargs.get('data')]
+
+    @extract
     def countries(self, *args, **kwargs):
         return [dict(remote_id=self.column("ID", **keys),
                      name=self.column_unicode("Name", **keys),
+                     code=self.column("Code", **keys),
                      confederation=self.column("Confederation", **keys))
                 for keys in kwargs.get('data')]
 
@@ -35,6 +40,19 @@ class CSVExtractor(BaseCSV):
                      width=self.column_int("Width", **keys),
                      capacity=self.column_int("Capacity", **keys),
                      seats=self.column_int("Seats", **keys))
+                for keys in kwargs.get('data')]
+
+    @extract
+    def surfaces(self, *args, **kwargs):
+        return [dict(name=self.column_unicode("Description", **keys),
+                     type=self.column("Type", **keys))
+                for keys in kwargs.get('data')]
+
+    @extract
+    def timezones(self, *args, **kwargs):
+        return [dict(region=self.column_unicode("Name", **keys),
+                     confederation=self.column("Confederation", **keys),
+                     offset=self.column_float("Offset", **keys))
                 for keys in kwargs.get('data')]
 
     @extract
@@ -82,4 +100,100 @@ class CSVExtractor(BaseCSV):
                      name_order=self.column("Name Order", **keys),
                      birth_date=self.column("Birthdate", **keys),
                      country=self.column_unicode("Country", **keys))
+                for keys in kwargs.get('data')]
+
+    @extract
+    def positions(self, *args, **kwargs):
+        return [dict(remote_id=self.column("ID", **keys),
+                     name=self.column_unicode("Position", **keys),
+                     type=self.column("Type", **keys))
+                for keys in kwargs.get('data')]
+
+    @extract
+    def league_matches(self, *args, **kwargs):
+        return [dict(remote_id=self.column("ID", **keys),
+                     competition=self.column_unicode("Competition", **keys),
+                     season=self.column("Season", **keys),
+                     match_date=self.column("Match Date", **keys),
+                     match_time=self.column("KO Time", **keys),
+                     matchday=self.column_int("Matchday", **keys),
+                     venue=self.column_unicode("Venue", **keys),
+                     home_team=self.column_unicode("Home Team", **keys),
+                     away_team=self.column_unicode("Away Team", **keys),
+                     home_manager=self.column_unicode("Home Manager", **keys),
+                     away_manager=self.column_unicode("Away Manager", **keys),
+                     referee=self.column_unicode("Referee", **keys),
+                     attendance=self.column_int("Attendance", **keys),
+                     kickoff_temp=self.column_float("KO Temp", **keys),
+                     kickoff_humid=self.column_float("KO Humidity", **keys),
+                     kickoff_wx=self.column("KO Wx", **keys),
+                     halftime_wx=self.column("HT Wx", **keys),
+                     fulltime_wx=self.column("FT Wx", **keys))
+                for keys in kwargs.get('data')]
+
+    @extract
+    def group_matches(self, *args, **kwargs):
+        return [dict(remote_id=self.column("ID", **keys),
+                     competition=self.column_unicode("Competition", **keys),
+                     season=self.column("Season", **keys),
+                     match_date=self.column("Match Date", **keys),
+                     match_time=self.column("KO Time", **keys),
+                     group_round=self.column("Group Round", **keys),
+                     group=self.column("Group", **keys),
+                     matchday=self.column_int("Matchday", **keys),
+                     venue=self.column_unicode("Venue", **keys),
+                     home_team=self.column_unicode("Home Team", **keys),
+                     away_team=self.column_unicode("Away Team", **keys),
+                     home_manager=self.column_unicode("Home Manager", **keys),
+                     away_manager=self.column_unicode("Away Manager", **keys),
+                     referee=self.column_unicode("Referee", **keys),
+                     attendance=self.column_int("Attendance", **keys),
+                     kickoff_temp=self.column_float("KO Temp", **keys),
+                     kickoff_humid=self.column_float("KO Humidity", **keys),
+                     kickoff_wx=self.column("KO Wx", **keys),
+                     halftime_wx=self.column("HT Wx", **keys),
+                     fulltime_wx=self.column("FT Wx", **keys))
+                for keys in kwargs.get('data')]
+
+    @extract
+    def knockout_matches(self, *args, **kwargs):
+        return [dict(remote_id=self.column("ID", **keys),
+                     competition=self.column_unicode("Competition", **keys),
+                     season=self.column("Season", **keys),
+                     match_date=self.column("Match Date", **keys),
+                     match_time=self.column("KO Time", **keys),
+                     knockout_round=self.column("Knockout Round", **keys),
+                     matchday=self.column_int("Matchday", **keys),
+                     venue=self.column_unicode("Venue", **keys),
+                     home_team=self.column_unicode("Home Team", **keys),
+                     away_team=self.column_unicode("Away Team", **keys),
+                     home_manager=self.column_unicode("Home Manager", **keys),
+                     away_manager=self.column_unicode("Away Manager", **keys),
+                     referee=self.column_unicode("Referee", **keys),
+                     attendance=self.column_int("Attendance", **keys),
+                     kickoff_temp=self.column_float("KO Temp", **keys),
+                     kickoff_humid=self.column_float("KO Humidity", **keys),
+                     kickoff_wx=self.column("KO Wx", **keys),
+                     halftime_wx=self.column("HT Wx", **keys),
+                     fulltime_wx=self.column("FT Wx", **keys),
+                     extra_time=self.column_bool("Extra Time", **keys))
+                for keys in kwargs.get('data')]
+
+    @extract
+    def match_lineups(self, *args, **kwargs):
+        return [dict(competition=self.column_unicode("Competition", **keys),
+                     season=self.column("Season", **keys),
+                     matchday=self.column_int("Matchday", **keys),
+                     home_team=self.column_unicode("Home Team", **keys),
+                     away_team=self.column_unicode("Away Team", **keys),
+                     player_team=self.column_unicode("Player's Team", **keys),
+                     player_name=self.column_unicode("Player", **keys),
+                     starter=self.column_bool("Starting", **keys),
+                     captain=self.column_bool("Captain", **keys))
+                for keys in kwargs.get('data')]
+
+    @extract
+    def modifiers(self, *args, **kwargs):
+        return [dict(modifier=self.column("Modifier", **keys),
+                     category=self.column("Category", **keys))
                 for keys in kwargs.get('data')]

@@ -1,66 +1,66 @@
 [
   {
-    "description": "Natural Grass",
-    "type": "Natural"
+    "Description": "Natural Grass",
+    "Type": "Natural"
   },
   {
-    "description": "Celebration bermudagrass",
-    "type": "Natural"
+    "Description": "Celebration bermudagrass",
+    "Type": "Natural"
   },
   {
-    "description": "Tifway 419 bermudagrass",
-    "type": "Natural"
+    "Description": "Tifway 419 bermudagrass",
+    "Type": "Natural"
   },
   {
-    "description": "Platinum TE Pasaplum",
-    "type": "Natural"
+    "Description": "Platinum TE Pasaplum",
+    "Type": "Natural"
   },
   {
-    "description": "Tifdwarf bermudagrass",
-    "type": "Natural"
+    "Description": "Tifdwarf bermudagrass",
+    "Type": "Natural"
   },
   {
-    "description": "Discovery bermudagrass",
-    "type": "Natural"
+    "Description": "Discovery bermudagrass",
+    "Type": "Natural"
   },
   {
-    "description": "Latitude 36 bermudagrass",
-    "type": "Natural"
+    "Description": "Latitude 36 bermudagrass",
+    "Type": "Natural"
   },
   {
-    "description": "TifGrand bermudagrass",
-    "type": "Natural"
+    "Description": "TifGrand bermudagrass",
+    "Type": "Natural"
   },
   {
-    "description": "Artificial Grass",
-    "type": "Artificial"
+    "Description": "Artificial Grass",
+    "Type": "Artificial"
   },
   {
-    "description": "AstroTurf Gen 1",
-    "type": "Artificial"
+    "Description": "AstroTurf Gen 1",
+    "Type": "Artificial"
   },
   {
-    "description": "AstroTurf Gen 2",
-    "type": "Artificial"
+    "Description": "AstroTurf Gen 2",
+    "Type": "Artificial"
   },
   {
-    "description": "FieldTurf",
-    "type": "Artificial"
+    "Description": "FieldTurf",
+    "Type": "Artificial"
   },
   {
-    "description": "Hybrid Grass",
-    "type": "Hybrid"
+    "Description": "Hybrid Grass",
+    "Type": "Hybrid"
   },
   {
-    "description": "Desso GrassMaster",
-    "type": "Hybrid"
+    "Description": "Desso GrassMaster",
+    "Type": "Hybrid"
   },
   {
-    "description": "EZ Hybrid Turf",
-    "type": "Hybrid"
+    "Description": "EZ Hybrid Turf",
+    "Type": "Hybrid"
   },
   {
-    "description": "XtraGrass",
-    "type": "Hybrid"
+    "Description": "XtraGrass",
+    "Type": "Hybrid"
   }
 ]

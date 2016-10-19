@@ -1,1122 +1,1122 @@
 [
   {
-    "name": "Afghanistan",
-    "code": "AFG",
-    "confederation": "AFC"
+    "Name": "Afghanistan",
+    "Code": "AFG",
+    "Confederation": "AFC"
   },
   {
-    "name": "Australia",
-    "code": "AUS",
-    "confederation": "AFC"
+    "Name": "Australia",
+    "Code": "AUS",
+    "Confederation": "AFC"
   },
   {
-    "name": "Bahrain",
-    "code": "BHR",
-    "confederation": "AFC"
+    "Name": "Bahrain",
+    "Code": "BHR",
+    "Confederation": "AFC"
   },
   {
-    "name": "Bangladesh",
-    "code": "BAN",
-    "confederation": "AFC"
+    "Name": "Bangladesh",
+    "Code": "BAN",
+    "Confederation": "AFC"
   },
   {
-    "name": "Bhutan",
-    "code": "BHU",
-    "confederation": "AFC"
+    "Name": "Bhutan",
+    "Code": "BHU",
+    "Confederation": "AFC"
   },
   {
-    "name": "Brunei Darussalam",
-    "code": "BRU",
-    "confederation": "AFC"
+    "Name": "Brunei Darussalam",
+    "Code": "BRU",
+    "Confederation": "AFC"
   },
   {
-    "name": "Cambodia",
-    "code": "CAM",
-    "confederation": "AFC"
+    "Name": "Cambodia",
+    "Code": "CAM",
+    "Confederation": "AFC"
   },
   {
-    "name": "China PR",
-    "code": "CHN",
-    "confederation": "AFC"
+    "Name": "China PR",
+    "Code": "CHN",
+    "Confederation": "AFC"
   },
   {
-    "name": "Chinese Taipei",
-    "code": "TPE",
-    "confederation": "AFC"
+    "Name": "Chinese Taipei",
+    "Code": "TPE",
+    "Confederation": "AFC"
   },
   {
-    "name": "Guam",
-    "code": "GUM",
-    "confederation": "AFC"
+    "Name": "Guam",
+    "Code": "GUM",
+    "Confederation": "AFC"
   },
   {
-    "name": "Hong Kong",
-    "code": "HKG",
-    "confederation": "AFC"
+    "Name": "Hong Kong",
+    "Code": "HKG",
+    "Confederation": "AFC"
   },
   {
-    "name": "India",
-    "code": "IND",
-    "confederation": "AFC"
+    "Name": "India",
+    "Code": "IND",
+    "Confederation": "AFC"
   },
   {
-    "name": "Indonesia",
-    "code": "IDN",
-    "confederation": "AFC"
+    "Name": "Indonesia",
+    "Code": "IDN",
+    "Confederation": "AFC"
   },
   {
-    "name": "Iran",
-    "code": "IRN",
-    "confederation": "AFC"
+    "Name": "Iran",
+    "Code": "IRN",
+    "Confederation": "AFC"
   },
   {
-    "name": "Iraq",
-    "code": "IRQ",
-    "confederation": "AFC"
+    "Name": "Iraq",
+    "Code": "IRQ",
+    "Confederation": "AFC"
   },
   {
-    "name": "Japan",
-    "code": "JPN",
-    "confederation": "AFC"
+    "Name": "Japan",
+    "Code": "JPN",
+    "Confederation": "AFC"
   },
   {
-    "name": "Jordan",
-    "code": "JOR",
-    "confederation": "AFC"
+    "Name": "Jordan",
+    "Code": "JOR",
+    "Confederation": "AFC"
   },
   {
-    "name": "Korea DPR",
-    "code": "PRK",
-    "confederation": "AFC"
+    "Name": "Korea DPR",
+    "Code": "PRK",
+    "Confederation": "AFC"
   },
   {
-    "name": "Korea Republic",
-    "code": "KOR",
-    "confederation": "AFC"
+    "Name": "Korea Republic",
+    "Code": "KOR",
+    "Confederation": "AFC"
   },
   {
-    "name": "Kuwait",
-    "code": "KUW",
-    "confederation": "AFC"
+    "Name": "Kuwait",
+    "Code": "KUW",
+    "Confederation": "AFC"
   },
   {
-    "name": "Kyrgyzstan",
-    "code": "KGZ",
-    "confederation": "AFC"
+    "Name": "Kyrgyzstan",
+    "Code": "KGZ",
+    "Confederation": "AFC"
   },
   {
-    "name": "Laos",
-    "code": "LAO",
-    "confederation": "AFC"
+    "Name": "Laos",
+    "Code": "LAO",
+    "Confederation": "AFC"
   },
   {
-    "name": "Lebanon",
-    "code": "LIB",
-    "confederation": "AFC"
+    "Name": "Lebanon",
+    "Code": "LIB",
+    "Confederation": "AFC"
   },
   {
-    "name": "Macau",
-    "code": "MAC",
-    "confederation": "AFC"
+    "Name": "Macau",
+    "Code": "MAC",
+    "Confederation": "AFC"
   },
   {
-    "name": "Malaysia",
-    "code": "MAS",
-    "confederation": "AFC"
+    "Name": "Malaysia",
+    "Code": "MAS",
+    "Confederation": "AFC"
   },
   {
-    "name": "Maldives",
-    "code": "MDV",
-    "confederation": "AFC"
+    "Name": "Maldives",
+    "Code": "MDV",
+    "Confederation": "AFC"
   },
   {
-    "name": "Mongolia",
-    "code": "MNG",
-    "confederation": "AFC"
+    "Name": "Mongolia",
+    "Code": "MNG",
+    "Confederation": "AFC"
   },
   {
-    "name": "Myanmar",
-    "code": "MYA",
-    "confederation": "AFC"
+    "Name": "Myanmar",
+    "Code": "MYA",
+    "Confederation": "AFC"
   },
   {
-    "name": "Nepal",
-    "code": "NEP",
-    "confederation": "AFC"
+    "Name": "Nepal",
+    "Code": "NEP",
+    "Confederation": "AFC"
   },
   {
-    "name": "Northern Mariana Islands",
-    "code": "NMI",
-    "confederation": "AFC"
+    "Name": "Northern Mariana Islands",
+    "Code": "NMI",
+    "Confederation": "AFC"
   },
   {
-    "name": "Oman",
-    "code": "OMA",
-    "confederation": "AFC"
+    "Name": "Oman",
+    "Code": "OMA",
+    "Confederation": "AFC"
   },
   {
-    "name": "Pakistan",
-    "code": "PAK",
-    "confederation": "AFC"
+    "Name": "Pakistan",
+    "Code": "PAK",
+    "Confederation": "AFC"
   },
   {
-    "name": "Palestine",
-    "code": "PLE",
-    "confederation": "AFC"
+    "Name": "Palestine",
+    "Code": "PLE",
+    "Confederation": "AFC"
   },
   {
-    "name": "Philippines",
-    "code": "PHI",
-    "confederation": "AFC"
+    "Name": "Philippines",
+    "Code": "PHI",
+    "Confederation": "AFC"
   },
   {
-    "name": "Qatar",
-    "code": "QAT",
-    "confederation": "AFC"
+    "Name": "Qatar",
+    "Code": "QAT",
+    "Confederation": "AFC"
   },
   {
-    "name": "Saudi Arabia",
-    "code": "KSA",
-    "confederation": "AFC"
+    "Name": "Saudi Arabia",
+    "Code": "KSA",
+    "Confederation": "AFC"
   },
   {
-    "name": "Singapore",
-    "code": "SIN",
-    "confederation": "AFC"
+    "Name": "Singapore",
+    "Code": "SIN",
+    "Confederation": "AFC"
   },
   {
-    "name": "Sri Lanka",
-    "code": "SRI",
-    "confederation": "AFC"
+    "Name": "Sri Lanka",
+    "Code": "SRI",
+    "Confederation": "AFC"
   },
   {
-    "name": "Syria",
-    "code": "SYR",
-    "confederation": "AFC"
+    "Name": "Syria",
+    "Code": "SYR",
+    "Confederation": "AFC"
   },
   {
-    "name": "Tajikistan",
-    "code": "TJK",
-    "confederation": "AFC"
+    "Name": "Tajikistan",
+    "Code": "TJK",
+    "Confederation": "AFC"
   },
   {
-    "name": "Thailand",
-    "code": "THA",
-    "confederation": "AFC"
+    "Name": "Thailand",
+    "Code": "THA",
+    "Confederation": "AFC"
   },
   {
-    "name": "Timor-Leste",
-    "code": "TLS",
-    "confederation": "AFC"
+    "Name": "Timor-Leste",
+    "Code": "TLS",
+    "Confederation": "AFC"
   },
   {
-    "name": "Turkmenistan",
-    "code": "TKM",
-    "confederation": "AFC"
+    "Name": "Turkmenistan",
+    "Code": "TKM",
+    "Confederation": "AFC"
   },
   {
-    "name": "United Arab Emirates",
-    "code": "UAE",
-    "confederation": "AFC"
+    "Name": "United Arab Emirates",
+    "Code": "UAE",
+    "Confederation": "AFC"
   },
   {
-    "name": "Uzbekistan",
-    "code": "UZB",
-    "confederation": "AFC"
+    "Name": "Uzbekistan",
+    "Code": "UZB",
+    "Confederation": "AFC"
   },
   {
-    "name": "Vietnam",
-    "code": "VIE",
-    "confederation": "AFC"
+    "Name": "Vietnam",
+    "Code": "VIE",
+    "Confederation": "AFC"
   },
   {
-    "name": "Yemen",
-    "code": "YEM",
-    "confederation": "AFC"
+    "Name": "Yemen",
+    "Code": "YEM",
+    "Confederation": "AFC"
   },
   {
-    "name": "Algeria",
-    "code": "ALG",
-    "confederation": "CAF"
+    "Name": "Algeria",
+    "Code": "ALG",
+    "Confederation": "CAF"
   },
   {
-    "name": "Angola",
-    "code": "ANG",
-    "confederation": "CAF"
+    "Name": "Angola",
+    "Code": "ANG",
+    "Confederation": "CAF"
   },
   {
-    "name": "Benin",
-    "code": "BEN",
-    "confederation": "CAF"
+    "Name": "Benin",
+    "Code": "BEN",
+    "Confederation": "CAF"
   },
   {
-    "name": "Botswana",
-    "code": "BOT",
-    "confederation": "CAF"
+    "Name": "Botswana",
+    "Code": "BOT",
+    "Confederation": "CAF"
   },
   {
-    "name": "Burkina Faso",
-    "code": "BFA",
-    "confederation": "CAF"
+    "Name": "Burkina Faso",
+    "Code": "BFA",
+    "Confederation": "CAF"
   },
   {
-    "name": "Burundi",
-    "code": "BDI",
-    "confederation": "CAF"
+    "Name": "Burundi",
+    "Code": "BDI",
+    "Confederation": "CAF"
   },
   {
-    "name": "Cameroon",
-    "code": "CMR",
-    "confederation": "CAF"
+    "Name": "Cameroon",
+    "Code": "CMR",
+    "Confederation": "CAF"
   },
   {
-    "name": "Cape Verde",
-    "code": "CPV",
-    "confederation": "CAF"
+    "Name": "Cape Verde",
+    "Code": "CPV",
+    "Confederation": "CAF"
   },
   {
-    "name": "Central African Republic",
-    "code": "CTA",
-    "confederation": "CAF"
+    "Name": "Central African Republic",
+    "Code": "CTA",
+    "Confederation": "CAF"
   },
   {
-    "name": "Chad",
-    "code": "CHA",
-    "confederation": "CAF"
+    "Name": "Chad",
+    "Code": "CHA",
+    "Confederation": "CAF"
   },
   {
-    "name": "Comoros",
-    "code": "COM",
-    "confederation": "CAF"
+    "Name": "Comoros",
+    "Code": "COM",
+    "Confederation": "CAF"
   },
   {
-    "name": "Congo",
-    "code": "CGO",
-    "confederation": "CAF"
+    "Name": "Congo",
+    "Code": "CGO",
+    "Confederation": "CAF"
   },
   {
-    "name": "Congo DR",
-    "code": "COD",
-    "confederation": "CAF"
+    "Name": "Congo DR",
+    "Code": "COD",
+    "Confederation": "CAF"
   },
   {
-    "name": "Côte d'Ivoire",
-    "code": "CIV",
-    "confederation": "CAF"
+    "Name": "Côte d'Ivoire",
+    "Code": "CIV",
+    "Confederation": "CAF"
   },
   {
-    "name": "Djibouti",
-    "code": "DJI",
-    "confederation": "CAF"
+    "Name": "Djibouti",
+    "Code": "DJI",
+    "Confederation": "CAF"
   },
   {
-    "name": "Egypt",
-    "code": "EGY",
-    "confederation": "CAF"
+    "Name": "Egypt",
+    "Code": "EGY",
+    "Confederation": "CAF"
   },
   {
-    "name": "Equatorial Guinea",
-    "code": "EQG",
-    "confederation": "CAF"
+    "Name": "Equatorial Guinea",
+    "Code": "EQG",
+    "Confederation": "CAF"
   },
   {
-    "name": "Eritrea",
-    "code": "ERI",
-    "confederation": "CAF"
+    "Name": "Eritrea",
+    "Code": "ERI",
+    "Confederation": "CAF"
   },
   {
-    "name": "Ethiopia",
-    "code": "ETH",
-    "confederation": "CAF"
+    "Name": "Ethiopia",
+    "Code": "ETH",
+    "Confederation": "CAF"
   },
   {
-    "name": "Gabon",
-    "code": "GAB",
-    "confederation": "CAF"
+    "Name": "Gabon",
+    "Code": "GAB",
+    "Confederation": "CAF"
   },
   {
-    "name": "Gambia",
-    "code": "GAM",
-    "confederation": "CAF"
+    "Name": "Gambia",
+    "Code": "GAM",
+    "Confederation": "CAF"
   },
   {
-    "name": "Ghana",
-    "code": "GHA",
-    "confederation": "CAF"
+    "Name": "Ghana",
+    "Code": "GHA",
+    "Confederation": "CAF"
   },
   {
-    "name": "Guinea",
-    "code": "GUI",
-    "confederation": "CAF"
+    "Name": "Guinea",
+    "Code": "GUI",
+    "Confederation": "CAF"
   },
   {
-    "name": "Guinea-Bissau",
-    "code": "GNB",
-    "confederation": "CAF"
+    "Name": "Guinea-Bissau",
+    "Code": "GNB",
+    "Confederation": "CAF"
   },
   {
-    "name": "Kenya",
-    "code": "KEN",
-    "confederation": "CAF"
+    "Name": "Kenya",
+    "Code": "KEN",
+    "Confederation": "CAF"
   },
   {
-    "name": "Lesotho",
-    "code": "LES",
-    "confederation": "CAF"
+    "Name": "Lesotho",
+    "Code": "LES",
+    "Confederation": "CAF"
   },
   {
-    "name": "Liberia",
-    "code": "LBR",
-    "confederation": "CAF"
+    "Name": "Liberia",
+    "Code": "LBR",
+    "Confederation": "CAF"
   },
   {
-    "name": "Libya",
-    "code": "LBY",
-    "confederation": "CAF"
+    "Name": "Libya",
+    "Code": "LBY",
+    "Confederation": "CAF"
   },
   {
-    "name": "Madagascar",
-    "code": "MAD",
-    "confederation": "CAF"
+    "Name": "Madagascar",
+    "Code": "MAD",
+    "Confederation": "CAF"
   },
   {
-    "name": "Malawi",
-    "code": "MWI",
-    "confederation": "CAF"
+    "Name": "Malawi",
+    "Code": "MWI",
+    "Confederation": "CAF"
   },
   {
-    "name": "Mali",
-    "code": "MLI",
-    "confederation": "CAF"
+    "Name": "Mali",
+    "Code": "MLI",
+    "Confederation": "CAF"
   },
   {
-    "name": "Mauritania",
-    "code": "MTN",
-    "confederation": "CAF"
+    "Name": "Mauritania",
+    "Code": "MTN",
+    "Confederation": "CAF"
   },
   {
-    "name": "Mauritius",
-    "code": "MRI",
-    "confederation": "CAF"
+    "Name": "Mauritius",
+    "Code": "MRI",
+    "Confederation": "CAF"
   },
   {
-    "name": "Morocco",
-    "code": "MAR",
-    "confederation": "CAF"
+    "Name": "Morocco",
+    "Code": "MAR",
+    "Confederation": "CAF"
   },
   {
-    "name": "Mozambique",
-    "code": "MOZ",
-    "confederation": "CAF"
+    "Name": "Mozambique",
+    "Code": "MOZ",
+    "Confederation": "CAF"
   },
   {
-    "name": "Namibia",
-    "code": "NAM",
-    "confederation": "CAF"
+    "Name": "Namibia",
+    "Code": "NAM",
+    "Confederation": "CAF"
   },
   {
-    "name": "Niger",
-    "code": "NIG",
-    "confederation": "CAF"
+    "Name": "Niger",
+    "Code": "NIG",
+    "Confederation": "CAF"
   },
   {
-    "name": "Nigeria",
-    "code": "NGA",
-    "confederation": "CAF"
+    "Name": "Nigeria",
+    "Code": "NGA",
+    "Confederation": "CAF"
   },
   {
-    "name": "Réunion",
-    "code": "REU",
-    "confederation": "CAF"
+    "Name": "Réunion",
+    "Code": "REU",
+    "Confederation": "CAF"
   },
   {
-    "name": "Rwanda",
-    "code": "RWA",
-    "confederation": "CAF"
+    "Name": "Rwanda",
+    "Code": "RWA",
+    "Confederation": "CAF"
   },
   {
-    "name": "São Tomé and Príncipe",
-    "code": "STP",
-    "confederation": "CAF"
+    "Name": "São Tomé and Príncipe",
+    "Code": "STP",
+    "Confederation": "CAF"
   },
   {
-    "name": "Senegal",
-    "code": "SEN",
-    "confederation": "CAF"
+    "Name": "Senegal",
+    "Code": "SEN",
+    "Confederation": "CAF"
   },
   {
-    "name": "Seychelles",
-    "code": "SEY",
-    "confederation": "CAF"
+    "Name": "Seychelles",
+    "Code": "SEY",
+    "Confederation": "CAF"
   },
   {
-    "name": "Sierra Leone",
-    "code": "SLE",
-    "confederation": "CAF"
+    "Name": "Sierra Leone",
+    "Code": "SLE",
+    "Confederation": "CAF"
   },
   {
-    "name": "Somalia",
-    "code": "SOM",
-    "confederation": "CAF"
+    "Name": "Somalia",
+    "Code": "SOM",
+    "Confederation": "CAF"
   },
   {
-    "name": "South Africa",
-    "code": "RSA",
-    "confederation": "CAF"
+    "Name": "South Africa",
+    "Code": "RSA",
+    "Confederation": "CAF"
   },
   {
-    "name": "South Sudan",
-    "code": "SSD",
-    "confederation": "CAF"
+    "Name": "South Sudan",
+    "Code": "SSD",
+    "Confederation": "CAF"
   },
   {
-    "name": "Sudan",
-    "code": "SDN",
-    "confederation": "CAF"
+    "Name": "Sudan",
+    "Code": "SDN",
+    "Confederation": "CAF"
   },
   {
-    "name": "Swaziland",
-    "code": "SWZ",
-    "confederation": "CAF"
+    "Name": "Swaziland",
+    "Code": "SWZ",
+    "Confederation": "CAF"
   },
   {
-    "name": "Tanzania",
-    "code": "TAN",
-    "confederation": "CAF"
+    "Name": "Tanzania",
+    "Code": "TAN",
+    "Confederation": "CAF"
   },
   {
-    "name": "Togo",
-    "code": "TOG",
-    "confederation": "CAF"
+    "Name": "Togo",
+    "Code": "TOG",
+    "Confederation": "CAF"
   },
   {
-    "name": "Tunisia",
-    "code": "TUN",
-    "confederation": "CAF"
+    "Name": "Tunisia",
+    "Code": "TUN",
+    "Confederation": "CAF"
   },
   {
-    "name": "Uganda",
-    "code": "UGA",
-    "confederation": "CAF"
+    "Name": "Uganda",
+    "Code": "UGA",
+    "Confederation": "CAF"
   },
   {
-    "name": "Zambia",
-    "code": "ZAM",
-    "confederation": "CAF"
+    "Name": "Zambia",
+    "Code": "ZAM",
+    "Confederation": "CAF"
   },
   {
-    "name": "Zimbabwe",
-    "code": "ZIM",
-    "confederation": "CAF"
+    "Name": "Zimbabwe",
+    "Code": "ZIM",
+    "Confederation": "CAF"
   },
   {
-    "name": "Anguilla",
-    "code": "AIA",
-    "confederation": "CONCACAF"
+    "Name": "Anguilla",
+    "Code": "AIA",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Antigua and Barbuda",
-    "code": "ATG",
-    "confederation": "CONCACAF"
+    "Name": "Antigua and Barbuda",
+    "Code": "ATG",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Aruba",
-    "code": "ARU",
-    "confederation": "CONCACAF"
+    "Name": "Aruba",
+    "Code": "ARU",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Bahamas",
-    "code": "BAH",
-    "confederation": "CONCACAF"
+    "Name": "Bahamas",
+    "Code": "BAH",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Barbados",
-    "code": "BRB",
-    "confederation": "CONCACAF"
+    "Name": "Barbados",
+    "Code": "BRB",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Belize",
-    "code": "BLZ",
-    "confederation": "CONCACAF"
+    "Name": "Belize",
+    "Code": "BLZ",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Bermuda",
-    "code": "BER",
-    "confederation": "CONCACAF"
+    "Name": "Bermuda",
+    "Code": "BER",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "British Virgin Islands",
-    "code": "VGB",
-    "confederation": "CONCACAF"
+    "Name": "British Virgin Islands",
+    "Code": "VGB",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Canada",
-    "code": "CAN",
-    "confederation": "CONCACAF"
+    "Name": "Canada",
+    "Code": "CAN",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Cayman Islands",
-    "code": "CAY",
-    "confederation": "CONCACAF"
+    "Name": "Cayman Islands",
+    "Code": "CAY",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Costa Rica",
-    "code": "CRC",
-    "confederation": "CONCACAF"
+    "Name": "Costa Rica",
+    "Code": "CRC",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Cuba",
-    "code": "CUB",
-    "confederation": "CONCACAF"
+    "Name": "Cuba",
+    "Code": "CUB",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Curaçao",
-    "code": "CUW",
-    "confederation": "CONCACAF"
+    "Name": "Curaçao",
+    "Code": "CUW",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Dominica",
-    "code": "DMA",
-    "confederation": "CONCACAF"
+    "Name": "Dominica",
+    "Code": "DMA",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Dominican Republic",
-    "code": "DOM",
-    "confederation": "CONCACAF"
+    "Name": "Dominican Republic",
+    "Code": "DOM",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "El Salvador",
-    "code": "SLV",
-    "confederation": "CONCACAF"
+    "Name": "El Salvador",
+    "Code": "SLV",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "French Guiana",
-    "code": "GYF",
-    "confederation": "CONCACAF"
+    "Name": "French Guiana",
+    "Code": "GYF",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Grenada",
-    "code": "GRN",
-    "confederation": "CONCACAF"
+    "Name": "Grenada",
+    "Code": "GRN",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Guadeloupe",
-    "code": "GPE",
-    "confederation": "CONCACAF"
+    "Name": "Guadeloupe",
+    "Code": "GPE",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Guatemala",
-    "code": "GUA",
-    "confederation": "CONCACAF"
+    "Name": "Guatemala",
+    "Code": "GUA",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Guyana",
-    "code": "GUY",
-    "confederation": "CONCACAF"
+    "Name": "Guyana",
+    "Code": "GUY",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Haiti",
-    "code": "HAI",
-    "confederation": "CONCACAF"
+    "Name": "Haiti",
+    "Code": "HAI",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Honduras",
-    "code": "HON",
-    "confederation": "CONCACAF"
+    "Name": "Honduras",
+    "Code": "HON",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Jamaica",
-    "code": "JAM",
-    "confederation": "CONCACAF"
+    "Name": "Jamaica",
+    "Code": "JAM",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Martinique",
-    "code": "MTQ",
-    "confederation": "CONCACAF"
+    "Name": "Martinique",
+    "Code": "MTQ",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Mexico",
-    "code": "MEX",
-    "confederation": "CONCACAF"
+    "Name": "Mexico",
+    "Code": "MEX",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Montserrat",
-    "code": "MSR",
-    "confederation": "CONCACAF"
+    "Name": "Montserrat",
+    "Code": "MSR",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Netherlands Antilles",
-    "code": "ANT",
-    "confederation": "CONCACAF"
+    "Name": "Netherlands Antilles",
+    "Code": "ANT",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Nicaragua",
-    "code": "NCA",
-    "confederation": "CONCACAF"
+    "Name": "Nicaragua",
+    "Code": "NCA",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Panama",
-    "code": "PAN",
-    "confederation": "CONCACAF"
+    "Name": "Panama",
+    "Code": "PAN",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Puerto Rico",
-    "code": "PUR",
-    "confederation": "CONCACAF"
+    "Name": "Puerto Rico",
+    "Code": "PUR",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Saint Kitts and Nevis",
-    "code": "SKN",
-    "confederation": "CONCACAF"
+    "Name": "Saint Kitts and Nevis",
+    "Code": "SKN",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Saint Lucia",
-    "code": "LCA",
-    "confederation": "CONCACAF"
+    "Name": "Saint Lucia",
+    "Code": "LCA",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Saint Vincent and the Grenadines",
-    "code": "VIN",
-    "confederation": "CONCACAF"
+    "Name": "Saint Vincent and the Grenadines",
+    "Code": "VIN",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Saint-Martin",
-    "code": "SMT",
-    "confederation": "CONCACAF"
+    "Name": "Saint-Martin",
+    "Code": "SMT",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Sint Maarten",
-    "code": "SXM",
-    "confederation": "CONCACAF"
+    "Name": "Sint Maarten",
+    "Code": "SXM",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Suriname",
-    "code": "SUR",
-    "confederation": "CONCACAF"
+    "Name": "Suriname",
+    "Code": "SUR",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Trinidad and Tobago",
-    "code": "TRI",
-    "confederation": "CONCACAF"
+    "Name": "Trinidad and Tobago",
+    "Code": "TRI",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Turks and Caicos Islands",
-    "code": "TCA",
-    "confederation": "CONCACAF"
+    "Name": "Turks and Caicos Islands",
+    "Code": "TCA",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "U.S. Virgin Islands",
-    "code": "VIR",
-    "confederation": "CONCACAF"
+    "Name": "U.S. Virgin Islands",
+    "Code": "VIR",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "USA",
-    "code": "USA",
-    "confederation": "CONCACAF"
+    "Name": "USA",
+    "Code": "USA",
+    "Confederation": "CONCACAF"
   },
   {
-    "name": "Argentina",
-    "code": "ARG",
-    "confederation": "CONMEBOL"
+    "Name": "Argentina",
+    "Code": "ARG",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Bolivia",
-    "code": "BOL",
-    "confederation": "CONMEBOL"
+    "Name": "Bolivia",
+    "Code": "BOL",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Brazil",
-    "code": "BRA",
-    "confederation": "CONMEBOL"
+    "Name": "Brazil",
+    "Code": "BRA",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Chile",
-    "code": "CHI",
-    "confederation": "CONMEBOL"
+    "Name": "Chile",
+    "Code": "CHI",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Colombia",
-    "code": "COL",
-    "confederation": "CONMEBOL"
+    "Name": "Colombia",
+    "Code": "COL",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Ecuador",
-    "code": "ECU",
-    "confederation": "CONMEBOL"
+    "Name": "Ecuador",
+    "Code": "ECU",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Paraguay",
-    "code": "PAR",
-    "confederation": "CONMEBOL"
+    "Name": "Paraguay",
+    "Code": "PAR",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Peru",
-    "code": "PER",
-    "confederation": "CONMEBOL"
+    "Name": "Peru",
+    "Code": "PER",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Uruguay",
-    "code": "URU",
-    "confederation": "CONMEBOL"
+    "Name": "Uruguay",
+    "Code": "URU",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "Venezuela",
-    "code": "VEN",
-    "confederation": "CONMEBOL"
+    "Name": "Venezuela",
+    "Code": "VEN",
+    "Confederation": "CONMEBOL"
   },
   {
-    "name": "American Samoa",
-    "code": "ASA",
-    "confederation": "OFC"
+    "Name": "American Samoa",
+    "Code": "ASA",
+    "Confederation": "OFC"
   },
   {
-    "name": "Cook Islands",
-    "code": "COK",
-    "confederation": "OFC"
+    "Name": "Cook Islands",
+    "Code": "COK",
+    "Confederation": "OFC"
   },
   {
-    "name": "Federated States of Micronesia",
-    "code": "FSM",
-    "confederation": "OFC"
+    "Name": "Federated States of Micronesia",
+    "Code": "FSM",
+    "Confederation": "OFC"
   },
   {
-    "name": "Fiji",
-    "code": "FIJ",
-    "confederation": "OFC"
+    "Name": "Fiji",
+    "Code": "FIJ",
+    "Confederation": "OFC"
   },
   {
-    "name": "Kiribati",
-    "code": "KIR",
-    "confederation": "OFC"
+    "Name": "Kiribati",
+    "Code": "KIR",
+    "Confederation": "OFC"
   },
   {
-    "name": "New Caledonia",
-    "code": "NCL",
-    "confederation": "OFC"
+    "Name": "New Caledonia",
+    "Code": "NCL",
+    "Confederation": "OFC"
   },
   {
-    "name": "New Zealand",
-    "code": "NZL",
-    "confederation": "OFC"
+    "Name": "New Zealand",
+    "Code": "NZL",
+    "Confederation": "OFC"
   },
   {
-    "name": "Niue",
-    "code": "NIU",
-    "confederation": "OFC"
+    "Name": "Niue",
+    "Code": "NIU",
+    "Confederation": "OFC"
   },
   {
-    "name": "Palau",
-    "code": "PLW",
-    "confederation": "OFC"
+    "Name": "Palau",
+    "Code": "PLW",
+    "Confederation": "OFC"
   },
   {
-    "name": "Papua New Guinea",
-    "code": "PNG",
-    "confederation": "OFC"
+    "Name": "Papua New Guinea",
+    "Code": "PNG",
+    "Confederation": "OFC"
   },
   {
-    "name": "Samoa",
-    "code": "SAM",
-    "confederation": "OFC"
+    "Name": "Samoa",
+    "Code": "SAM",
+    "Confederation": "OFC"
   },
   {
-    "name": "Solomon Islands",
-    "code": "SOL",
-    "confederation": "OFC"
+    "Name": "Solomon Islands",
+    "Code": "SOL",
+    "Confederation": "OFC"
   },
   {
-    "name": "Tahiti",
-    "code": "TAH",
-    "confederation": "OFC"
+    "Name": "Tahiti",
+    "Code": "TAH",
+    "Confederation": "OFC"
   },
   {
-    "name": "Tonga",
-    "code": "TGA",
-    "confederation": "OFC"
+    "Name": "Tonga",
+    "Code": "TGA",
+    "Confederation": "OFC"
   },
   {
-    "name": "Tuvalu",
-    "code": "TUV",
-    "confederation": "OFC"
+    "Name": "Tuvalu",
+    "Code": "TUV",
+    "Confederation": "OFC"
   },
   {
-    "name": "Vanuatu",
-    "code": "VAN",
-    "confederation": "OFC"
+    "Name": "Vanuatu",
+    "Code": "VAN",
+    "Confederation": "OFC"
   },
   {
-    "name": "Albania",
-    "code": "ALB",
-    "confederation": "UEFA"
+    "Name": "Albania",
+    "Code": "ALB",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Andorra",
-    "code": "AND",
-    "confederation": "UEFA"
+    "Name": "Andorra",
+    "Code": "AND",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Armenia",
-    "code": "ARM",
-    "confederation": "UEFA"
+    "Name": "Armenia",
+    "Code": "ARM",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Austria",
-    "code": "AUT",
-    "confederation": "UEFA"
+    "Name": "Austria",
+    "Code": "AUT",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Azerbaijan",
-    "code": "AZE",
-    "confederation": "UEFA"
+    "Name": "Azerbaijan",
+    "Code": "AZE",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Belarus",
-    "code": "BLR",
-    "confederation": "UEFA"
+    "Name": "Belarus",
+    "Code": "BLR",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Belgium",
-    "code": "BEL",
-    "confederation": "UEFA"
+    "Name": "Belgium",
+    "Code": "BEL",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Bosnia and Herzegovina",
-    "code": "BIH",
-    "confederation": "UEFA"
+    "Name": "Bosnia and Herzegovina",
+    "Code": "BIH",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Bulgaria",
-    "code": "BUL",
-    "confederation": "UEFA"
+    "Name": "Bulgaria",
+    "Code": "BUL",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Croatia",
-    "code": "CRO",
-    "confederation": "UEFA"
+    "Name": "Croatia",
+    "Code": "CRO",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Cyprus",
-    "code": "CYP",
-    "confederation": "UEFA"
+    "Name": "Cyprus",
+    "Code": "CYP",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Czech Republic",
-    "code": "CZE",
-    "confederation": "UEFA"
+    "Name": "Czech Republic",
+    "Code": "CZE",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Denmark",
-    "code": "DEN",
-    "confederation": "UEFA"
+    "Name": "Denmark",
+    "Code": "DEN",
+    "Confederation": "UEFA"
   },
   {
-    "name": "England",
-    "code": "ENG",
-    "confederation": "UEFA"
+    "Name": "England",
+    "Code": "ENG",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Estonia",
-    "code": "EST",
-    "confederation": "UEFA"
+    "Name": "Estonia",
+    "Code": "EST",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Faroe Islands",
-    "code": "FRO",
-    "confederation": "UEFA"
+    "Name": "Faroe Islands",
+    "Code": "FRO",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Finland",
-    "code": "FIN",
-    "confederation": "UEFA"
+    "Name": "Finland",
+    "Code": "FIN",
+    "Confederation": "UEFA"
   },
   {
-    "name": "France",
-    "code": "FRA",
-    "confederation": "UEFA"
+    "Name": "France",
+    "Code": "FRA",
+    "Confederation": "UEFA"
   },
   {
-    "name": "FYR Macedonia",
-    "code": "MKD",
-    "confederation": "UEFA"
+    "Name": "FYR Macedonia",
+    "Code": "MKD",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Georgia",
-    "code": "GEO",
-    "confederation": "UEFA"
+    "Name": "Georgia",
+    "Code": "GEO",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Germany",
-    "code": "GER",
-    "confederation": "UEFA"
+    "Name": "Germany",
+    "Code": "GER",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Gibraltar",
-    "code": "GIB",
-    "confederation": "UEFA"
+    "Name": "Gibraltar",
+    "Code": "GIB",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Greece",
-    "code": "GRE",
-    "confederation": "UEFA"
+    "Name": "Greece",
+    "Code": "GRE",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Hungary",
-    "code": "HUN",
-    "confederation": "UEFA"
+    "Name": "Hungary",
+    "Code": "HUN",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Iceland",
-    "code": "ISL",
-    "confederation": "UEFA"
+    "Name": "Iceland",
+    "Code": "ISL",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Israel",
-    "code": "ISR",
-    "confederation": "UEFA"
+    "Name": "Israel",
+    "Code": "ISR",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Italy",
-    "code": "ITA",
-    "confederation": "UEFA"
+    "Name": "Italy",
+    "Code": "ITA",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Kazakhstan",
-    "code": "KAZ",
-    "confederation": "UEFA"
+    "Name": "Kazakhstan",
+    "Code": "KAZ",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Kosovo",
-    "code": "KVX",
-    "confederation": "UEFA"
+    "Name": "Kosovo",
+    "Code": "KVX",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Latvia",
-    "code": "LVA",
-    "confederation": "UEFA"
+    "Name": "Latvia",
+    "Code": "LVA",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Liechtenstein",
-    "code": "LIE",
-    "confederation": "UEFA"
+    "Name": "Liechtenstein",
+    "Code": "LIE",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Lithuania",
-    "code": "LTU",
-    "confederation": "UEFA"
+    "Name": "Lithuania",
+    "Code": "LTU",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Luxembourg",
-    "code": "LUX",
-    "confederation": "UEFA"
+    "Name": "Luxembourg",
+    "Code": "LUX",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Malta",
-    "code": "MLT",
-    "confederation": "UEFA"
+    "Name": "Malta",
+    "Code": "MLT",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Moldova",
-    "code": "MDA",
-    "confederation": "UEFA"
+    "Name": "Moldova",
+    "Code": "MDA",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Montenegro",
-    "code": "MNE",
-    "confederation": "UEFA"
+    "Name": "Montenegro",
+    "Code": "MNE",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Netherlands",
-    "code": "NED",
-    "confederation": "UEFA"
+    "Name": "Netherlands",
+    "Code": "NED",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Northern Ireland",
-    "code": "NIR",
-    "confederation": "UEFA"
+    "Name": "Northern Ireland",
+    "Code": "NIR",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Norway",
-    "code": "NOR",
-    "confederation": "UEFA"
+    "Name": "Norway",
+    "Code": "NOR",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Poland",
-    "code": "POL",
-    "confederation": "UEFA"
+    "Name": "Poland",
+    "Code": "POL",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Portugal",
-    "code": "POR",
-    "confederation": "UEFA"
+    "Name": "Portugal",
+    "Code": "POR",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Republic of Ireland",
-    "code": "IRL",
-    "confederation": "UEFA"
+    "Name": "Republic of Ireland",
+    "Code": "IRL",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Romania",
-    "code": "ROU",
-    "confederation": "UEFA"
+    "Name": "Romania",
+    "Code": "ROU",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Russia",
-    "code": "RUS",
-    "confederation": "UEFA"
+    "Name": "Russia",
+    "Code": "RUS",
+    "Confederation": "UEFA"
   },
   {
-    "name": "San Marino",
-    "code": "SMR",
-    "confederation": "UEFA"
+    "Name": "San Marino",
+    "Code": "SMR",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Scotland",
-    "code": "SCO",
-    "confederation": "UEFA"
+    "Name": "Scotland",
+    "Code": "SCO",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Serbia",
-    "code": "SRB",
-    "confederation": "UEFA"
+    "Name": "Serbia",
+    "Code": "SRB",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Slovakia",
-    "code": "SVK",
-    "confederation": "UEFA"
+    "Name": "Slovakia",
+    "Code": "SVK",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Slovenia",
-    "code": "SVN",
-    "confederation": "UEFA"
+    "Name": "Slovenia",
+    "Code": "SVN",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Spain",
-    "code": "ESP",
-    "confederation": "UEFA"
+    "Name": "Spain",
+    "Code": "ESP",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Sweden",
-    "code": "SWE",
-    "confederation": "UEFA"
+    "Name": "Sweden",
+    "Code": "SWE",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Switzerland",
-    "code": "SUI",
-    "confederation": "UEFA"
+    "Name": "Switzerland",
+    "Code": "SUI",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Turkey",
-    "code": "TUR",
-    "confederation": "UEFA"
+    "Name": "Turkey",
+    "Code": "TUR",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Ukraine",
-    "code": "UKR",
-    "confederation": "UEFA"
+    "Name": "Ukraine",
+    "Code": "UKR",
+    "Confederation": "UEFA"
   },
   {
-    "name": "Wales",
-    "code": "WAL",
-    "confederation": "UEFA"
+    "Name": "Wales",
+    "Code": "WAL",
+    "Confederation": "UEFA"
   }
 ]

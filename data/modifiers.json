@@ -1,482 +1,482 @@
 [
   {
-    "modifier": "Chest",
-    "category": "Body Part"
+    "Modifier": "Chest",
+    "Category": "Body Part"
   },
   {
-    "modifier": "Foot",
-    "category": "Body Part"
+    "Modifier": "Foot",
+    "Category": "Body Part"
   },
   {
-    "modifier": "Hand",
-    "category": "Body Part"
+    "Modifier": "Hand",
+    "Category": "Body Part"
   },
   {
-    "modifier": "Head",
-    "category": "Body Part"
+    "Modifier": "Head",
+    "Category": "Body Part"
   },
   {
-    "modifier": "Left foot",
-    "category": "Body Part"
+    "Modifier": "Left foot",
+    "Category": "Body Part"
   },
   {
-    "modifier": "Right foot",
-    "category": "Body Part"
+    "Modifier": "Right foot",
+    "Category": "Body Part"
   },
   {
-    "modifier": "Other body part",
-    "category": "Body Part"
+    "Modifier": "Other body part",
+    "Category": "Body Part"
   },
   {
-    "modifier": "Unknown body part",
-    "category": "Body Part"
+    "Modifier": "Unknown body part",
+    "Category": "Body Part"
   },
   {
-    "modifier": "Red",
-    "category": "Card Type"
+    "Modifier": "Red",
+    "Category": "Card Type"
   },
   {
-    "modifier": "Yellow",
-    "category": "Card Type"
+    "Modifier": "Yellow",
+    "Category": "Card Type"
   },
   {
-    "modifier": "Yellow/Red",
-    "category": "Card Type"
+    "Modifier": "Yellow/Red",
+    "Category": "Card Type"
   },
   {
-    "modifier": "Center Flank",
-    "category": "Field Sector"
+    "Modifier": "Center Flank",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Central Goal Area",
-    "category": "Field Sector"
+    "Modifier": "Central Goal Area",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Central Penalty Area",
-    "category": "Field Sector"
+    "Modifier": "Central Penalty Area",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Left Byline",
-    "category": "Field Sector"
+    "Modifier": "Left Byline",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Left Channel",
-    "category": "Field Sector"
+    "Modifier": "Left Channel",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Left Flank",
-    "category": "Field Sector"
+    "Modifier": "Left Flank",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Left Goal Area",
-    "category": "Field Sector"
+    "Modifier": "Left Goal Area",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Left Penalty Area",
-    "category": "Field Sector"
+    "Modifier": "Left Penalty Area",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Left Wing",
-    "category": "Field Sector"
+    "Modifier": "Left Wing",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Own Half",
-    "category": "Field Sector"
+    "Modifier": "Own Half",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Penalty Spot",
-    "category": "Field Sector"
+    "Modifier": "Penalty Spot",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Right Byline",
-    "category": "Field Sector"
+    "Modifier": "Right Byline",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Right Channel",
-    "category": "Field Sector"
+    "Modifier": "Right Channel",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Right Flank",
-    "category": "Field Sector"
+    "Modifier": "Right Flank",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Right Goal Area",
-    "category": "Field Sector"
+    "Modifier": "Right Goal Area",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Right Penalty Area",
-    "category": "Field Sector"
+    "Modifier": "Right Penalty Area",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Right Wing",
-    "category": "Field Sector"
+    "Modifier": "Right Wing",
+    "Category": "Field Sector"
   },
   {
-    "modifier": "Dangerous play",
-    "category": "Foul Type"
+    "Modifier": "Dangerous play",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Dead ball encroachment",
-    "category": "Foul Type"
+    "Modifier": "Dead ball encroachment",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Delaying restart",
-    "category": "Foul Type"
+    "Modifier": "Delaying restart",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Dissent",
-    "category": "Foul Type"
+    "Modifier": "Dissent",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Excessive celebration",
-    "category": "Foul Type"
+    "Modifier": "Excessive celebration",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Handball",
-    "category": "Foul Type"
+    "Modifier": "Handball",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Handball denied obvious scoring opportunity",
-    "category": "Foul Type"
+    "Modifier": "Handball denied obvious scoring opportunity",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Holding",
-    "category": "Foul Type"
+    "Modifier": "Holding",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Off-ball infraction",
-    "category": "Foul Type"
+    "Modifier": "Off-ball infraction",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Offensive/abusive language or gestures",
-    "category": "Foul Type"
+    "Modifier": "Offensive/abusive language or gestures",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Persistent infringement",
-    "category": "Foul Type"
+    "Modifier": "Persistent infringement",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Professional foul",
-    "category": "Foul Type"
+    "Modifier": "Professional foul",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Reckless challenge",
-    "category": "Foul Type"
+    "Modifier": "Reckless challenge",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Serious foul play",
-    "category": "Foul Type"
+    "Modifier": "Serious foul play",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Simulation",
-    "category": "Foul Type"
+    "Modifier": "Simulation",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Spitting",
-    "category": "Foul Type"
+    "Modifier": "Spitting",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Unauthorized field entry/exit",
-    "category": "Foul Type"
+    "Modifier": "Unauthorized field entry/exit",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Unknown Foul",
-    "category": "Foul Type"
+    "Modifier": "Unknown Foul",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Unsporting behavior",
-    "category": "Foul Type"
+    "Modifier": "Unsporting behavior",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Violent conduct",
-    "category": "Foul Type"
+    "Modifier": "Violent conduct",
+    "Category": "Foul Type"
   },
   {
-    "modifier": "Lower Center",
-    "category": "Goal Region"
+    "Modifier": "Lower Center",
+    "Category": "Goal Region"
   },
   {
-    "modifier": "Lower Left",
-    "category": "Goal Region"
+    "Modifier": "Lower Left",
+    "Category": "Goal Region"
   },
   {
-    "modifier": "Lower Right",
-    "category": "Goal Region"
+    "Modifier": "Lower Right",
+    "Category": "Goal Region"
   },
   {
-    "modifier": "Upper Center",
-    "category": "Goal Region"
+    "Modifier": "Upper Center",
+    "Category": "Goal Region"
   },
   {
-    "modifier": "Upper Left",
-    "category": "Goal Region"
+    "Modifier": "Upper Left",
+    "Category": "Goal Region"
   },
   {
-    "modifier": "Upper Right",
-    "category": "Goal Region"
+    "Modifier": "Upper Right",
+    "Category": "Goal Region"
   },
   {
-    "modifier": "Block",
-    "category": "Goalkeeper Action"
+    "Modifier": "Block",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Catch",
-    "category": "Goalkeeper Action"
+    "Modifier": "Catch",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Deflect away",
-    "category": "Goalkeeper Action"
+    "Modifier": "Deflect away",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Fumble",
-    "category": "Goalkeeper Action"
+    "Modifier": "Fumble",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Goalkeeper kick away",
-    "category": "Goalkeeper Action"
+    "Modifier": "Goalkeeper kick away",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Parry",
-    "category": "Goalkeeper Action"
+    "Modifier": "Parry",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Punch",
-    "category": "Goalkeeper Action"
+    "Modifier": "Punch",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Smother",
-    "category": "Goalkeeper Action"
+    "Modifier": "Smother",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Tip over bar",
-    "category": "Goalkeeper Action"
+    "Modifier": "Tip over bar",
+    "Category": "Goalkeeper Action"
   },
   {
-    "modifier": "Anti KPI",
-    "category": "Important Play"
+    "Modifier": "Anti KPI",
+    "Category": "Important Play"
   },
   {
-    "modifier": "KPI",
-    "category": "Important Play"
+    "Modifier": "KPI",
+    "Category": "Important Play"
   },
   {
-    "modifier": "Undefended",
-    "category": "Important Play"
+    "Modifier": "Undefended",
+    "Category": "Important Play"
   },
   {
-    "modifier": "Crowd disturbance/invasion",
-    "category": "Miscellaneous"
+    "Modifier": "Crowd disturbance/invasion",
+    "Category": "Miscellaneous"
   },
   {
-    "modifier": "Play restarted",
-    "category": "Miscellaneous"
+    "Modifier": "Play restarted",
+    "Category": "Miscellaneous"
   },
   {
-    "modifier": "Player injury stops play",
-    "category": "Miscellaneous"
+    "Modifier": "Player injury stops play",
+    "Category": "Miscellaneous"
   },
   {
-    "modifier": "Ball Out",
-    "category": "Play Outcome"
+    "Modifier": "Ball Out",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Clearance",
-    "category": "Play Outcome"
+    "Modifier": "Clearance",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Corner Kick Conceded",
-    "category": "Play Outcome"
+    "Modifier": "Corner Kick Conceded",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Cross",
-    "category": "Play Outcome"
+    "Modifier": "Cross",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Foul",
-    "category": "Play Outcome"
+    "Modifier": "Foul",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Free Kick",
-    "category": "Play Outcome"
+    "Modifier": "Free Kick",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Open Play",
-    "category": "Play Outcome"
+    "Modifier": "Open Play",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Pass",
-    "category": "Play Outcome"
+    "Modifier": "Pass",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Penalty",
-    "category": "Play Outcome"
+    "Modifier": "Penalty",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Shot",
-    "category": "Play Outcome"
+    "Modifier": "Shot",
+    "Category": "Play Outcome"
   },
   {
-    "modifier": "Attacking",
-    "category": "Set-piece Type"
+    "Modifier": "Attacking",
+    "Category": "Set-piece Type"
   },
   {
-    "modifier": "Defending",
-    "category": "Set-piece Type"
+    "Modifier": "Defending",
+    "Category": "Set-piece Type"
   },
   {
-    "modifier": "Direct",
-    "category": "Set-piece Type"
+    "Modifier": "Direct",
+    "Category": "Set-piece Type"
   },
   {
-    "modifier": "Indirect",
-    "category": "Set-piece Type"
+    "Modifier": "Indirect",
+    "Category": "Set-piece Type"
   },
   {
-    "modifier": "Far post",
-    "category": "Shot Direction"
+    "Modifier": "Far post",
+    "Category": "Shot Direction"
   },
   {
-    "modifier": "Inswinger",
-    "category": "Shot Direction"
+    "Modifier": "Inswinger",
+    "Category": "Shot Direction"
   },
   {
-    "modifier": "Near post",
-    "category": "Shot Direction"
+    "Modifier": "Near post",
+    "Category": "Shot Direction"
   },
   {
-    "modifier": "Outswinger",
-    "category": "Shot Direction"
+    "Modifier": "Outswinger",
+    "Category": "Shot Direction"
   },
   {
-    "modifier": "Wide of left post",
-    "category": "Shot Direction"
+    "Modifier": "Wide of left post",
+    "Category": "Shot Direction"
   },
   {
-    "modifier": "Wide of right post",
-    "category": "Shot Direction"
+    "Modifier": "Wide of right post",
+    "Category": "Shot Direction"
   },
   {
-    "modifier": "Blocked",
-    "category": "Shot Outcome"
+    "Modifier": "Blocked",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Goal",
-    "category": "Shot Outcome"
+    "Modifier": "Goal",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Hit crossbar",
-    "category": "Shot Outcome"
+    "Modifier": "Hit crossbar",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Hit defensive wall",
-    "category": "Shot Outcome"
+    "Modifier": "Hit defensive wall",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Hit post",
-    "category": "Shot Outcome"
+    "Modifier": "Hit post",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Mishit",
-    "category": "Shot Outcome"
+    "Modifier": "Mishit",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Over crossbar",
-    "category": "Shot Outcome"
+    "Modifier": "Over crossbar",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Saved",
-    "category": "Shot Outcome"
+    "Modifier": "Saved",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Wide of posts",
-    "category": "Shot Outcome"
+    "Modifier": "Wide of posts",
+    "Category": "Shot Outcome"
   },
   {
-    "modifier": "Close-range redirection",
-    "category": "Shot Type"
+    "Modifier": "Close-range redirection",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Curled",
-    "category": "Shot Type"
+    "Modifier": "Curled",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Deflected",
-    "category": "Shot Type"
+    "Modifier": "Deflected",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Floated",
-    "category": "Shot Type"
+    "Modifier": "Floated",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Goalmouth scramble",
-    "category": "Shot Type"
+    "Modifier": "Goalmouth scramble",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Half-volley",
-    "category": "Shot Type"
+    "Modifier": "Half-volley",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Header",
-    "category": "Shot Type"
+    "Modifier": "Header",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Lob",
-    "category": "Shot Type"
+    "Modifier": "Lob",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Overhead kick",
-    "category": "Shot Type"
+    "Modifier": "Overhead kick",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Penalty kick",
-    "category": "Shot Type"
+    "Modifier": "Penalty kick",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Placed",
-    "category": "Shot Type"
+    "Modifier": "Placed",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Power",
-    "category": "Shot Type"
+    "Modifier": "Power",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Shot from corner kick",
-    "category": "Shot Type"
+    "Modifier": "Shot from corner kick",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Shot from counterattack play",
-    "category": "Shot Type"
+    "Modifier": "Shot from counterattack play",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Shot from free kick",
-    "category": "Shot Type"
+    "Modifier": "Shot from free kick",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Shot from throw in",
-    "category": "Shot Type"
+    "Modifier": "Shot from throw in",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Volley",
-    "category": "Shot Type"
+    "Modifier": "Volley",
+    "Category": "Shot Type"
   },
   {
-    "modifier": "Injury",
-    "category": "Substitution"
+    "Modifier": "Injury",
+    "Category": "Substitution"
   },
   {
-    "modifier": "Subbed off",
-    "category": "Substitution"
+    "Modifier": "Subbed off",
+    "Category": "Substitution"
   },
   {
-    "modifier": "Subbed on",
-    "category": "Substitution"
+    "Modifier": "Subbed on",
+    "Category": "Substitution"
   },
   {
-    "modifier": "Tactical",
-    "category": "Substitution"
+    "Modifier": "Tactical",
+    "Category": "Substitution"
   },
   {
-    "modifier": "Withdrawal",
-    "category": "Substitution"
+    "Modifier": "Withdrawal",
+    "Category": "Substitution"
   }
 ]

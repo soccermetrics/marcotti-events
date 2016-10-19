@@ -1,98 +1,98 @@
 [
   {
-    "name": "Goalkeeper",
-    "type": "Goalkeeper"
+    "Position": "Goalkeeper",
+    "Type": "Goalkeeper"
   },
   {
-    "name": "Defender",
-    "type": "Defender"
+    "Position": "Defender",
+    "Type": "Defender"
   },
   {
-    "name": "Central Defender",
-    "type": "Defender"
+    "Position": "Central Defender",
+    "Type": "Defender"
   },
   {
-    "name": "Libero",
-    "type": "Defender"
+    "Position": "Libero",
+    "Type": "Defender"
   },
   {
-    "name": "Full-back",
-    "type": "Defender"
+    "Position": "Full-back",
+    "Type": "Defender"
   },
   {
-    "name": "Left Full-back",
-    "type": "Defender"
+    "Position": "Left Full-back",
+    "Type": "Defender"
   },
   {
-    "name": "Right Full-back",
-    "type": "Defender"
+    "Position": "Right Full-back",
+    "Type": "Defender"
   },
   {
-    "name": "Wing-back",
-    "type": "Defender"
+    "Position": "Wing-back",
+    "Type": "Defender"
   },
   {
-    "name": "Left Wing-back",
-    "type": "Defender"
+    "Position": "Left Wing-back",
+    "Type": "Defender"
   },
   {
-    "name": "Right Wing-back",
-    "type": "Defender"
+    "Position": "Right Wing-back",
+    "Type": "Defender"
   },
   {
-    "name": "Midfielder",
-    "type": "Midfielder"
+    "Position": "Midfielder",
+    "Type": "Midfielder"
   },
   {
-    "name": "Central Midfielder",
-    "type": "Midfielder"
+    "Position": "Central Midfielder",
+    "Type": "Midfielder"
   },
   {
-    "name": "Holding Midfielder",
-    "type": "Midfielder"
+    "Position": "Holding Midfielder",
+    "Type": "Midfielder"
   },
   {
-    "name": "Deep-lying playmaker",
-    "type": "Midfielder"
+    "Position": "Deep-lying playmaker",
+    "Type": "Midfielder"
   },
   {
-    "name": "Playmaker",
-    "type": "Midfielder"
+    "Position": "Playmaker",
+    "Type": "Midfielder"
   },
   {
-    "name": "Trequartista",
-    "type": "Midfielder"
+    "Position": "Trequartista",
+    "Type": "Midfielder"
   },
   {
-    "name": "Left Winger",
-    "type": "Midfielder"
+    "Position": "Left Winger",
+    "Type": "Midfielder"
   },
   {
-    "name": "Right Winger",
-    "type": "Midfielder"
+    "Position": "Right Winger",
+    "Type": "Midfielder"
   },
   {
-    "name": "Left Forward",
-    "type": "Forward"
+    "Position": "Left Forward",
+    "Type": "Forward"
   },
   {
-    "name": "Central Forward",
-    "type": "Forward"
+    "Position": "Central Forward",
+    "Type": "Forward"
   },
   {
-    "name": "Right Forward",
-    "type": "Forward"
+    "Position": "Right Forward",
+    "Type": "Forward"
   },
   {
-    "name": "Striker",
-    "type": "Forward"
+    "Position": "Striker",
+    "Type": "Forward"
   },
   {
-    "name": "Second striker",
-    "type": "Forward"
+    "Position": "Second striker",
+    "Type": "Forward"
   },
   {
-    "name": "False nine",
-    "type": "Forward"
+    "Position": "False nine",
+    "Type": "Forward"
   }
 ]

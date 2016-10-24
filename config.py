@@ -1,3 +1,19 @@
+import os
+import json
+import logging
+
+
+def setup_logging(default_path="logging.json", default_level=logging.INFO):
+    """Setup logging configuration"""
+    path = default_path
+    if os.path.exists(path):
+        with open(path, 'rt') as f:
+            config = json.load(f)
+        logging.config.dictConfig(config)
+    else:
+        logging.basicConfig(level=default_level)
+
+
 class Config(object):
     """
     Base configuration class.  Contains one method that defines the database URI.
@@ -6,13 +22,11 @@ class Config(object):
     """
 
     def __init__(self):
-        self.database_uri()
+        self.DATABASE_URI = self.database_uri()
 
     def database_uri(self):
-        if self.DIALECT == 'sqlite':
-            self.DATABASE_URI = r'sqlite://{name}'.format(name=self.DBNAME)
+        if getattr(self, 'DIALECT') == 'sqlite':
+            uri = r'sqlite://{p.DBNAME}'.format(p=self)
         else:
-            self.DATABASE_URI = r'{dialect}://{user}:{passwd}@{host}:{port}/{name}'.format(
-                dialect=self.DIALECT, user=self.DBUSER, passwd=self.DBPASSWD,
-                host=self.HOSTNAME, port=self.PORT, name=self.DBNAME
-            )
+            uri = r'{p.DIALECT}://{p.DBUSER}:{p.DBPASSWD}@{p.HOSTNAME}:{p.PORT}/{p.DBNAME}'.format(p=self)
+        return uri

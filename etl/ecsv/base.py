@@ -24,8 +24,8 @@ def extract(func):
 
 
 class BaseCSV(object):
-    def __init__(self, settings, directory=None):
-        self.directory = directory or settings.CSV_DATA_DIR
+    def __init__(self, directory):
+        self.directory = directory
 
     @staticmethod
     def column(field, **kwargs):
@@ -33,7 +33,7 @@ class BaseCSV(object):
             value = kwargs[field].strip()
             return value if value != "" else None
         except (AttributeError, KeyError, TypeError) as ex:
-            raise ex
+            return None
 
     def column_unicode(self, field, **kwargs):
         try:

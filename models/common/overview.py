@@ -178,7 +178,7 @@ class VenueHistory(BaseSchema):
 
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
 
-    date = Column(Date, doc="Effective date of venue configuration")
+    eff_date = Column(Date, doc="Effective date of venue configuration")
     length = Column(Integer, CheckConstraint("length >= 90 AND length <= 120"),
                     default=105, doc="Length of venue playing surface in meters")
     width = Column(Integer, CheckConstraint("width >= 45 AND width <= 90"),
@@ -195,7 +195,7 @@ class VenueHistory(BaseSchema):
 
     def __repr__(self):
         return u"<VenueHistory(name={0}, date={1}, length={2}, width={3}, capacity={4})>".format(
-            self.venue.name, self.date.isoformat(), self.length, self.width, self.capacity).encode('utf-8')
+            self.venue.name, self.eff_date.isoformat(), self.length, self.width, self.capacity).encode('utf-8')
 
 
 class Timezones(BaseSchema):

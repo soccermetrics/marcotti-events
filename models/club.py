@@ -32,6 +32,7 @@ class Clubs(ClubSchema):
     def __repr__(self):
         return u"<Club(name={0}, short_name={1}, country={2})>".format(
             self.name, self.short_name, self.country.name).encode('utf-8')
+
     def __unicode__(self):
         return u"<Club(name={0}, country={1})>".format(self.name, self.country.name)
 

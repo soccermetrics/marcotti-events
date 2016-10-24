@@ -1,9 +1,10 @@
 import pandas as pd
 
-from models.common.enums import ConfederationType, ActionType, ModifierType
+from models.common.enums import (ConfederationType, ActionType, ModifierType,
+                                 ModifierCategoryType, NameOrderType, PositionType, SurfaceType)
 from models.common.suppliers import (MatchEventMap, MatchMap, CompetitionMap, SeasonMap,
-                                     VenueMap, PlayerMap, ManagerMap, RefereeMap)
-from models.common.overview import Countries, Timezones, Competitions, Seasons, Venues
+                                     VenueMap, PositionMap, PlayerMap, ManagerMap, RefereeMap)
+from models.common.overview import Countries, Timezones, Competitions, Seasons, Venues, Surfaces
 from models.common.personnel import Players, Managers, Referees, Positions
 from models.common.match import MatchLineups
 from models.common.events import Modifiers
@@ -17,21 +18,38 @@ class MarcottiTransform(WorkflowBase):
     """
 
     @staticmethod
+    def suppliers(data_frame):
+        return data_frame
+
+    @staticmethod
+    def years(data_frame):
+        return data_frame
+
+    @staticmethod
     def seasons(data_frame):
         return data_frame
 
     def competitions(self, data_frame):
         if 'country' in data_frame.columns:
-            lambdafunc = lambda x: pd.Series(self.get_id(Countries, name=x['country']))
+            transformed_field = 'country'
+            lambdafunc = lambda x: pd.Series(self.get_id(Countries, name=x[transformed_field]))
             id_frame = data_frame.apply(lambdafunc, axis=1)
             id_frame.columns = ['country_id']
-        elif 'confederation' in data_frame.columns:
-            lambdafunc = lambda x: pd.Series(ConfederationType.from_string(x['confed']))
+        elif 'confed' in data_frame.columns:
+            transformed_field = 'confed'
+            lambdafunc = lambda x: pd.Series(ConfederationType.from_string(x[transformed_field]))
             id_frame = data_frame.apply(lambdafunc, axis=1)
             id_frame.columns = ['confederation']
         else:
-            print "Cannot insert Competition record: No Country or Confederation data present"
-        return data_frame.join(id_frame)
+            raise KeyError("Cannot insert Competition record: No Country or Confederation data present")
+        return data_frame.join(id_frame).drop(transformed_field, axis=1)
+
+    def countries(self, data_frame):
+        lambdafunc = lambda x: pd.Series(ConfederationType.from_string(x['confed']))
+        id_frame = data_frame.apply(lambdafunc, axis=1)
+        id_frame.columns = ['confederation']
+        joined_frame = data_frame.join(id_frame).drop('confed', axis=1)
+        return joined_frame
 
     def clubs(self, data_frame):
         if 'country' in data_frame.columns:
@@ -45,38 +63,70 @@ class MarcottiTransform(WorkflowBase):
     def venues(self, data_frame):
         lambdafunc = lambda x: pd.Series([
             self.get_id(Countries, name=x['country']),
-            self.get_id(Timezones, name=x['timezone'])
+            self.get_id(Timezones, name=x['timezone']),
+            self.get_id(Surfaces, description=x['surface']),
+            self.make_date_object(x['config_date'])
         ])
         ids_frame = data_frame.apply(lambdafunc, axis=1)
-        ids_frame.columns = ['country_id', 'timezone_id']
-        return data_frame.join(ids_frame)
+        ids_frame.columns = ['country_id', 'timezone_id', 'surface_id', 'eff_date']
+        joined_frame = data_frame.join(ids_frame).drop(['country', 'timezone', 'surface', 'config_date'], axis=1)
+        return joined_frame
+
+    def timezones(self, data_frame):
+        lambdafunc = lambda x: pd.Series(ConfederationType.from_string(x['confed']))
+        id_frame = data_frame.apply(lambdafunc, axis=1)
+        id_frame.columns = ['confederation']
+        joined_frame = data_frame.join(id_frame).drop('confed', axis=1)
+        return joined_frame
 
     def positions(self, data_frame):
-        lambdafunc = lambda x: pd.Series(self.get_id(Positions, name=x['position']))
+        lambdafunc = lambda x: pd.Series(PositionType.from_string(x['position_type']))
         id_frame = data_frame.apply(lambdafunc, axis=1)
-        id_frame.columns = ['position_id']
-        return data_frame.join(id_frame)
+        id_frame.columns = ['type']
+        joined_frame = data_frame.join(id_frame).drop('position_type', axis=1)
+        return joined_frame
+
+    def surfaces(self, data_frame):
+        lambdafunc = lambda x: pd.Series(SurfaceType.from_string(x['surface_type']))
+        id_frame = data_frame.apply(lambdafunc, axis=1)
+        id_frame.columns = ['type']
+        joined_frame = data_frame.join(id_frame).drop('surface_type', axis=1)
+        return joined_frame
 
     def players(self, data_frame):
         lambdafunc = lambda x: pd.Series([
+            self.make_date_object(x['dob']),
+            NameOrderType.from_string(x['name_order'] or 'Western'),
             self.get_id(Countries, name=x['country']),
-            self.get_id(Positions, name=x['position'])
+            self.get_id(PositionMap, remote_id=x['remote_position_id'], supplier_id=self.supplier_id)
         ])
         ids_frame = data_frame.apply(lambdafunc, axis=1)
-        ids_frame.columns = ['country_id', 'position_id']
-        return data_frame.join(ids_frame)
+        ids_frame.columns = ['birth_date', 'order', 'country_id', 'position_id']
+        joined_frame = data_frame.join(ids_frame).drop(
+            ['dob', 'name_order', 'country', 'remote_position_id'], axis=1)
+        return joined_frame
 
     def managers(self, data_frame):
-        lambdafunc = lambda x: pd.Series(self.get_id(Countries, name=x['country']))
-        id_frame = data_frame.apply(lambdafunc, axis=1)
-        id_frame.columns = ['country_id']
-        return data_frame.join(id_frame)
+        lambdafunc = lambda x: pd.Series([
+            self.make_date_object(x['dob']),
+            NameOrderType.from_string(x['name_order'] or 'Western'),
+            self.get_id(Countries, name=x['country'])
+        ])
+        ids_frame = data_frame.apply(lambdafunc, axis=1)
+        ids_frame.columns = ['birth_date', 'order', 'country_id']
+        joined_frame = data_frame.join(ids_frame).drop(['dob', 'name_order', 'country'], axis=1)
+        return joined_frame
 
     def referees(self, data_frame):
-        lambdafunc = lambda x: pd.Series(self.get_id(Countries, name=x['country']))
-        id_frame = data_frame.apply(lambdafunc, axis=1)
-        id_frame.columns = ['country_id']
-        return data_frame.join(id_frame)
+        lambdafunc = lambda x: pd.Series([
+            self.make_date_object(x['dob']),
+            NameOrderType.from_string(x['name_order'] or 'Western'),
+            self.get_id(Countries, name=x['country'])
+        ])
+        ids_frame = data_frame.apply(lambdafunc, axis=1)
+        ids_frame.columns = ['birth_date', 'order', 'country_id']
+        joined_frame = data_frame.join(ids_frame).drop(['dob', 'name_order', 'country'], axis=1)
+        return joined_frame
 
     def league_matches(self, data_frame):
         lambdafunc = lambda x: pd.Series([
@@ -108,6 +158,16 @@ class MarcottiTransform(WorkflowBase):
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['match_id', 'team_id', 'player_id']
         return data_frame.join(ids_frame)
+
+    def modifiers(self, data_frame):
+        lambdafunc = lambda x: pd.Series([
+            ModifierType.from_string(x['modifier']),
+            ModifierCategoryType.from_string(x['modifier_category'])
+        ])
+        id_frame = data_frame.apply(lambdafunc, axis=1)
+        id_frame.columns = ['type', 'category']
+        joined_frame = data_frame.join(id_frame).drop(["modifier", "modifier_category"], axis=1)
+        return joined_frame
 
 
 class MarcottiEventTransform(MarcottiTransform):

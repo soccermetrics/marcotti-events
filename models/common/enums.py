@@ -245,6 +245,7 @@ class ModifierType(DeclEnum):
     parry = "Parry", "Parry"
     punch = "Punch", "Punch"
     tip_over = "Tip over bar", "Tip over bar"
+    throw = "Keeper throw", "Keeper throw"
     # Pass Type
     long_pass = "Long ball", "Long ball"
     cross_pass = "Crossing ball", "Crossing ball"

@@ -33,11 +33,12 @@ class Persons(BaseSchema):
 
     person_id = Column(GUID, primary_key=True, default=uuid.uuid4)
     first_name = Column(Unicode(40), nullable=False)
+    known_first_name = Column(Unicode(40))
     middle_name = Column(Unicode(40))
     last_name = Column(Unicode(40), nullable=False)
     second_last_name = Column(Unicode(40))
     nick_name = Column(Unicode(40))
-    birth_date = Column(Date, nullable=False)
+    birth_date = Column(Date)
     order = Column(enums.NameOrderType.db_type(), default=enums.NameOrderType.western)
     type = Column(String)
 

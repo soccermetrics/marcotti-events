@@ -1,1 +1,1 @@
-from base import BaseXML, FeedElement
+from base import BaseXML, FeedElement, FeedParser

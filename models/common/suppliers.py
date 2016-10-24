@@ -16,6 +16,20 @@ class Suppliers(BaseSchema):
         return u"<Supplier(id={0}, name={1})>".format(self.id, self.name).encode('utf-8')
 
 
+class CountryMap(BaseSchema):
+    __tablename__ = "country_mapper"
+
+    id = Column(GUID, ForeignKey('countries.id'), primary_key=True)
+    remote_id = Column(String, nullable=False, primary_key=True)
+    supplier_id = Column(Integer, ForeignKey('suppliers.id'), primary_key=True)
+
+    supplier = relationship('Suppliers', backref=backref('countries'))
+
+    def __repr__(self):
+        return "<CountryMap(local={}, remote={}, supplier={})>".format(
+            self.id, self.remote_id, self.supplier.name)
+
+
 class CompetitionMap(BaseSchema):
     __tablename__ = "competition_mapper"
 

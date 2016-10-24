@@ -107,6 +107,9 @@ class EnumSymbol(object):
     def __iter__(self):
         return iter([self.value, self.description])
 
+    def __len__(self):
+        return 1
+
     def __repr__(self):
         return "<%s>" % self.name
 

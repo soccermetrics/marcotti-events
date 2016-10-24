@@ -7,12 +7,22 @@ class CSVExtractor(BaseCSV):
     def suppliers(self, *args, **kwargs):
         return [dict(name=self.column_unicode("Name", **keys)) for keys in kwargs.get('data')]
 
+    @staticmethod
+    def years(start_yr, end_yr):
+        return [dict(yr=yr) for yr in range(start_yr, end_yr+1)]
+
+    @staticmethod
+    def seasons(start_yr, end_yr):
+        year_range = range(start_yr, end_yr+1)
+        return [dict(start_year=yr, end_year=yr) for yr in year_range] + \
+            [dict(start_year=start, end_year=end) for start, end in zip(year_range[:-1], year_range[1:])]
+
     @extract
     def countries(self, *args, **kwargs):
         return [dict(remote_id=self.column("ID", **keys),
                      name=self.column_unicode("Name", **keys),
                      code=self.column("Code", **keys),
-                     confederation=self.column("Confederation", **keys))
+                     confed=self.column("Confederation", **keys))
                 for keys in kwargs.get('data')]
 
     @extract
@@ -21,7 +31,7 @@ class CSVExtractor(BaseCSV):
                      name=self.column_unicode("Name", **keys),
                      level=self.column_int("Level", **keys),
                      country=self.column_unicode("Country", **keys),
-                     confederation=self.column("Confederation", **keys))
+                     confed=self.column("Confederation", **keys))
                 for keys in kwargs.get('data')]
 
     @extract
@@ -31,11 +41,12 @@ class CSVExtractor(BaseCSV):
                      city=self.column_unicode("City", **keys),
                      region=self.column_unicode("Region", **keys),
                      country=self.column_unicode("Country", **keys),
-                     timezone=self.column("Timezone", **keys),
+                     timezone=self.column_unicode("Timezone", **keys),
                      latitude=self.column_float("Latitude", **keys),
                      longitude=self.column_float("Longitude", **keys),
                      altitude=self.column_int("Altitude", **keys),
-                     surface=self.column("Surface", **keys),
+                     config_date=self.column("Config Date", **keys),
+                     surface=self.column_unicode("Surface", **keys),
                      length=self.column_int("Length", **keys),
                      width=self.column_int("Width", **keys),
                      capacity=self.column_int("Capacity", **keys),
@@ -44,14 +55,14 @@ class CSVExtractor(BaseCSV):
 
     @extract
     def surfaces(self, *args, **kwargs):
-        return [dict(name=self.column_unicode("Description", **keys),
-                     type=self.column("Type", **keys))
+        return [dict(description=self.column_unicode("Description", **keys),
+                     surface_type=self.column("Type", **keys))
                 for keys in kwargs.get('data')]
 
     @extract
     def timezones(self, *args, **kwargs):
-        return [dict(region=self.column_unicode("Name", **keys),
-                     confederation=self.column("Confederation", **keys),
+        return [dict(name=self.column_unicode("Name", **keys),
+                     confed=self.column("Confederation", **keys),
                      offset=self.column_float("Offset", **keys))
                 for keys in kwargs.get('data')]
 
@@ -71,8 +82,9 @@ class CSVExtractor(BaseCSV):
                      middle_name=self.column_unicode("Middle Name", **keys),
                      last_name=self.column_unicode("Last Name", **keys),
                      second_last_name=self.column_unicode("Second Last Name", **keys),
+                     nick_name=self.column_unicode("Nickname", **keys),
                      name_order=self.column("Name Order", **keys),
-                     birth_date=self.column("Birthdate", **keys),
+                     dob=self.column("Birthdate", **keys),
                      country=self.column_unicode("Country", **keys))
                 for keys in kwargs.get('data')]
 
@@ -84,8 +96,9 @@ class CSVExtractor(BaseCSV):
                      middle_name=self.column_unicode("Middle Name", **keys),
                      last_name=self.column_unicode("Last Name", **keys),
                      second_last_name=self.column_unicode("Second Last Name", **keys),
+                     nick_name=self.column_unicode("Nickname", **keys),
                      name_order=self.column("Name Order", **keys),
-                     birth_date=self.column("Birthdate", **keys),
+                     dob=self.column("Birthdate", **keys),
                      country=self.column_unicode("Country", **keys))
                 for keys in kwargs.get('data')]
 
@@ -97,16 +110,18 @@ class CSVExtractor(BaseCSV):
                      middle_name=self.column_unicode("Middle Name", **keys),
                      last_name=self.column_unicode("Last Name", **keys),
                      second_last_name=self.column_unicode("Second Last Name", **keys),
+                     nick_name=self.column_unicode("Nickname", **keys),
                      name_order=self.column("Name Order", **keys),
-                     birth_date=self.column("Birthdate", **keys),
-                     country=self.column_unicode("Country", **keys))
+                     dob=self.column("Birthdate", **keys),
+                     country=self.column_unicode("Country", **keys),
+                     position_name=self.column("Position", **keys))
                 for keys in kwargs.get('data')]
 
     @extract
     def positions(self, *args, **kwargs):
         return [dict(remote_id=self.column("ID", **keys),
                      name=self.column_unicode("Position", **keys),
-                     type=self.column("Type", **keys))
+                     position_type=self.column("Type", **keys))
                 for keys in kwargs.get('data')]
 
     @extract
@@ -195,5 +210,5 @@ class CSVExtractor(BaseCSV):
     @extract
     def modifiers(self, *args, **kwargs):
         return [dict(modifier=self.column("Modifier", **keys),
-                     category=self.column("Category", **keys))
+                     modifier_category=self.column("Category", **keys))
                 for keys in kwargs.get('data')]

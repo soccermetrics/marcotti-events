@@ -1,3 +1,6 @@
+import pandas as pd
+
+import models.common.enums as enums
 import models.common.suppliers as mcs
 import models.common.overview as mco
 import models.common.personnel as mcp
@@ -212,35 +215,32 @@ class MarcottiLoad(WorkflowBase):
 
     def league_matches(self, data_frame):
         match_records = []
-        for row in data_frame.iterrows():
-            match_dict = dict(date=row['date'], competition_id=row['competition_id'],
-                              season_id=row['season_id'], venue_id=row['venue_id'],
-                              home_team_id=row['home_team_id'], away_team_id=row['away_team_id'],
-                              home_manager_id=row['home_manager_id'], away_manager_id=row['away_manager_id'],
-                              referee_id=row['referee_id'], matchday=row['matchday'])
+        remote_ids = []
+        fields = ['match_date', 'competition_id', 'season_id', 'venue_id', 'home_team_id', 'away_team_id',
+                  'home_manager_id', 'away_manager_id', 'referee_id', 'attendance', 'matchday']
+        condition_fields = ['kickoff_time', 'kickoff_temp', 'kickoff_humidity',
+                            'kickoff_weather', 'halftime_weather', 'fulltime_weather']
+        for idx, row in data_frame.iterrows():
+            match_dict = {field: row[field] for field in fields if row[field]}
+            condition_dict = {field: row[field] for field in condition_fields if field in row and row[field]}
             if not self.record_exists(mc.ClubLeagueMatches, **match_dict):
-                match_records.append(mcm.MatchConditions(match=mc.ClubLeagueMatches(**match_dict),
-                                                     kickoff_time=row['kickoff_time']))
-            else:
-                print "Cannot insert League Match record: Record exists"
+                match_records.append(mcm.MatchConditions(match=mc.ClubLeagueMatches(**match_dict), **condition_dict))
+                remote_ids.append(row['remote_id'])
         self.session.add_all(match_records)
         self.session.commit()
-        map_records = [mcs.MatchMap(id=match_record.id, remote_id=data_row['remote_match_id'],
-                                supplier_id=self.supplier_id)
-                       for data_row, match_record in zip(data_frame.iterrows(), match_records)]
+
+        map_records = [mcs.MatchMap(id=match_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, match_record in zip(remote_ids, match_records) if remote_id]
         self.session.add_all(map_records)
         self.session.commit()
 
-    def lineups(self, data_frame):
+    def match_lineups(self, data_frame):
         lineup_records = []
-        for row in data_frame.iterrows():
-            position_id = self.session.query(mcp.Players).get(row['player_id']).position_id
-            lineup_dict = dict(match_id=row['match_id'], player_id=row['player_id'], team_id=row['team_id'],
-                               position_id=position_id, is_starting=row['is_starting'], is_captain=row['is_captain'])
+        fields = ['match_id', 'player_id', 'team_id', 'position_id', 'is_starting', 'is_captain']
+        for idx, row in data_frame.iterrows():
+            lineup_dict = {field: row[field] for field in fields if row[field]}
             if not self.record_exists(mc.ClubMatchLineups, **lineup_dict):
                 lineup_records.append(mc.ClubMatchLineups(**lineup_dict))
-            else:
-                print "Cannot insert Match Lineup record: Record exists"
         self.session.add_all(lineup_records)
         self.session.commit()
 
@@ -252,31 +252,56 @@ class MarcottiLoad(WorkflowBase):
 
     def events(self, data_frame):
         event_records = []
-        for row in data_frame.iterrows():
-            event_dict = dict(timestamp=row['timestamp'], period=row['period'], period_secs=row['period_secs'],
-                              x=row['x'], y=row['y'], match_id=row['match_id'], team_id=row['team_id'])
-            if not self.record_exists(mc.ClubMatchEvents, **event_dict):
-                event_records.append(mc.ClubMatchEvents(**event_dict))
+        remote_ids = []
+        fields = ['timestamp', 'period', 'period_secs', 'x', 'y', 'match_id', 'team_id']
+        for idx, row in data_frame.iterrows():
+            if idx and idx % 100 == 0:
+                print "{} events".format(idx)
+            event_dict = {field: row[field] for field in fields if field in row and row[field]}
+            if 'team_id' not in event_dict:
+                if not self.record_exists(mce.MatchEvents, **event_dict):
+                    event_records.append(mce.MatchEvents(**event_dict))
+                    remote_ids.append(row['remote_id'])
             else:
-                print "Cannot insert Match Event record: Record exists"
+                if not self.record_exists(mc.ClubMatchEvents, **event_dict):
+                    event_records.append(mc.ClubMatchEvents(**event_dict))
+                    remote_ids.append(row['remote_id'])
         self.session.add_all(event_records)
         self.session.commit()
-        map_records = [mcs.MatchEventMap(id=event_record.id, remote_id=data_row['remote_event_id'],
-                                         supplier_id=self.supplier_id)
-                       for data_row, event_record in zip(data_frame.iterrows(), event_records)]
+        map_records = [mcs.MatchEventMap(id=event_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, event_record in zip(remote_ids, event_records) if remote_id and not
+                       self.record_exists(mcs.MatchEventMap, remote_id=remote_id, supplier_id=self.supplier_id)]
         self.session.add_all(map_records)
         self.session.commit()
 
     def actions(self, data_frame):
-        for row in data_frame.iterrows():
-            action_dict = dict(event_id=row['event_id'], lineup_id=row['lineup_id'],
-                               type=row['action_type'], is_success=row['is_success'],
-                               x_end=row['x_end'], y_end=row['y_end'], z_end=row['z_end'])
+        action_records = []
+        modifier_ids = []
+        action_fields = ['event_id', 'type', 'x_end', 'y_end', 'z_end', 'is_success']
+        for idx, row in data_frame.iterrows():
+            if idx and idx % 100 == 0:
+                print "{} actions".format(idx)
+            action_dict = {field: row[field] for field in action_fields if field in row and row[field]}
+            if row['player_id']:
+                action_dict['lineup_id'] = self.get_id(mcm.MatchLineups,
+                                                       match_id=row['match_id'], player_id=row['player_id'])
+            if row['modifier_type']:
+                try:
+                    modifier_id = self.get_id(mce.Modifiers,
+                                              type=enums.ModifierType.from_string(row['modifier_type']))
+                except ValueError as ex:
+                    print row
+                    raise ex
+            else:
+                modifier_id = None
             if not self.record_exists(mce.MatchActions, **action_dict):
-                self.session.add(mce.MatchActions(**action_dict))
-                self.session.commit()
-            action_id = self.session.query(mce.MatchActions).filter_by(**action_dict).one().id
-            modifier_dict = dict(action_id=action_id, modifier_id=row['modifier_id'])
-            if not self.record_exists(mce.MatchActionModifiers, **modifier_dict):
-                self.session.add(mce.MatchActionModifiers(**modifier_dict))
-                self.session.commit()
+                action_records.append(mce.MatchActions(**action_dict))
+                modifier_ids.append(modifier_id)
+        self.session.add_all(action_records)
+        self.session.commit()
+        modifier_records = [mce.MatchActionModifiers(action_id=action_record.id, modifier_id=modifier_id)
+                            for modifier_id, action_record in zip(modifier_ids, action_records) if not
+                            self.record_exists(mce.MatchActionModifiers, action_id=action_record.id,
+                                               modifier_id=modifier_id)]
+        self.session.add_all(modifier_records)
+        self.session.commit()

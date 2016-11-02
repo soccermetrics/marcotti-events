@@ -19,7 +19,7 @@ class Matches(BaseSchema):
 
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
 
-    date = Column(Date)
+    match_date = Column(Date)
     attendance = Column(Integer, CheckConstraint('attendance >= 0'), default=0)
     phase = Column(String)
 

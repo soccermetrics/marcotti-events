@@ -25,7 +25,7 @@ class MatchEvents(BaseSchema):
     match = relationship('Matches', backref=backref('events'))
 
     __mapper_args__ = {
-        'polymorphic_identity': 'goals',
+        'polymorphic_identity': 'events',
         'polymorphic_on': domain
     }
 

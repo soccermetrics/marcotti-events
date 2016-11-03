@@ -68,8 +68,8 @@ class MarcottiTransform(WorkflowBase):
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['country_id', 'timezone_id', 'surface_id', 'eff_date']
         joined_frame = data_frame.join(ids_frame).drop(['country', 'timezone', 'surface', 'config_date'], axis=1)
-        joined_frame.where((pd.notnull(joined_frame)), None, inplace=True)
-        return joined_frame
+        new_frame = joined_frame.where((pd.notnull(joined_frame)), None)
+        return new_frame
 
     def timezones(self, data_frame):
         lambdafunc = lambda x: pd.Series(ConfederationType.from_string(x['confed']))
@@ -209,8 +209,8 @@ class MarcottiEventTransform(MarcottiTransform):
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['match_id', 'team_id']
         joined_frame = data_frame.join(ids_frame).drop(['remote_match_id', 'remote_team_id'], axis=1)
-        joined_frame.where((pd.notnull(joined_frame)), None, inplace=True)
-        return joined_frame
+        new_frame = joined_frame.where((pd.notnull(joined_frame)), None)
+        return new_frame
 
     def actions(self, data_frame):
         lambdafunc = lambda x: pd.Series([
@@ -223,5 +223,5 @@ class MarcottiEventTransform(MarcottiTransform):
         ids_frame.columns = ['event_id', 'match_id', 'player_id', 'type']
         joined_frame = data_frame.join(ids_frame).drop(['remote_event_id', 'remote_match_id', 'remote_player_id',
                                                         'action_type'], axis=1)
-        joined_frame.where((pd.notnull(joined_frame)), None, inplace=True)
-        return joined_frame
+        new_frame = joined_frame.where((pd.notnull(joined_frame)), None)
+        return new_frame

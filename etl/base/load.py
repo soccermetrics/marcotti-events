@@ -238,7 +238,7 @@ class MarcottiLoad(WorkflowBase):
         lineup_records = []
         fields = ['match_id', 'player_id', 'team_id', 'position_id', 'is_starting', 'is_captain']
         for idx, row in data_frame.iterrows():
-            lineup_dict = {field: row[field] for field in fields if row[field]}
+            lineup_dict = {field: row[field] for field in fields if row[field] is not None}
             if not self.record_exists(mc.ClubMatchLineups, **lineup_dict):
                 lineup_records.append(mc.ClubMatchLineups(**lineup_dict))
         self.session.add_all(lineup_records)
@@ -257,7 +257,7 @@ class MarcottiLoad(WorkflowBase):
         for idx, row in data_frame.iterrows():
             if idx and idx % 100 == 0:
                 print "{} events".format(idx)
-            event_dict = {field: row[field] for field in fields if field in row and row[field]}
+            event_dict = {field: row[field] for field in fields if field in row and row[field] is not None}
             if 'team_id' not in event_dict:
                 if not self.record_exists(mce.MatchEvents, **event_dict):
                     event_records.append(mce.MatchEvents(**event_dict))
@@ -281,7 +281,7 @@ class MarcottiLoad(WorkflowBase):
         for idx, row in data_frame.iterrows():
             if idx and idx % 100 == 0:
                 print "{} actions".format(idx)
-            action_dict = {field: row[field] for field in action_fields if field in row and row[field]}
+            action_dict = {field: row[field] for field in action_fields if field in row and row[field] is not None}
             if row['player_id']:
                 action_dict['lineup_id'] = self.get_id(mcm.MatchLineups,
                                                        match_id=row['match_id'], player_id=row['player_id'])

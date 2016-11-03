@@ -55,7 +55,7 @@ class MarcottiTransform(WorkflowBase):
             id_frame = data_frame.apply(lambdafunc, axis=1)
             id_frame.columns = ['country_id']
         else:
-            print "Cannot insert Club record: No Country data present"
+            raise KeyError("Cannot insert Club record: No Country data present")
         return data_frame.join(id_frame)
 
     def venues(self, data_frame):
@@ -68,6 +68,7 @@ class MarcottiTransform(WorkflowBase):
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['country_id', 'timezone_id', 'surface_id', 'eff_date']
         joined_frame = data_frame.join(ids_frame).drop(['country', 'timezone', 'surface', 'config_date'], axis=1)
+        joined_frame.where((pd.notnull(joined_frame)), None, inplace=True)
         return joined_frame
 
     def timezones(self, data_frame):
@@ -207,7 +208,9 @@ class MarcottiEventTransform(MarcottiTransform):
         ])
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['match_id', 'team_id']
-        return data_frame.join(ids_frame).drop(['remote_match_id', 'remote_team_id'], axis=1)
+        joined_frame = data_frame.join(ids_frame).drop(['remote_match_id', 'remote_team_id'], axis=1)
+        joined_frame.where((pd.notnull(joined_frame)), None, inplace=True)
+        return joined_frame
 
     def actions(self, data_frame):
         lambdafunc = lambda x: pd.Series([
@@ -218,5 +221,7 @@ class MarcottiEventTransform(MarcottiTransform):
         ])
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['event_id', 'match_id', 'player_id', 'type']
-        return data_frame.join(ids_frame).drop(['remote_event_id', 'remote_match_id', 'remote_player_id',
-                                                'action_type'], axis=1)
+        joined_frame = data_frame.join(ids_frame).drop(['remote_event_id', 'remote_match_id', 'remote_player_id',
+                                                        'action_type'], axis=1)
+        joined_frame.where((pd.notnull(joined_frame)), None, inplace=True)
+        return joined_frame

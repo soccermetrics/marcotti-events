@@ -141,17 +141,26 @@ class MarcottiLoad(WorkflowBase):
         self.session.commit()
 
     def players(self, data_frame):
+        player_set = set()
         player_records = []
         remote_countryids = []
         remote_ids = []
         fields = ['known_first_name', 'first_name', 'middle_name', 'last_name', 'second_last_name',
-                  'nick_name', 'birth_date', 'order', 'country_id', 'position_id']
-        for indx, row in data_frame.iterrows():
-            player_dict = {field: row[field] for field in fields if row[field]}
+                  'nick_name', 'birth_date', 'order', 'country_id', 'position_id', 'remote_id',
+                  'remote_country_id']
+
+        for _, row in data_frame.iterrows():
+            player_set.add(tuple([(field, row[field]) for field in fields
+                                  if field in row and row[field] is not None]))
+        for elements in player_set:
+            player_dict = dict(elements)
+            remote_id = player_dict.pop('remote_id')
+            remote_country_id = player_dict.pop('remote_country_id', None)
             if not self.record_exists(mcp.Players, **player_dict):
-                remote_ids.append(row['remote_id'])
-                remote_countryids.append(row.get('remote_country_id', None))
+                remote_ids.append(remote_id)
+                remote_countryids.append(remote_country_id)
                 player_records.append(mcp.Players(**player_dict))
+
         self.session.add_all(player_records)
         self.session.commit()
         map_records = [mcs.PlayerMap(id=player_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
@@ -251,21 +260,27 @@ class MarcottiLoad(WorkflowBase):
         self.session.commit()
 
     def events(self, data_frame):
+        event_set = set()
         event_records = []
         remote_ids = []
-        fields = ['timestamp', 'period', 'period_secs', 'x', 'y', 'match_id', 'team_id']
-        for idx, row in data_frame.iterrows():
-            if idx and idx % 100 == 0:
-                print "{} events".format(idx)
-            event_dict = {field: row[field] for field in fields if field in row and row[field] is not None}
+        fields = ['timestamp', 'period', 'period_secs', 'x', 'y', 'match_id', 'team_id', 'remote_id']
+        for _, row in data_frame.iterrows():
+            event_set.add(tuple([(field, row[field]) for field in fields
+                                 if field in row and row[field] is not None]))
+        print "{} unique events".format(len(event_set))
+        for indx, elements in enumerate(event_set):
+            if indx and indx % 100 == 0:
+                print "Processing {} events".format(indx)
+            event_dict = dict(elements)
+            remote_id = event_dict.pop('remote_id')
             if 'team_id' not in event_dict:
                 if not self.record_exists(mce.MatchEvents, **event_dict):
                     event_records.append(mce.MatchEvents(**event_dict))
-                    remote_ids.append(row['remote_id'])
+                    remote_ids.append(remote_id)
             else:
                 if not self.record_exists(mc.ClubMatchEvents, **event_dict):
                     event_records.append(mc.ClubMatchEvents(**event_dict))
-                    remote_ids.append(row['remote_id'])
+                    remote_ids.append(remote_id)
         self.session.add_all(event_records)
         self.session.commit()
         map_records = [mcs.MatchEventMap(id=event_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
@@ -275,22 +290,30 @@ class MarcottiLoad(WorkflowBase):
         self.session.commit()
 
     def actions(self, data_frame):
+        action_set = set()
         action_records = []
         modifier_ids = []
-        action_fields = ['event_id', 'type', 'x_end', 'y_end', 'z_end', 'is_success']
-        for idx, row in data_frame.iterrows():
-            if idx and idx % 100 == 0:
-                print "{} actions".format(idx)
-            action_dict = {field: row[field] for field in action_fields if field in row and row[field] is not None}
-            if row['player_id']:
-                action_dict['lineup_id'] = self.get_id(mcm.MatchLineups,
-                                                       match_id=row['match_id'], player_id=row['player_id'])
-            if row['modifier_type']:
+        action_fields = ['event_id', 'type', 'x_end', 'y_end', 'z_end',
+                         'is_success', 'match_id', 'player_id', 'modifier_type']
+        for _, row in data_frame.iterrows():
+            action_set.add(tuple([(field, row[field]) for field in action_fields
+                                  if field in row and row[field] is not None]))
+        print "{} unique actions".format(len(action_set))
+        for indx, elements in enumerate(action_set):
+            if indx and indx % 100 == 0:
+                print "Processing {} actions".format(indx)
+            action_dict = dict(elements)
+            match_id = action_dict.pop('match_id')
+            player_id = action_dict.pop('player_id', None)
+            modifier_type = action_dict.pop('modifier_type', None)
+            if player_id:
+                action_dict['lineup_id'] = self.get_id(mcm.MatchLineups, match_id=match_id, player_id=player_id)
+            if modifier_type:
                 try:
                     modifier_id = self.get_id(mce.Modifiers,
-                                              type=enums.ModifierType.from_string(row['modifier_type']))
+                                              type=enums.ModifierType.from_string(modifier_type))
                 except ValueError as ex:
-                    print row
+                    print elements
                     raise ex
             else:
                 modifier_id = None

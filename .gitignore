@@ -3,6 +3,7 @@
 __pycache__
 
 *.pyc
+*.dat
 local.py
 loader.py
 sandbox/

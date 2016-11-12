@@ -16,7 +16,7 @@ class ETL(object):
     def __init__(self, **kwargs):
         self.supplier = kwargs.get('supplier')
         self.transformer = kwargs.get('transform')(kwargs.get('session'), self.supplier)
-        self.loader = kwargs.get('load')(kwargs.get('session'), self.supplier)
+        self.loader = kwargs.get('load')(kwargs.get('session'), self.supplier, kwargs.get('db_url'))
 
     def workflow(self, entity, *data):
         """
@@ -50,8 +50,9 @@ class ETL(object):
 
 class WorkflowBase(object):
 
-    def __init__(self, session, supplier):
+    def __init__(self, session, supplier, db_url=None):
         self.session = session
+        self.db_url = db_url
         self.supplier_id = self.get_id(Suppliers, name=supplier) if supplier else None
 
     def get_id(self, model, **conditions):

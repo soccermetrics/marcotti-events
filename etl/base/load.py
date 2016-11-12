@@ -1,4 +1,9 @@
-import pandas as pd
+from Queue import Empty
+from itertools import chain, islice
+from multiprocessing import Process, Manager, cpu_count
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
 
 import models.common.enums as enums
 import models.common.suppliers as mcs
@@ -10,11 +15,82 @@ import models.club as mc
 from .workflows import WorkflowBase
 
 
+def create_pool(dburl):
+    return create_engine(dburl, pool_size=10, pool_recycle=3600)
+
+
+def _chunks(_iterable, n):
+    _iterable = iter(_iterable)
+    while True:
+        yield chain([_iterable.next()], islice(_iterable, n-1))
+
+
+def producer_task(queue, db_rows):
+    for partition_num, chunk in enumerate(_chunks(db_rows, 100)):
+        block = [record for record in chunk]
+        queue.put([block, partition_num])
+    queue.put(['STOP', -1])
+
+
+def consumer_task(proc_id, url, queue, output_queue):
+    db_pool = create_pool(url)
+    session_factory = sessionmaker(db_pool)
+    Session = scoped_session(session_factory)
+
+    while True:
+        try:
+            consumer_data, num = queue.get(proc_id, 1)
+            if consumer_data == "STOP":
+                queue.put(["STOP", -1])
+                break
+            session = Session()
+            session.add_all(consumer_data)
+            session.commit()
+            record_ids = [record.id for record in consumer_data]
+            output_queue.put((record_ids, num))
+        except Empty:
+            pass
+
+
+class DistribLoadManager(object):
+
+    def __init__(self, db_url):
+        self.db_url = db_url
+        self.manager = Manager()
+        self.data_queue = self.manager.Queue()
+        self.result_queue = self.manager.Queue()
+        self.NUMBER_OF_PROCESSES = cpu_count() * 4
+
+    def start(self, data):
+        self.producer = Process(target=producer_task, args=(self.data_queue, data))
+        self.producer.start()
+
+        self.consumers = [Process(target=consumer_task,
+                                  args=(i, self.db_url, self.data_queue, self.result_queue))
+                          for i in range(self.NUMBER_OF_PROCESSES)]
+        for consumer in self.consumers:
+            consumer.start()
+
+    def join(self):
+        self.producer.join()
+        for consumer in self.consumers:
+            consumer.join()
+
+    def get_record_ids(self):
+        _intermed = []
+        results = []
+        while not self.result_queue.empty():
+            _intermed.append(self.result_queue.get())
+        _intermed = sorted(_intermed, key=lambda k: k[1])
+        for chunk in _intermed:
+            results.extend(chunk[0])
+        return results
+
+
 class MarcottiLoad(WorkflowBase):
     """
     Load transformed data into database.
     """
-
     def record_exists(self, model, **conditions):
         return self.session.query(model).filter_by(**conditions).count() != 0
 
@@ -161,15 +237,18 @@ class MarcottiLoad(WorkflowBase):
                 remote_countryids.append(remote_country_id)
                 player_records.append(mcp.Players(**player_dict))
 
-        self.session.add_all(player_records)
-        self.session.commit()
-        map_records = [mcs.PlayerMap(id=player_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, player_record in zip(remote_ids, player_records) if remote_id]
-        self.session.add_all(map_records)
-        self.session.commit()
+        dist_mgr = DistribLoadManager(self.db_url)
+        dist_mgr.start(player_records)
+        dist_mgr.join()
+        player_ids = dist_mgr.get_record_ids()
+
+        map_records = [mcs.PlayerMap(id=player_id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, player_id in zip(remote_ids, player_ids) if remote_id]
+        dist_mgr.start(map_records)
+        dist_mgr.join()
         for remote_id, player_record in zip(remote_countryids, player_records):
-            if remote_id and not self.record_exists(
-                    mcs.CountryMap, remote_id=remote_id, supplier_id=self.supplier_id):
+            if remote_id and not self.record_exists(mcs.CountryMap, remote_id=remote_id,
+                                                    supplier_id=self.supplier_id):
                 self.session.add(mcs.CountryMap(id=player_record.country_id, remote_id=remote_id,
                                                 supplier_id=self.supplier_id))
                 self.session.commit()
@@ -281,13 +360,16 @@ class MarcottiLoad(WorkflowBase):
                 if not self.record_exists(mc.ClubMatchEvents, **event_dict):
                     event_records.append(mc.ClubMatchEvents(**event_dict))
                     remote_ids.append(remote_id)
-        self.session.add_all(event_records)
-        self.session.commit()
-        map_records = [mcs.MatchEventMap(id=event_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, event_record in zip(remote_ids, event_records) if remote_id and not
+
+        dist_mgr = DistribLoadManager(self.db_url)
+        dist_mgr.start(event_records)
+        dist_mgr.join()
+        event_ids = dist_mgr.get_record_ids()
+        map_records = [mcs.MatchEventMap(id=event_id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, event_id in zip(remote_ids, event_ids) if remote_id and not
                        self.record_exists(mcs.MatchEventMap, remote_id=remote_id, supplier_id=self.supplier_id)]
-        self.session.add_all(map_records)
-        self.session.commit()
+        dist_mgr.start(map_records)
+        dist_mgr.join()
 
     def actions(self, data_frame):
         action_set = set()
@@ -320,11 +402,14 @@ class MarcottiLoad(WorkflowBase):
             if not self.record_exists(mce.MatchActions, **action_dict):
                 action_records.append(mce.MatchActions(**action_dict))
                 modifier_ids.append(modifier_id)
-        self.session.add_all(action_records)
-        self.session.commit()
-        modifier_records = [mce.MatchActionModifiers(action_id=action_record.id, modifier_id=modifier_id)
-                            for modifier_id, action_record in zip(modifier_ids, action_records) if not
-                            self.record_exists(mce.MatchActionModifiers, action_id=action_record.id,
+
+        dist_mgr = DistribLoadManager(self.db_url)
+        dist_mgr.start(action_records)
+        dist_mgr.join()
+        action_ids = dist_mgr.get_record_ids()
+        modifier_records = [mce.MatchActionModifiers(action_id=action_id, modifier_id=modifier_id)
+                            for modifier_id, action_id in zip(modifier_ids, action_ids) if not
+                            self.record_exists(mce.MatchActionModifiers, action_id=action_id,
                                                modifier_id=modifier_id)]
-        self.session.add_all(modifier_records)
-        self.session.commit()
+        dist_mgr.start(modifier_records)
+        dist_mgr.join()

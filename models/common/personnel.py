@@ -62,7 +62,7 @@ class Persons(BaseSchema):
 
         :return: Person's full name.
         """
-        if self.nick_name is not None:
+        if all([self.nick_name is not None, self.nick_name != u'']):
             return self.nick_name
         else:
             if self.order == enums.NameOrderType.western:
@@ -86,7 +86,7 @@ class Persons(BaseSchema):
         :return: Person's full name.
         """
         return case(
-            [(cls.nick_name != None, cls.nick_name)],
+            [(cls.nick_name != None & cls.nick_name != u'', cls.nick_name)],
             else_=case(
                 [
                     (cls.order == enums.NameOrderType.middle,

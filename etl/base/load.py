@@ -232,10 +232,18 @@ class MarcottiLoad(WorkflowBase):
             player_dict = dict(elements)
             remote_id = player_dict.pop('remote_id')
             remote_country_id = player_dict.pop('remote_country_id', None)
-            if not self.record_exists(mcp.Players, **player_dict):
-                remote_ids.append(remote_id)
-                remote_countryids.append(remote_country_id)
-                player_records.append(mcp.Players(**player_dict))
+            if not self.record_exists(mcs.PlayerMap, remote_id=remote_id):
+                if not self.record_exists(mcp.Players, **player_dict):
+                    remote_ids.append(remote_id)
+                    remote_countryids.append(remote_country_id)
+                    player_records.append(mcp.Players(**player_dict))
+            else:
+                player_id = self.session.query(mcs.PlayerMap).filter_by(remote_id=remote_id).one().id
+                self.session.query(mcp.Players).\
+                    filter(mcp.Players.person_id == mcp.Persons.person_id).\
+                    filter(mcp.Players.id == player_id).\
+                    update(player_dict)
+                self.session.commit()
 
         dist_mgr = DistribLoadManager(self.db_url)
         dist_mgr.start(player_records)
@@ -259,10 +267,17 @@ class MarcottiLoad(WorkflowBase):
         fields = ['known_first_name', 'first_name', 'middle_name', 'last_name', 'second_last_name',
                   'nick_name', 'birth_date', 'order', 'country_id']
         for indx, row in data_frame.iterrows():
-            manager_dict = {field: row[field] for field in fields if row[field]}
-            if not self.record_exists(mcp.Managers, **manager_dict):
-                remote_ids.append(row['remote_id'])
-                manager_records.append(mcp.Managers(**manager_dict))
+            manager_dict = {field: row[field] for field in fields if field in row and row[field]}
+            if not self.record_exists(mcs.ManagerMap, remote_id=row['remote_id']):
+                if not self.record_exists(mcp.Managers, **manager_dict):
+                    remote_ids.append(row['remote_id'])
+                    manager_records.append(mcp.Managers(**manager_dict))
+            else:
+                manager_id = self.session.query(mcs.ManagerMap).filter_by(remote_id=row['remote_id']).one().id
+                self.session.query(mcp.Managers).\
+                    filter(mcp.Managers.person_id == mcp.Persons.person_id).\
+                    filter(mcp.Managers.id == manager_id).update(manager_dict)
+                self.session.commit()
         self.session.add_all(manager_records)
         self.session.commit()
         map_records = [mcs.ManagerMap(id=manager_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
@@ -276,10 +291,17 @@ class MarcottiLoad(WorkflowBase):
         fields = ['known_first_name', 'first_name', 'middle_name', 'last_name', 'second_last_name',
                   'nick_name', 'birth_date', 'order', 'country_id']
         for indx, row in data_frame.iterrows():
-            referee_dict = {field: row[field] for field in fields if row[field]}
-            if not self.record_exists(mcp.Referees, **referee_dict):
-                remote_ids.append(row['remote_id'])
-                referee_records.append(mcp.Referees(**referee_dict))
+            referee_dict = {field: row[field] for field in fields if field in row and row[field]}
+            if not self.record_exists(mcs.RefereeMap, remote_id=row['remote_id']):
+                if not self.record_exists(mcp.Referees, **referee_dict):
+                    remote_ids.append(row['remote_id'])
+                    referee_records.append(mcp.Referees(**referee_dict))
+            else:
+                referee_id = self.session.query(mcs.RefereeMap).filter_by(remote_id=row['remote_id']).one().id
+                self.session.query(mcp.Referees).\
+                    filter(mcp.Referees.person_id == mcp.Persons.person_id).\
+                    filter(mcp.Referees.id == referee_id).update(referee_dict)
+                self.session.commit()
         self.session.add_all(referee_records)
         self.session.commit()
         map_records = [mcs.RefereeMap(id=referee_record.id, remote_id=remote_id, supplier_id=self.supplier_id)

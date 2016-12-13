@@ -19,35 +19,34 @@ databases are built from these objects.
 
 ## Installation
 
-Marcotti-Events is written in Python and uses the SQLAlchemy package heavily.
+Marcotti-Events is written in Python and uses the Pandas and SQLAlchemy packages heavily.
 
 While not required, [virtualenv](https://pypi.python.org/pypi/virtualenv) is strongly recommended and
 [virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper) is very convenient.
 
 Installation instructions:
 
-1. Grab latest repo, setup the virtual environment, and install the dependent packages into it:
+1. Setup the virtual environment, and use `pip` to install the package:
 
-        $ git clone git://github.com/soccermetrics/marcotti-events.git
-        $ cd marcotti-events
+        $ cd /path/to/working/dir
         $ mkvirtualenv marcotti
-        (marcotti) $ pip install -r requirements.txt
-    
-2. Copy `models\config\local.skel` to `models\config\local.py` and populate it.  Alternative configuration
-   settings can be created by subclassing `LocalConfig` and overwriting the attributes.
-    
-   ```python
-   class LocalConfig(Config):
-        # At a minimum, these variables must be defined.
-        DIALECT = ''
-        DBNAME = ''
-        
-        # For all other non-SQLite databases, these variables must be set.
-        DBUSER = ''
-        DBPASSWD = ''
-        HOSTNAME = ''
-        PORT = 5432
-   ```
+        (marcotti) $ pip install git+https://github.com/soccermetrics/marcotti-mls.git[@{release tag}]
+
+2. Run the `dbsetup` command and answer the setup questions to create configuration and data loading scripts.
+
+    ```shell
+    (marcotti-mls) $ dbsetup
+    #### Please answer the following questions to setup the folder ####
+    Work folder (must exist): [.] /path/to/files
+    Logging folder (must exist): [.] /path/to/logs
+    Config file name: [local]
+    Config class name: [LocalConfig]
+    ```
+    The command will produce three files in the working folder:
+
+    * `local.py`: A user-defined database configuration file
+    * `logging.json`: Default logging configuration file
+    * `loader.py`: Data loading module
     
 ## Data Models
 
@@ -147,13 +146,13 @@ The common data models are classified into four categories:
 Marcotti-Events ships with data that is used to populate the remaining validation models that can't be converted to 
 enumerated types.  The data is in CSV and JSON formats. 
 
-Data File            | Data Model
--------------------- | ----------
-countries.[csv,json] | Countries
-positions.[csv,json] | Positions
-surfaces.[csv,json]  | Surfaces
-timezones.[csv,json] | Timezones
-modifiers.[csv,json] | Modifiers
+| Data File            | Data Model |
+|:---------------------|:-----------|
+| countries.{csv,json} | Countries  |
+| positions.{csv,json} | Positions  |
+| surfaces.{csv,json}  | Surfaces   |
+| timezones.{csv,json} | Timezones  |
+| modifiers.{csv,json} | Modifiers  |
 
 
 ## Testing

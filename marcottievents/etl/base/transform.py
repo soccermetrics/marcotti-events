@@ -1,12 +1,14 @@
 import pandas as pd
 
-from models.common.enums import (ConfederationType, ActionType, ModifierType,
-                                 ModifierCategoryType, NameOrderType, PositionType, SurfaceType)
-from models.common.suppliers import (MatchEventMap, MatchMap, CompetitionMap,
-                                     VenueMap, PositionMap, PlayerMap, ManagerMap, RefereeMap)
-from models.common.overview import Countries, Timezones, Competitions, Seasons, Venues, Surfaces
-from models.common.personnel import Players, Managers, Referees
-from models.club import Clubs, ClubLeagueMatches, ClubMap
+from marcottievents.models.common.enums import (ConfederationType, ActionType, ModifierType,
+                                                ModifierCategoryType, NameOrderType, PositionType,
+                                                SurfaceType)
+from marcottievents.models.common.suppliers import (MatchEventMap, MatchMap, CompetitionMap,
+                                                    VenueMap, PositionMap, PlayerMap, ManagerMap,
+                                                    RefereeMap)
+from marcottievents.models.common.overview import Countries, Timezones, Competitions, Seasons, Venues, Surfaces
+from marcottievents.models.common.personnel import Players, Managers, Referees
+from marcottievents.models.club import Clubs, ClubLeagueMatches, ClubMap
 from .workflows import WorkflowBase
 
 

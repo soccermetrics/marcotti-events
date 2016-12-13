@@ -5,13 +5,13 @@ from multiprocessing import Process, Manager, cpu_count
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-import models.common.enums as enums
-import models.common.suppliers as mcs
-import models.common.overview as mco
-import models.common.personnel as mcp
-import models.common.match as mcm
-import models.common.events as mce
-import models.club as mc
+import marcottievents.models.common.enums as enums
+import marcottievents.models.common.suppliers as mcs
+import marcottievents.models.common.overview as mco
+import marcottievents.models.common.personnel as mcp
+import marcottievents.models.common.match as mcm
+import marcottievents.models.common.events as mce
+import marcottievents.models.club as mc
 from .workflows import WorkflowBase
 
 

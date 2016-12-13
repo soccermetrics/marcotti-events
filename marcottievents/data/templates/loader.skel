@@ -1,0 +1,81 @@
+import os
+import logging
+
+
+from {{ config_file }} import {{ config_class }}
+from marcottievents import Marcotti
+from marcottievents.tools.logsetup import setup_logging
+from marcottievents.etl.ecsv import CSVExtractor
+from marcottievents.etl.exml.datafactory import DFInstituciones, DFJugadores, DFFicha3
+from marcottievents.etl import ETL, MarcottiTransform, MarcottiEventTransform, MarcottiLoad
+
+
+setup_logging()
+logger = logging.getLogger(__name__)
+
+
+if __name__ == "__main__":
+    settings = LocalConfig()
+    marcotti = Marcotti(settings)
+    with marcotti.create_session() as session:
+        csv = CSVExtractor(settings.CSV_DATA_DIR)
+        supp_etl = ETL(transform=MarcottiTransform, load=MarcottiLoad, session=session)
+        supp_etl.workflow('suppliers', csv.suppliers(settings.CSV_FILES['suppliers']))
+
+        # Load CSV data with DataFactory IDs
+
+        etl = ETL(transform=MarcottiTransform, load=MarcottiLoad, session=session,
+                  db_url=settings.DATABASE_URI, supplier=u'DataFactory')
+        for entity in ['positions', 'managers', 'referees', 'venues']:
+            print "Loading {}".format(entity.capitalize())
+            data = getattr(csv, entity)(settings.CSV_FILES[entity])
+            etl.workflow(entity, data)
+
+        # Load from DataFactory XMLs
+
+        dfi = DFInstituciones("20160901")
+        channel = 'deportes.futbol.primeraa.instituciones.estadisticas'
+        for entity in ['competitions', 'clubs']:
+            print "Loading {}".format(entity.capitalize())
+            xml_data = getattr(dfi, entity)(channel)
+            if entity == 'competitions':
+                csv_data = getattr(csv, entity)(settings.CSV_FILES[entity])
+                etl.workflow(entity, xml_data, csv_data)
+            else:
+                etl.workflow(entity, xml_data)
+
+        dfj = DFJugadores("20160901")
+        channel = 'deportes.futbol.primeraa.jugadores.estadisticas'
+        print "Loading Players"
+        xml_data = dfj.players(channel)
+        etl.workflow('players', xml_data)
+
+        # Read match data from DataFactory XMLs
+
+        match_etl = ETL(transform=MarcottiEventTransform, load=MarcottiLoad, session=session,
+                        db_url=settings.DATABASE_URI, supplier=u'DataFactory')
+        dff = DFFicha3("20160901")
+        played = dff.completed_matches('primeraa')
+        completed = [int(line.strip()) for line in open('completed.dat')]
+
+        with open('completed.dat', 'a') as fc:
+            for i, match_id in enumerate(played):
+                if int(match_id) in completed:
+                    print "Skipping Match {} [{}/{}]".format(match_id, i+1, len(played))
+                else:
+                    channel = 'deportes.futbol.primeraa.ficha.{}.3'.format(match_id)
+                    print "Loading Match {} [{}/{}]".format(match_id, i+1, len(played))
+                    print "Loading match information"
+                    xml_data = dff.league_matches(channel)
+                    match_etl.workflow('league_matches', xml_data)
+
+                    print "Loading match lineups"
+                    lineup_data = dff.match_lineups(channel)
+                    match_etl.workflow('match_lineups', lineup_data)
+
+                    event_data, action_data = dff.events(channel)
+                    print "Loading events"
+                    match_etl.workflow('events', event_data)
+                    print "Loading actions"
+                    match_etl.workflow('actions', action_data)
+                    fc.write("{}\n".format(match_id))

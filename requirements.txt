@@ -4,4 +4,6 @@ pytest>=2.8.2
 SQLAlchemy>=1.0.9
 lxml>=3.5.0
 pandas>=0.16.0
-requests
+requests>=2.9.0
+jinja2>=2.7
+clint>=0.4.0

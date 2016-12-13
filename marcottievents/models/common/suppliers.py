@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String, Unicode, ForeignKey, Sequence
 from sqlalchemy.orm import relationship, backref
 
-from models import GUID
-from models.common import BaseSchema
-from models.common import enums
+from marcottievents.models import GUID
+from marcottievents.models.common import BaseSchema
+from marcottievents.models.common import enums
 
 
 class Suppliers(BaseSchema):

@@ -3,7 +3,7 @@ from datetime import date
 import pandas as pd
 from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 
-from models.common.suppliers import Suppliers
+from marcottievents.models.common.suppliers import Suppliers
 
 
 class ETL(object):

@@ -5,12 +5,12 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.sql.expression import label
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
 
-from models import GUID, view
-from models.common import BaseSchema
-import models.common.overview as mco
-import models.common.personnel as mcp
-import models.common.match as mcm
-import models.common.events as mce
+from marcottievents.models import GUID, view
+from marcottievents.models.common import BaseSchema
+import marcottievents.models.common.overview as mco
+import marcottievents.models.common.personnel as mcp
+import marcottievents.models.common.match as mcm
+import marcottievents.models.common.events as mce
 
 
 NatlSchema = declarative_base(name="National Teams", metadata=BaseSchema.metadata,

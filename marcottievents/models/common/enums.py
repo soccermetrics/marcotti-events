@@ -1,4 +1,4 @@
-from models import DeclEnum
+from marcottievents.models import DeclEnum
 
 
 class GroupRoundType(DeclEnum):

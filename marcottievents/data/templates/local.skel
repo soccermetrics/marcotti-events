@@ -1,0 +1,50 @@
+"""
+This is a local configuration file for Marcotti-Events.
+"""
+import os
+
+from marcottievents import MarcottiConfig
+
+
+class {{ config_class }}(MarcottiConfig):
+    """
+    Local Configuration class that contains settings for Marcotti database.
+
+    Multiple configurations can be created by copying or subclassing this class.
+    """
+
+    # At a minimum, these variables must be defined.
+    DIALECT = '{{ dialect }}'
+    DBNAME = '{{ dbname }}'
+
+    # For all other non-SQLite databases, these variables must be set.
+    DBUSER = '{{ dbuser }}'
+    DBPASSWD = ''  # This should be inserted by user.
+    HOSTNAME = '{{ dbhost }}'
+    PORT = {{ dbport }}
+
+    # Define initial start and end years in database.
+    START_YEAR = {{ start_yr }}
+    END_YEAR = {{ end_yr }}
+
+    #
+    # Logging configuration variables
+    #
+
+    LOG_DIR = r"{{ logging_dir }}"
+
+    #
+    # ETL variables
+    #
+
+    # CSV data files that will be combined with XML files
+    CSV_DATA_DIR = r"{{ csv_data_dir }}"
+    CSV_DATA = {
+        'positions': {{ data.positions }}
+        'managers': {{ data.managers }}
+        'referees': {{ data.referees }}
+        'players': {{ data.players }}
+        'venues': {{ data.venues }}
+        'competitions': {{ data.competitions }}
+        'suppliers': {{ data.suppliers }}
+    }

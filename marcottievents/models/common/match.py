@@ -6,9 +6,9 @@ from sqlalchemy.schema import CheckConstraint
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.hybrid import hybrid_property
 
-from models import GUID
-from models.common import BaseSchema
-import models.common.enums as enums
+from marcottievents.models import GUID
+from marcottievents.models.common import BaseSchema
+import marcottievents.models.common.enums as enums
 
 
 class Matches(BaseSchema):

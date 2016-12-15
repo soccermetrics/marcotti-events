@@ -384,9 +384,9 @@ class MarcottiLoad(WorkflowBase):
         self.session.add_all(action_records)
         self.session.commit()
 
-        modifier_records = [mce.MatchActionModifiers(action_id=action_id, modifier_id=modifier_id)
-                            for modifier_id, action_id in zip(modifier_ids, action_records) if not
-                            self.record_exists(mce.MatchActionModifiers, action_id=action_id,
+        modifier_records = [mce.MatchActionModifiers(action_id=action.id, modifier_id=modifier_id)
+                            for modifier_id, action in zip(modifier_ids, action_records) if not
+                            self.record_exists(mce.MatchActionModifiers, action_id=action.id,
                                                modifier_id=modifier_id)]
         self.session.add_all(modifier_records)
         self.session.commit()

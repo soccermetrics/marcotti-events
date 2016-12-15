@@ -1,10 +1,3 @@
-from Queue import Empty
-from itertools import chain, islice
-from multiprocessing import Process, Manager, cpu_count
-
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
-
 import marcottievents.models.common.enums as enums
 import marcottievents.models.common.suppliers as mcs
 import marcottievents.models.common.overview as mco
@@ -13,78 +6,6 @@ import marcottievents.models.common.match as mcm
 import marcottievents.models.common.events as mce
 import marcottievents.models.club as mc
 from .workflows import WorkflowBase
-
-
-def create_pool(dburl):
-    return create_engine(dburl, pool_size=10, pool_recycle=3600)
-
-
-def _chunks(_iterable, n):
-    _iterable = iter(_iterable)
-    while True:
-        yield chain([_iterable.next()], islice(_iterable, n-1))
-
-
-def producer_task(queue, db_rows):
-    for partition_num, chunk in enumerate(_chunks(db_rows, 100)):
-        block = [record for record in chunk]
-        queue.put([block, partition_num])
-    queue.put(['STOP', -1])
-
-
-def consumer_task(proc_id, url, queue, output_queue):
-    db_pool = create_pool(url)
-    session_factory = sessionmaker(db_pool)
-    Session = scoped_session(session_factory)
-
-    while True:
-        try:
-            consumer_data, num = queue.get(proc_id, 1)
-            if consumer_data == "STOP":
-                queue.put(["STOP", -1])
-                break
-            session = Session()
-            session.add_all(consumer_data)
-            session.commit()
-            record_ids = [record.id for record in consumer_data]
-            output_queue.put((record_ids, num))
-        except Empty:
-            pass
-
-
-class DistribLoadManager(object):
-
-    def __init__(self, db_url):
-        self.db_url = db_url
-        self.manager = Manager()
-        self.data_queue = self.manager.Queue()
-        self.result_queue = self.manager.Queue()
-        self.NUMBER_OF_PROCESSES = cpu_count() * 4
-
-    def start(self, data):
-        self.producer = Process(target=producer_task, args=(self.data_queue, data))
-        self.producer.start()
-
-        self.consumers = [Process(target=consumer_task,
-                                  args=(i, self.db_url, self.data_queue, self.result_queue))
-                          for i in range(self.NUMBER_OF_PROCESSES)]
-        for consumer in self.consumers:
-            consumer.start()
-
-    def join(self):
-        self.producer.join()
-        for consumer in self.consumers:
-            consumer.join()
-
-    def get_record_ids(self):
-        _intermed = []
-        results = []
-        while not self.result_queue.empty():
-            _intermed.append(self.result_queue.get())
-        _intermed = sorted(_intermed, key=lambda k: k[1])
-        for chunk in _intermed:
-            results.extend(chunk[0])
-        return results
 
 
 class MarcottiLoad(WorkflowBase):
@@ -239,21 +160,23 @@ class MarcottiLoad(WorkflowBase):
                     player_records.append(mcp.Players(**player_dict))
             else:
                 player_id = self.session.query(mcs.PlayerMap).filter_by(remote_id=remote_id).one().id
-                self.session.query(mcp.Players).\
-                    filter(mcp.Players.person_id == mcp.Persons.person_id).\
-                    filter(mcp.Players.id == player_id).\
-                    update(player_dict)
-                self.session.commit()
+                if not self.record_exists(mcp.Players, **player_dict):
+                    updated_records = self.session.query(mcp.Players).\
+                        filter(mcp.Players.person_id == mcp.Persons.person_id).\
+                        filter(mcp.Players.id == player_id)
+                    for rec in updated_records:
+                        for field, value in player_dict.items():
+                            setattr(rec, field, value)
+        if self.session.dirty:
+            self.session.commit()
 
-        dist_mgr = DistribLoadManager(self.db_url)
-        dist_mgr.start(player_records)
-        dist_mgr.join()
-        player_ids = dist_mgr.get_record_ids()
-
+        self.session.add_all(player_records)
+        self.session.commit()
         map_records = [mcs.PlayerMap(id=player_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, player_id in zip(remote_ids, player_ids) if remote_id]
-        dist_mgr.start(map_records)
-        dist_mgr.join()
+                       for remote_id, player_id in zip(remote_ids, player_records) if remote_id]
+        self.session.add_all(map_records)
+        self.session.commit()
+
         for remote_id, player_record in zip(remote_countryids, player_records):
             if remote_id and not self.record_exists(mcs.CountryMap, remote_id=remote_id,
                                                     supplier_id=self.supplier_id):
@@ -274,10 +197,16 @@ class MarcottiLoad(WorkflowBase):
                     manager_records.append(mcp.Managers(**manager_dict))
             else:
                 manager_id = self.session.query(mcs.ManagerMap).filter_by(remote_id=row['remote_id']).one().id
-                self.session.query(mcp.Managers).\
-                    filter(mcp.Managers.person_id == mcp.Persons.person_id).\
-                    filter(mcp.Managers.id == manager_id).update(manager_dict)
-                self.session.commit()
+                if not self.record_exists(mcp.Managers, **manager_dict):
+                    updated_records = self.session.query(mcp.Managers).\
+                        filter(mcp.Managers.person_id == mcp.Persons.person_id).\
+                        filter(mcp.Managers.id == manager_id)
+                    for rec in updated_records:
+                        for field, value in manager_dict.items():
+                            setattr(rec, field, value)
+        if self.session.dirty:
+            self.session.commit()
+
         self.session.add_all(manager_records)
         self.session.commit()
         map_records = [mcs.ManagerMap(id=manager_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
@@ -298,10 +227,16 @@ class MarcottiLoad(WorkflowBase):
                     referee_records.append(mcp.Referees(**referee_dict))
             else:
                 referee_id = self.session.query(mcs.RefereeMap).filter_by(remote_id=row['remote_id']).one().id
-                self.session.query(mcp.Referees).\
-                    filter(mcp.Referees.person_id == mcp.Persons.person_id).\
-                    filter(mcp.Referees.id == referee_id).update(referee_dict)
-                self.session.commit()
+                if not self.record_exists(mcp.Referees, **referee_dict):
+                    updated_records = self.session.query(mcp.Referees). \
+                        filter(mcp.Referees.person_id == mcp.Persons.person_id). \
+                        filter(mcp.Referees.id == referee_id)
+                    for rec in updated_records:
+                        for field, value in referee_dict.items():
+                            setattr(rec, field, value)
+        if self.session.dirty:
+            self.session.commit()
+
         self.session.add_all(referee_records)
         self.session.commit()
         map_records = [mcs.RefereeMap(id=referee_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
@@ -335,6 +270,30 @@ class MarcottiLoad(WorkflowBase):
             condition_dict = {field: row[field] for field in condition_fields if field in row and row[field]}
             if not self.record_exists(mc.ClubLeagueMatches, **match_dict):
                 match_records.append(mcm.MatchConditions(match=mc.ClubLeagueMatches(**match_dict), **condition_dict))
+                remote_ids.append(row['remote_id'])
+        self.session.add_all(match_records)
+        self.session.commit()
+
+        map_records = [mcs.MatchMap(id=match_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, match_record in zip(remote_ids, match_records) if remote_id]
+        self.session.add_all(map_records)
+        self.session.commit()
+
+    def knockout_matches(self, data_frame):
+        match_records = []
+        remote_ids = []
+        fields = ['match_date', 'competition_id', 'season_id', 'venue_id', 'home_team_id', 'away_team_id',
+                  'home_manager_id', 'away_manager_id', 'referee_id', 'attendance', 'matchday', 'ko_round',
+                  'extra_time']
+        condition_fields = ['kickoff_time', 'kickoff_temp', 'kickoff_humidity',
+                            'kickoff_weather', 'halftime_weather', 'fulltime_weather']
+        for idx, row in data_frame.iterrows():
+            match_dict = {field: row[field] for field in fields if row[field]}
+            condition_dict = {field: row[field] for field in condition_fields
+                              if field in row and row[field] is not None}
+            if not self.record_exists(mc.ClubKnockoutMatches, **match_dict):
+                match_records.append(mcm.MatchConditions(match=mc.ClubKnockoutMatches(**match_dict),
+                                                         **condition_dict))
                 remote_ids.append(row['remote_id'])
         self.session.add_all(match_records)
         self.session.commit()
@@ -382,16 +341,14 @@ class MarcottiLoad(WorkflowBase):
                 if not self.record_exists(mc.ClubMatchEvents, **event_dict):
                     event_records.append(mc.ClubMatchEvents(**event_dict))
                     remote_ids.append(remote_id)
+        self.session.add_all(event_records)
+        self.session.commit()
 
-        dist_mgr = DistribLoadManager(self.db_url)
-        dist_mgr.start(event_records)
-        dist_mgr.join()
-        event_ids = dist_mgr.get_record_ids()
         map_records = [mcs.MatchEventMap(id=event_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, event_id in zip(remote_ids, event_ids) if remote_id and not
+                       for remote_id, event_id in zip(remote_ids, event_records) if remote_id and not
                        self.record_exists(mcs.MatchEventMap, remote_id=remote_id, supplier_id=self.supplier_id)]
-        dist_mgr.start(map_records)
-        dist_mgr.join()
+        self.session.add_all(map_records)
+        self.session.commit()
 
     def actions(self, data_frame):
         action_set = set()
@@ -424,14 +381,12 @@ class MarcottiLoad(WorkflowBase):
             if not self.record_exists(mce.MatchActions, **action_dict):
                 action_records.append(mce.MatchActions(**action_dict))
                 modifier_ids.append(modifier_id)
+        self.session.add_all(action_records)
+        self.session.commit()
 
-        dist_mgr = DistribLoadManager(self.db_url)
-        dist_mgr.start(action_records)
-        dist_mgr.join()
-        action_ids = dist_mgr.get_record_ids()
         modifier_records = [mce.MatchActionModifiers(action_id=action_id, modifier_id=modifier_id)
-                            for modifier_id, action_id in zip(modifier_ids, action_ids) if not
+                            for modifier_id, action_id in zip(modifier_ids, action_records) if not
                             self.record_exists(mce.MatchActionModifiers, action_id=action_id,
                                                modifier_id=modifier_id)]
-        dist_mgr.start(modifier_records)
-        dist_mgr.join()
+        self.session.add_all(modifier_records)
+        self.session.commit()

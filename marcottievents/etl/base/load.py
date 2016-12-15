@@ -344,8 +344,8 @@ class MarcottiLoad(WorkflowBase):
         self.session.add_all(event_records)
         self.session.commit()
 
-        map_records = [mcs.MatchEventMap(id=event_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, event_id in zip(remote_ids, event_records) if remote_id and not
+        map_records = [mcs.MatchEventMap(id=event_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, event_record in zip(remote_ids, event_records) if remote_id and not
                        self.record_exists(mcs.MatchEventMap, remote_id=remote_id, supplier_id=self.supplier_id)]
         self.session.add_all(map_records)
         self.session.commit()

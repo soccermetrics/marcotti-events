@@ -1,17 +1,15 @@
 import sys
 from setuptools import setup, find_packages
 
-from marcottievents.version import __version__
-
 
 REQUIRES = ['SQLAlchemy>=1.0.9',
             'jinja2>=2.7',
             'clint>=0.4.0',
             'lxml>=3.5.0',
-            'pandas>=0.16.0',
-            'requests>=2.9.0']
+            'pandas>=0.16.0']
 needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
 pytest_runner = ['pytest_runner'] if needs_pytest else []
+exec(open('marcottievents/version.py').read())
 
 setup(
     name='marcotti-events',
@@ -29,7 +27,7 @@ setup(
     license='MIT',
     author='Soccermetrics Research',
     author_email='info@soccermetrics.net',
-    keywords=['soccer', 'football', 'soccer analytics', 'data modeling', 'MLS'],
+    keywords=['soccer', 'football', 'soccer analytics', 'data modeling'],
     setup_requires=pytest_runner,
     install_requires=REQUIRES,
     extras_require={

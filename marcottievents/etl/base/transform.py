@@ -2,7 +2,7 @@ import pandas as pd
 
 from marcottievents.models.common.enums import (ConfederationType, ActionType, ModifierType,
                                                 ModifierCategoryType, NameOrderType, PositionType,
-                                                SurfaceType)
+                                                KnockoutRoundType, SurfaceType)
 from marcottievents.models.common.suppliers import (MatchEventMap, MatchMap, CompetitionMap,
                                                     VenueMap, PositionMap, PlayerMap, ManagerMap,
                                                     RefereeMap)
@@ -188,6 +188,25 @@ class MarcottiEventTransform(MarcottiTransform):
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['competition_id', 'season_id', 'venue_id', 'home_team_id', 'away_team_id',
                              'home_manager_id', 'away_manager_id', 'referee_id', 'match_date']
+        joined_frame = data_frame.join(ids_frame).drop(['season_name', 'date'], axis=1)
+        return joined_frame
+
+    def knockout_matches(self, data_frame):
+        lambdafunc = lambda x: pd.Series([
+            self.get_id(CompetitionMap, remote_id=x['remote_competition_id'], supplier_id=self.supplier_id),
+            self.get_id(Seasons, name=x['season_name']),
+            self.get_id(VenueMap, remote_id=x['remote_venue_id'], supplier_id=self.supplier_id),
+            self.get_id(ClubMap, remote_id=x['remote_home_team_id'], supplier_id=self.supplier_id),
+            self.get_id(ClubMap, remote_id=x['remote_away_team_id'], supplier_id=self.supplier_id),
+            self.get_id(ManagerMap, remote_id=x['remote_home_manager_id'], supplier_id=self.supplier_id),
+            self.get_id(ManagerMap, remote_id=x['remote_away_manager_id'], supplier_id=self.supplier_id),
+            self.get_id(RefereeMap, remote_id=x['remote_referee_id'], supplier_id=self.supplier_id),
+            KnockoutRoundType.from_string(x['ko_round']),
+            self.make_date_object(x['date'])
+        ])
+        ids_frame = data_frame.apply(lambdafunc, axis=1)
+        ids_frame.columns = ['competition_id', 'season_id', 'venue_id', 'home_team_id', 'away_team_id',
+                             'home_manager_id', 'away_manager_id', 'referee_id', 'ko_round', 'match_date']
         joined_frame = data_frame.join(ids_frame).drop(['season_name', 'date'], axis=1)
         return joined_frame
 

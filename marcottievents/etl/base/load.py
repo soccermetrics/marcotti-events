@@ -172,8 +172,8 @@ class MarcottiLoad(WorkflowBase):
 
         self.session.add_all(player_records)
         self.session.commit()
-        map_records = [mcs.PlayerMap(id=player_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, player_id in zip(remote_ids, player_records) if remote_id]
+        map_records = [mcs.PlayerMap(id=player_record.id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, player_record in zip(remote_ids, player_records) if remote_id]
         self.session.add_all(map_records)
         self.session.commit()
 

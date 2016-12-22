@@ -18,7 +18,7 @@ class Marcotti(object):
 
     def __init__(self, config):
         logger.info("Marcotti-MLS v{0}: Python {1} on {2}".format(
-            '.'.join(__version__), sys.version, sys.platform))
+            __version__, sys.version, sys.platform))
         logger.info("Opened connection to {0}".format(self._public_db_uri(config.database_uri)))
         self.settings = config
         self.engine = create_engine(config.database_uri)

@@ -74,7 +74,7 @@ class Marcotti(object):
             logger.info("Committing remaining transactions to database")
         except Exception as ex:
             session.rollback()
-            logger.error("Database transactions rolled back")
+            logger.exception("Database transactions rolled back")
             raise ex
         finally:
             logger.info("Session {0} with {1} closed".format(

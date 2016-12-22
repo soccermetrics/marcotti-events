@@ -201,13 +201,13 @@ class MarcottiEventTransform(MarcottiTransform):
             self.get_id(ManagerMap, remote_id=x['remote_home_manager_id'], supplier_id=self.supplier_id),
             self.get_id(ManagerMap, remote_id=x['remote_away_manager_id'], supplier_id=self.supplier_id),
             self.get_id(RefereeMap, remote_id=x['remote_referee_id'], supplier_id=self.supplier_id),
-            KnockoutRoundType.from_string(x['ko_round']),
+            KnockoutRoundType.from_string(x['round']),
             self.make_date_object(x['date'])
         ])
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['competition_id', 'season_id', 'venue_id', 'home_team_id', 'away_team_id',
                              'home_manager_id', 'away_manager_id', 'referee_id', 'ko_round', 'match_date']
-        joined_frame = data_frame.join(ids_frame).drop(['season_name', 'date'], axis=1)
+        joined_frame = data_frame.join(ids_frame).drop(['season_name', 'date', 'round'], axis=1)
         return joined_frame
 
     def match_lineups(self, data_frame):

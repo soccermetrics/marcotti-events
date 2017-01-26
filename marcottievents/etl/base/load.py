@@ -266,7 +266,7 @@ class MarcottiLoad(WorkflowBase):
         condition_fields = ['kickoff_time', 'kickoff_temp', 'kickoff_humidity',
                             'kickoff_weather', 'halftime_weather', 'fulltime_weather']
         for idx, row in data_frame.iterrows():
-            match_dict = {field: row[field] for field in fields if fields in row and row[field] is not None}
+            match_dict = {field: row[field] for field in fields if field in row and row[field] is not None}
             condition_dict = {field: row[field] for field in condition_fields
                               if field in row and row[field] is not None}
             if not self.record_exists(mc.ClubLeagueMatches, **match_dict):

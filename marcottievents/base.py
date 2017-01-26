@@ -1,6 +1,7 @@
 import re
 import sys
 import logging
+import pkg_resources
 from contextlib import contextmanager
 
 from sqlalchemy.engine import create_engine
@@ -52,7 +53,7 @@ class Marcotti(object):
                 data = getattr(csv_obj, entity)(self.settings.START_YEAR, self.settings.END_YEAR)
                 etl.workflow(entity, data)
 
-            csv_validation = CSVExtractor('data')
+            csv_validation = CSVExtractor(pkg_resources.resource_filename('marcottievents', 'data/'))
             for entity in ['countries', 'modifiers', 'positions', 'surfaces', 'timezones']:
                 logger.info("Loading {}".format(entity.capitalize()))
                 if entity == 'countries':

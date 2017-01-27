@@ -1,7 +1,7 @@
 import uuid
 
 from sqlalchemy import (Column, Integer, Numeric, Date, Time,
-                        String, ForeignKey, Boolean)
+                        String, ForeignKey, Boolean, Index)
 from sqlalchemy.schema import CheckConstraint
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.hybrid import hybrid_property
@@ -36,6 +36,8 @@ class Matches(BaseSchema):
     referee = relationship('Referees', backref=backref('matches'))
     home_manager = relationship('Managers', foreign_keys=[home_manager_id], backref=backref('home_matches'))
     away_manager = relationship('Managers', foreign_keys=[away_manager_id], backref=backref('away_matches'))
+
+    Index('match_indx', 'match_date', 'competition_id', 'season_id')
 
     __mapper_args__ = {
         'polymorphic_identity': 'matches',
@@ -120,6 +122,8 @@ class MatchLineups(BaseSchema):
     match = relationship('Matches', backref=backref('lineups'))
     player = relationship('Players', backref=backref('lineups'))
     position = relationship('Positions')
+
+    Index('lineups_indx', 'match_id', 'player_id', 'position_id')
 
     __mapper_args__ = {
         'polymorphic_identity': 'lineups',

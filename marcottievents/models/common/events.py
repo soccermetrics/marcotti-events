@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, Boolean, Integer, Numeric, String, Sequence, ForeignKey
+from sqlalchemy import Column, Boolean, Integer, Numeric, String, Sequence, ForeignKey, Index
 from sqlalchemy.schema import CheckConstraint
 from sqlalchemy.orm import relationship, backref
 
@@ -24,6 +24,8 @@ class MatchEvents(BaseSchema):
     match_id = Column(GUID, ForeignKey('matches.id'))
     match = relationship('Matches', backref=backref('events'))
 
+    Index('match_events_indx', 'match_id', 'period', 'period_secs')
+
     __mapper_args__ = {
         'polymorphic_identity': 'events',
         'polymorphic_on': domain
@@ -43,6 +45,8 @@ class MatchActions(BaseSchema):
 
     event_id = Column(GUID, ForeignKey('match_events.id'), nullable=False)
     lineup_id = Column(GUID, ForeignKey('lineups.id'))
+
+    Index('match_actions_indx', 'event_id', 'type')
 
     event = relationship('MatchEvents', backref=backref('actions'))
     lineup = relationship('MatchLineups', backref=backref('actions'))

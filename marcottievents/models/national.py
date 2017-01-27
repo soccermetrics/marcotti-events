@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-from sqlalchemy import Column, ForeignKey, select, join, text
+from sqlalchemy import Column, ForeignKey, Index, select, join, text
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.sql.expression import label
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
@@ -80,6 +80,8 @@ class NationalFriendlyMatches(FriendlyMixin, NationalMatchMixin, NatlSchema, mcm
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
 
+    Index('natl_friendly_indx', 'home_team_id', 'away_team_id')
+
     def __repr__(self):
         return u"<NationalFriendlyMatch(home={}, away={}, competition={}, date={})>".format(
             self.home_team.name, self.away_team.name, self.competition.name, self.date.isoformat()
@@ -96,6 +98,8 @@ class NationalGroupMatches(GroupMixin, NationalMatchMixin, NatlSchema, mcm.Group
     __mapper_args__ = {'polymorphic_identity': 'natl_group'}
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
+
+    Index('natl_group_indx', 'group_round', 'group', 'home_team_id', 'away_team_id')
 
     def __repr__(self):
         return u"<NationalGroupMatch(home={}, away={}, competition={}, round={}, group={}, matchday={}, date={})>".format(
@@ -115,6 +119,8 @@ class NationalKnockoutMatches(KnockoutMixin, NationalMatchMixin, NatlSchema, mcm
     __mapper_args__ = {'polymorphic_identity': 'natl_knockout'}
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
+
+    Index('natl_knockout_indx', 'ko_round', 'matchday', 'home_team_id', 'away_team_id')
 
     def __repr__(self):
         return u"<NationalKnockoutMatch(home={}, away={}, competition={}, round={}, matchday={}, date={})>".format(

@@ -2,7 +2,7 @@ import uuid
 from datetime import date
 
 from sqlalchemy import (case, select, cast, Column, Integer, Numeric, Date,
-                        String, Sequence, ForeignKey, Unicode)
+                        String, Sequence, ForeignKey, Unicode, Index)
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.schema import CheckConstraint
@@ -25,6 +25,8 @@ class Countries(BaseSchema):
     code = Column(String(3))
     confederation = Column(enums.ConfederationType.db_type())
 
+    Index('countries_indx', 'name')
+
     def __repr__(self):
         return u"<Country(id={0}, name={1}, trigram={2}, confed={3})>".format(
             self.id, self.name, self.code, self.confederation.value).encode('utf-8')
@@ -38,6 +40,8 @@ class Years(BaseSchema):
 
     id = Column(Integer, Sequence('year_id_seq', start=100), primary_key=True)
     yr = Column(Integer, unique=True)
+
+    Index('years_indx', 'yr')
 
     def __repr__(self):
         return "<Year(yr={0})>".format(self.yr)
@@ -56,6 +60,8 @@ class Seasons(BaseSchema):
 
     start_year = relationship('Years', foreign_keys=[start_year_id])
     end_year = relationship('Years', foreign_keys=[end_year_id])
+
+    Index('seasons_indx', 'start_year_id', 'end_year_id')
 
     @hybrid_property
     def name(self):
@@ -116,6 +122,8 @@ class Competitions(BaseSchema):
     level = Column(Integer)
     discriminator = Column('type', String(20))
 
+    Index('competitions_indx', 'name', 'level')
+
     __mapper_args__ = {
         'polymorphic_identity': 'competitions',
         'polymorphic_on': discriminator
@@ -168,6 +176,8 @@ class Venues(BaseSchema):
     timezone_id = Column(Integer, ForeignKey('timezones.id'))
     timezone = relationship('Timezones', backref=backref('venues'))
 
+    Index('venues_indx', 'name', 'city', 'country_id')
+
     def __repr__(self):
         return u"<Venue(name={0}, city={1}, country={2})>".format(
             self.name, self.city, self.country.name).encode('utf-8')
@@ -206,6 +216,8 @@ class Timezones(BaseSchema):
     name = Column(Unicode(80), doc="Name of the time zone geographic region", nullable=False)
     offset = Column(Numeric(4, 2), doc="Offset of the time zone region from UTC, in decimal hours", nullable=False)
     confederation = Column(enums.ConfederationType.db_type())
+
+    Index('timezones_indx', 'name')
 
     def __repr__(self):
         return u"<Timezone(name={0}, offset={1:+1.2f}, confederation={2})>".format(

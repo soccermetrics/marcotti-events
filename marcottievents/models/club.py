@@ -1,7 +1,7 @@
 import uuid
 from copy import deepcopy
 
-from sqlalchemy import Column, ForeignKey, Integer, String, Unicode, select, join, text
+from sqlalchemy import Column, ForeignKey, Integer, String, Unicode, Index, select, join, text
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.sql.expression import label
 from sqlalchemy.ext.declarative import declared_attr, declarative_base
@@ -28,6 +28,8 @@ class Clubs(ClubSchema):
 
     country_id = Column(GUID, ForeignKey('countries.id'))
     country = relationship('Countries', backref=backref('clubs'))
+
+    Index('clubs_indx', 'name', 'country_id')
 
     def __repr__(self):
         return u"<Club(name={0}, short_name={1}, country={2})>".format(
@@ -127,6 +129,8 @@ class ClubFriendlyMatches(FriendlyMixin, ClubMatchMixin, ClubSchema, mcm.Matches
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
 
+    Index('club_friendly_indx', 'home_team_id', 'away_team_id')
+
     def __repr__(self):
         return u"<ClubFriendlyMatch(home={}, away={}, competition={}, date={})>".format(
             self.home_team.name, self.away_team.name, self.competition.name, self.date.isoformat()
@@ -144,6 +148,8 @@ class ClubLeagueMatches(LeagueMixin, ClubMatchMixin, ClubSchema, mcm.LeagueMatch
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
 
+    Index('club_league_indx', 'matchday', 'home_team_id', 'away_team_id')
+
     def __repr__(self):
         return u"<ClubLeagueMatch(home={}, away={}, competition={}, matchday={}, date={})>".format(
             self.home_team.name, self.away_team.name, self.competition.name, self.matchday, self.date.isoformat()
@@ -160,6 +166,8 @@ class ClubGroupMatches(GroupMixin, ClubMatchMixin, ClubSchema, mcm.GroupMatches,
     __mapper_args__ = {'polymorphic_identity': 'club_group'}
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
+
+    Index('club_group_indx', 'group_round', 'group', 'home_team_id', 'away_team_id')
 
     def __repr__(self):
         return u"<ClubGroupMatch(home={}, away={}, competition={}, round={}, group={}, matchday={}, date={})>".format(
@@ -179,6 +187,8 @@ class ClubKnockoutMatches(KnockoutMixin, ClubMatchMixin, ClubSchema, mcm.Knockou
     __mapper_args__ = {'polymorphic_identity': 'club_knockout'}
 
     id = Column(GUID, ForeignKey('matches.id'), primary_key=True)
+
+    Index('club_knockout_indx', 'ko_round', 'matchday', 'home_team_id', 'away_team_id')
 
     def __repr__(self):
         return u"<ClubKnockoutMatch(home={}, away={}, competition={}, round={}, matchday={}, date={})>".format(

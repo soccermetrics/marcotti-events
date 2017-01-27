@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, Integer, Numeric, String, Sequence, Date, ForeignKey, Unicode
+from sqlalchemy import Column, Integer, Numeric, String, Sequence, Date, ForeignKey, Unicode, Index
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.schema import CheckConstraint
@@ -44,6 +44,8 @@ class Persons(BaseSchema):
 
     country_id = Column(GUID, ForeignKey('countries.id'))
     country = relationship('Countries', backref=backref('persons'))
+
+    Index('persons_indx', 'first_name', 'middle_name', 'last_name', 'nick_name')
 
     __mapper_args__ = {
         'polymorphic_identity': 'persons',

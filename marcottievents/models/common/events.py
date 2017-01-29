@@ -16,7 +16,7 @@ class MatchEvents(BaseSchema):
 
     domain = Column(String)
     timestamp = Column(String)
-    period = Column(Integer, CheckConstraint('period >= 1 AND period <= 4'))
+    period = Column(Integer, CheckConstraint('period >= 1 AND period <= 5'))
     period_secs = Column(Integer)
     x = Column(Numeric(4, 1, asdecimal=False, decimal_return_scale=1), nullable=True)
     y = Column(Numeric(4, 1, asdecimal=False, decimal_return_scale=1), nullable=True)

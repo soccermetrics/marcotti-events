@@ -44,7 +44,15 @@
     "Type": "Midfielder"
   },
   {
+    "Position": "Left Midfielder",
+    "Type": "Midfielder"
+  },
+  {
     "Position": "Central Midfielder",
+    "Type": "Midfielder"
+  },
+  {
+    "Position": "Right Midfielder",
     "Type": "Midfielder"
   },
   {

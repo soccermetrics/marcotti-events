@@ -16,7 +16,7 @@ def extract(func):
     def _wrapper(*args):
         out = []
         instance, prefix = args
-        for fname in glob.glob(os.path.join(getattr(instance, 'directory'), prefix)):
+        for fname in glob.glob(os.path.join(getattr(instance, 'directory'), *prefix)):
             with open(fname) as g:
                 out.extend(func(instance, data=csv.DictReader(g)))
         return out

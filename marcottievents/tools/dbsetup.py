@@ -66,6 +66,8 @@ def setup_user_input():
     end_yr = prompt.query('End season year', default='2020', validators=[validators.IntegerValidator()])
     print("#### Data file setup ####")
     supplier = prompt.query('Name of data supplier:')
+    is_club_db = prompt.options('Is this a club database?')
+    spanish = prompt.options('Are country names in Spanish?')
     using_xml = prompt.options('Are XML files stored locally?', binary_options)
     if using_xml:
         xml_data_dir = prompt.query('Directory containing XML data files:', default='.',
@@ -107,6 +109,8 @@ def setup_user_input():
         'end_yr': end_yr,
         'logging_dir': log_folder,
         'log_file_path': os.path.join(log_folder, 'marcotti.log'),
+        'club_db': is_club_db,
+        'country_prefix': 'es' * (spanish is True),
         'xml_data_dir': xml_data_dir,
         'xml_data': {
             'squads': xml_squads,

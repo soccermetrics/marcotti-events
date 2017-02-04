@@ -4,8 +4,13 @@ import logging
 
 from {{ config_file }} import {{ config_class }}
 from marcottievents import Marcotti
-from marcottievents.tools.logsetup import setup_logging
 from marcottievents.etl.ecsv import CSVExtractor
+{% if club_db %}
+from marcottievents.models.club import ClubSchema
+{% else %}
+from marcottievents.models.national import NatlSchema
+{% endif %}
+from marcottievents.tools.logsetup import setup_logging
 from marcottievents.etl import ETL, MarcottiTransform, MarcottiEventTransform, MarcottiLoad
 
 
@@ -17,6 +22,8 @@ if __name__ == "__main__":
     settings = {{ config_class }}()
     marcotti = Marcotti(settings)
     with marcotti.create_session() as session:
+        marcotti.create_db({% if club_db %}ClubSchema{% else %}NatlSchema{% endif %})
+        marcotti.initial_load({{ country_prefix }})
 
         # Add supplier information to database
 

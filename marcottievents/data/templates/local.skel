@@ -37,14 +37,26 @@ class {{ config_class }}(MarcottiConfig):
     # ETL variables
     #
 
+    {% if xml_data_dir %}
+    XML_DATA_DIR = r"{{ xml_data_dir }}"
+    XML_DATA = {
+        'squads': {{ xml_data.squads }},
+        'summaries': {{ xml_data.summaries }},
+        'events': {{ xml_data.events }}
+    }
+    {% endif %}
+
     # CSV data files that will be combined with XML files
     CSV_DATA_DIR = r"{{ csv_data_dir }}"
     CSV_DATA = {
-        'positions': {{ data.positions }}
-        'managers': {{ data.managers }}
-        'referees': {{ data.referees }}
-        'players': {{ data.players }}
-        'venues': {{ data.venues }}
-        'competitions': {{ data.competitions }}
-        'suppliers': {{ data.suppliers }}
+        'suppliers': {{ csv_data.suppliers }}
+        'competitions': {{ csv_data.competitions }},
+        'seasons': {{ csv_data.seasons }},
+        'clubs': {{ csv_data.clubs }},
+        'venues': {{ csv_data.venues }},
+        'players': {{ csv_data.players }},
+        'managers': {{ csv_data.managers }},
+        'referees': {{ csv_data.referees }},
+        'summaries': {{ csv_data.summaries }},
+        'events': {{ csv_data.events }}
     }

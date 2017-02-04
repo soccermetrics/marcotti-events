@@ -110,7 +110,7 @@ def setup_user_input():
         'xml_data_dir': xml_data_dir,
         'xml_data': {
             'squads': xml_squads,
-            'summaries': xml_summaries,
+            'matches': xml_summaries,
             'events': xml_events
         },
         'csv_data_dir': csv_data_dir,
@@ -123,7 +123,7 @@ def setup_user_input():
             'players': player_data_path,
             'managers': manager_data_path,
             'referees': referee_data_path,
-            'summaries': summary_data_path,
+            'matches': summary_data_path,
             'events': event_data_path
         }
     }

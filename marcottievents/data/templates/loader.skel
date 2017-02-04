@@ -22,9 +22,9 @@ if __name__ == "__main__":
 
         csv = CSVExtractor(settings.CSV_DATA_DIR)
         supp_etl = ETL(transform=MarcottiTransform, load=MarcottiLoad, session=session)
-        supp_etl.workflow('suppliers', csv.suppliers(settings.CSV_FILES['suppliers']))
+        supp_etl.workflow('suppliers', csv.suppliers(settings.CSV_DATA['suppliers']))
 
         # Load CSV data
 
         etl = ETL(transform=MarcottiTransform, load=MarcottiLoad, session=session,
-                  db_url=settings.DATABASE_URI, supplier=u'{{ supplier }}')
+                  supplier=u'{{ supplier }}')

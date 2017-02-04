@@ -49,7 +49,7 @@ class {{ config_class }}(MarcottiConfig):
     # CSV data files that will be combined with XML files
     CSV_DATA_DIR = r"{{ csv_data_dir }}"
     CSV_DATA = {
-        'suppliers': {{ csv_data.suppliers }}
+        'suppliers': {{ csv_data.suppliers }},
         'competitions': {{ csv_data.competitions }},
         'seasons': {{ csv_data.seasons }},
         'clubs': {{ csv_data.clubs }},

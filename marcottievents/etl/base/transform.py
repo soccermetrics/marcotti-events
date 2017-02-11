@@ -211,25 +211,16 @@ class MarcottiEventTransform(MarcottiTransform):
         return joined_frame
 
     def match_lineups(self, data_frame):
-        if 'position_name' in data_frame.columns:
-            transformed_field = ['remote_match_id', 'remote_player_id', 'remote_team_id', 'position_name']
-            lambdafunc = lambda x: pd.Series([
-                self.get_id(MatchMap, remote_id=x['remote_match_id'], supplier_id=self.supplier_id),
-                self.get_id(PlayerMap, remote_id=x['remote_player_id'], supplier_id=self.supplier_id),
-                self.get_id(ClubMap, remote_id=x['remote_team_id'], supplier_id=self.supplier_id),
-                self.get_id(Positions, name=x['position_name'])
-            ])
-        else:
-            transformed_field = ['remote_match_id', 'remote_player_id', 'remote_team_id', 'remote_position_id']
-            lambdafunc = lambda x: pd.Series([
-                self.get_id(MatchMap, remote_id=x['remote_match_id'], supplier_id=self.supplier_id),
-                self.get_id(PlayerMap, remote_id=x['remote_player_id'], supplier_id=self.supplier_id),
-                self.get_id(ClubMap, remote_id=x['remote_team_id'], supplier_id=self.supplier_id),
-                self.get_id(PositionMap, remote_id=x['remote_position_id'], supplier_id=self.supplier_id)
-            ])
+        lambdafunc = lambda x: pd.Series([
+            self.get_id(MatchMap, remote_id=x['remote_match_id'], supplier_id=self.supplier_id),
+            self.get_id(PlayerMap, remote_id=x['remote_player_id'], supplier_id=self.supplier_id),
+            self.get_id(ClubMap, remote_id=x['remote_team_id'], supplier_id=self.supplier_id),
+            self.get_id(PositionMap, remote_id=x['remote_position_id'], supplier_id=self.supplier_id)
+        ])
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['match_id', 'player_id', 'team_id', 'position_id']
-        return data_frame.join(ids_frame).drop(transformed_field, axis=1)
+        return data_frame.join(ids_frame).drop(['remote_match_id', 'remote_player_id',
+                                                'remote_team_id', 'remote_position_id'], axis=1)
 
     def events(self, data_frame):
         lambdafunc = lambda x: pd.Series([

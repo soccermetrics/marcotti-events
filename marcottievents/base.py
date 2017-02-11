@@ -58,9 +58,9 @@ class Marcotti(object):
                 logger.info("Loading {}".format(entity.capitalize()))
                 if entity == 'countries':
                     lang_element = [lang] if lang else []
-                    data_file = '{}.csv'.format('-'.join([entity]+lang_element))
+                    data_file = ('{}.csv'.format('-'.join([entity]+lang_element)),)
                 else:
-                    data_file = '{}.csv'.format(entity)
+                    data_file = ('{}.csv'.format(entity),)
                 data = getattr(csv_validation, entity)(data_file)
                 etl.workflow(entity, data)
 

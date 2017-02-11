@@ -114,7 +114,7 @@ class CSVExtractor(BaseCSV):
                      name_order=self.column("Name Order", **keys),
                      dob=self.column("Birthdate", **keys),
                      country=self.column_unicode("Country", **keys),
-                     position_name=self.column("Position", **keys))
+                     position_name=self.column_unicode("Position", **keys))
                 for keys in kwargs.get('data')]
 
     @extract

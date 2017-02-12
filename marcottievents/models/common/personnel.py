@@ -88,7 +88,7 @@ class Persons(BaseSchema):
         :return: Person's full name.
         """
         return case(
-            [(cls.nick_name != None & cls.nick_name != u'', cls.nick_name)],
+            [(cls.nick_name != None, cls.nick_name)],
             else_=case(
                 [
                     (cls.order == enums.NameOrderType.middle,

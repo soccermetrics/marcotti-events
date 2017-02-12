@@ -40,11 +40,13 @@ class MarcottiLoad(WorkflowBase):
             if 'name' not in row:
                 if row['start_year'] == row['end_year']:
                     yr_obj = self.session.query(mco.Years).filter_by(yr=row['start_year']).one()
-                    season_records.append(mco.Seasons(start_year=yr_obj, end_year=yr_obj))
+                    if not self.record_exists(mco.Seasons, start_year_id=yr_obj.id, end_year_id=yr_obj.id):
+                        season_records.append(mco.Seasons(start_year=yr_obj, end_year=yr_obj))
                 else:
                     start_yr_obj = self.session.query(mco.Years).filter_by(yr=row['start_year']).one()
                     end_yr_obj = self.session.query(mco.Years).filter_by(yr=row['end_year']).one()
-                    season_records.append(mco.Seasons(start_year=start_yr_obj, end_year=end_yr_obj))
+                    if not self.record_exists(mco.Seasons, start_year_id=start_yr_obj.id, end_year_id=end_yr_obj.id):
+                        season_records.append(mco.Seasons(start_year=start_yr_obj, end_year=end_yr_obj))
                 self.session.add_all(season_records)
             else:
                 if not self.record_exists(mcs.SeasonMap, remote_id=row['remote_id'], supplier_id=self.supplier_id):

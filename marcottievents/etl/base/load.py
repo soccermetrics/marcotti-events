@@ -343,6 +343,8 @@ class MarcottiLoad(WorkflowBase):
         lineup_records = []
         fields = ['match_id', 'player_id', 'team_id', 'position_id', 'is_starting', 'is_captain']
         for idx, row in data_frame.iterrows():
+            if not row['player_id']:
+                continue
             lineup_dict = {field: row[field] for field in fields if row[field] is not None}
             if not self.record_exists(mc.ClubMatchLineups, **lineup_dict):
                 lineup_dict.update(id=uuid.uuid4())
@@ -372,22 +374,24 @@ class MarcottiLoad(WorkflowBase):
             event_dict = dict(elements)
             remote_id = event_dict.pop('remote_id')
             if 'team_id' not in event_dict:
-                if not self.record_exists(mce.MatchEvents, **event_dict):
-                    event_dict.update(id=uuid.uuid4())
-                    event_records.append(mce.MatchEvents(**event_dict))
-                    remote_ids.append(remote_id)
-                    local_ids.append(event_dict['id'])
+                # if not self.record_exists(mce.MatchEvents, **event_dict):
+                event_dict.update(id=uuid.uuid4())
+                event_records.append(mce.MatchEvents(**event_dict))
+                remote_ids.append(remote_id)
+                local_ids.append(event_dict['id'])
             else:
-                if not self.record_exists(mc.ClubMatchEvents, **event_dict):
-                    event_dict.update(id=uuid.uuid4())
-                    event_records.append(mc.ClubMatchEvents(**event_dict))
-                    remote_ids.append(remote_id)
-                    local_ids.append(event_dict['id'])
+                # if not self.record_exists(mc.ClubMatchEvents, **event_dict):
+                event_dict.update(id=uuid.uuid4())
+                event_records.append(mc.ClubMatchEvents(**event_dict))
+                remote_ids.append(remote_id)
+                local_ids.append(event_dict['id'])
         self.session.bulk_save_objects(event_records)
 
         map_records = [mcs.MatchEventMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id and not
-                       self.record_exists(mcs.MatchEventMap, remote_id=remote_id, supplier_id=self.supplier_id)]
+                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
+        # map_records = [mcs.MatchEventMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
+        #                for remote_id, local_id in zip(remote_ids, local_ids) if remote_id and not
+        #                self.record_exists(mcs.MatchEventMap, remote_id=remote_id, supplier_id=self.supplier_id)]
         self.session.bulk_save_objects(map_records)
         self.session.commit()
 
@@ -420,16 +424,18 @@ class MarcottiLoad(WorkflowBase):
                     raise ex
             else:
                 modifier_id = None
-            if not self.record_exists(mce.MatchActions, **action_dict):
-                action_dict.update(id=uuid.uuid4())
-                action_records.append(mce.MatchActions(**action_dict))
-                modifier_ids.append(modifier_id)
-                local_ids.append(action_dict['id'])
+            # if not self.record_exists(mce.MatchActions, **action_dict):
+            action_dict.update(id=uuid.uuid4())
+            action_records.append(mce.MatchActions(**action_dict))
+            modifier_ids.append(modifier_id)
+            local_ids.append(action_dict['id'])
         self.session.bulk_save_objects(action_records)
 
         modifier_records = [mce.MatchActionModifiers(action_id=local_id, modifier_id=modifier_id)
-                            for modifier_id, local_id in zip(modifier_ids, local_ids) if not
-                            self.record_exists(mce.MatchActionModifiers, action_id=local_id,
-                                               modifier_id=modifier_id)]
+                            for modifier_id, local_id in zip(modifier_ids, local_ids)]
+        # modifier_records = [mce.MatchActionModifiers(action_id=local_id, modifier_id=modifier_id)
+        #                     for modifier_id, local_id in zip(modifier_ids, local_ids) if not
+        #                     self.record_exists(mce.MatchActionModifiers, action_id=local_id,
+        #                                        modifier_id=modifier_id)]
         self.session.bulk_save_objects(modifier_records)
         self.session.commit()

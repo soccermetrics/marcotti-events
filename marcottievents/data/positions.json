@@ -16,15 +16,19 @@
     "Type": "Defender"
   },
   {
+    "Position": "Center back",
+    "Type": "Defender"
+  },
+  {
     "Position": "Full-back",
     "Type": "Defender"
   },
   {
-    "Position": "Left Full-back",
+    "Position": "Left back",
     "Type": "Defender"
   },
   {
-    "Position": "Right Full-back",
+    "Position": "Right back",
     "Type": "Defender"
   },
   {
@@ -56,7 +60,15 @@
     "Type": "Midfielder"
   },
   {
+    "Position": "Defensive Midfielder",
+    "Type": "Midfielder"
+  },
+  {
     "Position": "Holding Midfielder",
+    "Type": "Midfielder"
+  },
+  {
+    "Position": "Attacking Midfielder",
     "Type": "Midfielder"
   },
   {
@@ -69,6 +81,10 @@
   },
   {
     "Position": "Trequartista",
+    "Type": "Midfielder"
+  },
+  {
+    "Position": "Winger",
     "Type": "Midfielder"
   },
   {
@@ -96,11 +112,11 @@
     "Type": "Forward"
   },
   {
-    "Position": "Second striker",
+    "Position": "Second Striker",
     "Type": "Forward"
   },
   {
-    "Position": "False nine",
+    "Position": "False Nine",
     "Type": "Forward"
   }
 ]

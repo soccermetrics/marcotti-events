@@ -3,9 +3,10 @@ Goalkeeper,Goalkeeper
 Defender,Defender
 Central Defender,Defender
 Libero,Defender
+Center back,Defender
 Full-back,Defender
-Left Full-back,Defender
-Right Full-back,Defender
+Left back,Defender
+Right back,Defender
 Wing-back,Defender
 Left Wing-back,Defender
 Right Wing-back,Defender
@@ -13,15 +14,18 @@ Midfielder,Midfielder
 Left Midfielder,Midfielder
 Central Midfielder,Midfielder
 Right Midfielder,Midfielder
+Defensive Midfielder,Midfielder
 Holding Midfielder,Midfielder
+Attacking Midfielder,Midfielder
 Deep-lying playmaker,Midfielder
 Playmaker,Midfielder
 Trequartista,Midfielder
+Winger,Midfielder
 Left Winger,Midfielder
 Right Winger,Midfielder
 Left Forward,Forward
 Central Forward,Forward
 Right Forward,Forward
 Striker,Forward
-Second striker,Forward
-False nine,Forward
+Second Striker,Forward
+False Nine,Forward

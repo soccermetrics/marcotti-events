@@ -234,15 +234,24 @@ class MarcottiEventTransform(MarcottiTransform):
         return new_frame
 
     def actions(self, data_frame):
+        match_event_dict = {rec.remote_id: rec.id for rec in
+                            self.session.query(MatchEventMap).filter_by(supplier_id=self.supplier_id)}
+        match_map_dict = {rec.remote_id: rec.id for rec in
+                          self.session.query(MatchMap).filter_by(supplier_id=self.supplier_id)}
+        player_map_dict = {rec.remote_id: rec.id for rec in
+                           self.session.query(PlayerMap).filter_by(supplier_id=self.supplier_id)}
         lambdafunc = lambda x: pd.Series([
-            self.get_id(MatchEventMap, remote_id=x['remote_event_id'], supplier_id=self.supplier_id),
-            self.get_id(MatchMap, remote_id=x['remote_match_id'], supplier_id=self.supplier_id),
-            self.get_id(PlayerMap, remote_id=x['remote_player_id'], supplier_id=self.supplier_id),
+            # self.get_id(MatchEventMap, remote_id=x['remote_event_id'], supplier_id=self.supplier_id),
+            # self.get_id(MatchMap, remote_id=x['remote_match_id'], supplier_id=self.supplier_id),
+            # self.get_id(PlayerMap, remote_id=x['remote_player_id'], supplier_id=self.supplier_id),
+            match_event_dict.get(x['remote_event_id'], None),
+            match_map_dict.get(x['remote_match_id'], None),
+            player_map_dict.get(x['remote_player_id'], None),
             ActionType.from_string(x['action_type']),
         ])
         ids_frame = data_frame.apply(lambdafunc, axis=1)
         ids_frame.columns = ['event_id', 'match_id', 'player_id', 'type']
-        joined_frame = data_frame.join(ids_frame).drop(['remote_event_id', 'remote_match_id', 'remote_player_id',
-                                                        'action_type'], axis=1)
+        joined_frame = data_frame.join(ids_frame).drop(['remote_event_id', 'remote_match_id',
+                                                        'remote_player_id', 'action_type'], axis=1)
         new_frame = joined_frame.where((pd.notnull(joined_frame)), None)
         return new_frame

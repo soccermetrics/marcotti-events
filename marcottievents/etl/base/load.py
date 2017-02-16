@@ -398,6 +398,7 @@ class MarcottiLoad(WorkflowBase):
     def actions(self, data_frame):
         action_set = set()
         action_records = []
+        lineup_dict = None
         modifier_ids = []
         local_ids = []
         action_fields = ['event_id', 'type', 'x_end', 'y_end', 'z_end',
@@ -413,8 +414,11 @@ class MarcottiLoad(WorkflowBase):
             match_id = action_dict.pop('match_id')
             player_id = action_dict.pop('player_id', None)
             modifier_type = action_dict.pop('modifier_type', None)
+            if not lineup_dict:
+                records = self.session.query(mcm.MatchLineups).filter_by(match_id=match_id).all()
+                lineup_dict = {rec.player_id: rec.id for rec in records}
             if player_id:
-                action_dict['lineup_id'] = self.get_id(mcm.MatchLineups, match_id=match_id, player_id=player_id)
+                action_dict['lineup_id'] = lineup_dict[player_id]
             if modifier_type:
                 try:
                     modifier_id = self.get_id(mce.Modifiers,

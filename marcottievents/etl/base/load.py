@@ -178,6 +178,10 @@ class MarcottiLoad(WorkflowBase):
                     local_ids.append(player_dict['id'])
                     remote_ids.append(remote_id)
                     remote_countryids.append(remote_country_id)
+                else:
+                    player_id = self.session.query(mcp.Players).filter_by(**player_dict).one().id
+                    local_ids.append(player_id)
+                    remote_ids.append(remote_id)
             else:
                 player_id = self.session.query(mcs.PlayerMap).filter_by(remote_id=remote_id).one().id
                 if not self.record_exists(mcp.Players, **player_dict):
@@ -218,6 +222,10 @@ class MarcottiLoad(WorkflowBase):
                     manager_records.append(mcp.Managers(**manager_dict))
                     local_ids.append(manager_dict['id'])
                     remote_ids.append(row['remote_id'])
+                else:
+                    manager_id = self.session.query(mcp.Managers).filter_by(**manager_dict).one().id
+                    local_ids.append(manager_id)
+                    remote_ids.append(row['remote_id'])
             else:
                 manager_id = self.session.query(mcs.ManagerMap).filter_by(remote_id=row['remote_id']).one().id
                 if not self.record_exists(mcp.Managers, **manager_dict):
@@ -250,6 +258,10 @@ class MarcottiLoad(WorkflowBase):
                     referee_records.append(mcp.Referees(**referee_dict))
                     remote_ids.append(row['remote_id'])
                     local_ids.append(referee_dict['id'])
+                else:
+                    referee_id = self.session.query(mcp.Referees).filter_by(**referee_dict).one().id
+                    local_ids.append(referee_id)
+                    remote_ids.append(row['remote_id'])
             else:
                 referee_id = self.session.query(mcs.RefereeMap).filter_by(remote_id=row['remote_id']).one().id
                 if not self.record_exists(mcp.Referees, **referee_dict):

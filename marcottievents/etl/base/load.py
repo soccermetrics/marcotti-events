@@ -401,9 +401,6 @@ class MarcottiLoad(WorkflowBase):
 
         map_records = [mcs.MatchEventMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
                        for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
-        # map_records = [mcs.MatchEventMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
-        #                for remote_id, local_id in zip(remote_ids, local_ids) if remote_id and not
-        #                self.record_exists(mcs.MatchEventMap, remote_id=remote_id, supplier_id=self.supplier_id)]
         self.session.bulk_save_objects(map_records)
         self.session.commit()
 
@@ -449,9 +446,5 @@ class MarcottiLoad(WorkflowBase):
 
         modifier_records = [mce.MatchActionModifiers(action_id=local_id, modifier_id=modifier_id)
                             for modifier_id, local_id in zip(modifier_ids, local_ids)]
-        # modifier_records = [mce.MatchActionModifiers(action_id=local_id, modifier_id=modifier_id)
-        #                     for modifier_id, local_id in zip(modifier_ids, local_ids) if not
-        #                     self.record_exists(mce.MatchActionModifiers, action_id=local_id,
-        #                                        modifier_id=modifier_id)]
         self.session.bulk_save_objects(modifier_records)
         self.session.commit()

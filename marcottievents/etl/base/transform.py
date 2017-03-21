@@ -7,7 +7,7 @@ from marcottievents.models.common.suppliers import (MatchEventMap, MatchMap, Com
                                                     VenueMap, PositionMap, PlayerMap, ManagerMap,
                                                     RefereeMap)
 from marcottievents.models.common.overview import Countries, Timezones, Competitions, Seasons, Venues, Surfaces
-from marcottievents.models.common.personnel import Players, Managers, Referees, Positions
+from marcottievents.models.common.personnel import Players, Managers, Referees
 from marcottievents.models.club import Clubs, ClubLeagueMatches, ClubMap
 from .workflows import WorkflowBase
 
@@ -241,9 +241,6 @@ class MarcottiEventTransform(MarcottiTransform):
         player_map_dict = {rec.remote_id: rec.id for rec in
                            self.session.query(PlayerMap).filter_by(supplier_id=self.supplier_id)}
         lambdafunc = lambda x: pd.Series([
-            # self.get_id(MatchEventMap, remote_id=x['remote_event_id'], supplier_id=self.supplier_id),
-            # self.get_id(MatchMap, remote_id=x['remote_match_id'], supplier_id=self.supplier_id),
-            # self.get_id(PlayerMap, remote_id=x['remote_player_id'], supplier_id=self.supplier_id),
             match_event_dict.get(x['remote_event_id'], None),
             match_map_dict.get(x['remote_match_id'], None),
             player_map_dict.get(x['remote_player_id'], None),

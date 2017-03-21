@@ -341,7 +341,7 @@ class MarcottiLoad(WorkflowBase):
 
     def match_lineups(self, data_frame):
         lineup_records = []
-        fields = ['match_id', 'player_id', 'team_id', 'position_id', 'is_starting', 'is_captain']
+        fields = ['match_id', 'player_id', 'team_id', 'position_id', 'is_starting', 'is_captain', 'number']
         for idx, row in data_frame.iterrows():
             if not row['player_id']:
                 continue

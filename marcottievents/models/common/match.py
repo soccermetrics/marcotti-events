@@ -111,6 +111,7 @@ class MatchLineups(BaseSchema):
 
     id = Column(GUID, primary_key=True, default=uuid.uuid4)
 
+    number = Column(Integer)
     is_starting = Column(Boolean, default=False)
     is_captain = Column(Boolean, default=False)
     type = Column(String)

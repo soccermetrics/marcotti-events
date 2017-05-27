@@ -5,8 +5,8 @@ import pytest
 from sqlalchemy.sql import func
 from sqlalchemy.exc import DataError, IntegrityError
 
-import models.common.enums as enums
-import models.common.overview as mco
+import marcottievents.models.common.enums as enums
+import marcottievents.models.common.overview as mco
 
 
 def test_country_insert(session):

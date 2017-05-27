@@ -3,8 +3,8 @@
 import pytest
 from sqlalchemy.exc import IntegrityError
 
-import models.common.personnel as mcp
-import models.common.match as mcm
+import marcottievents.models.common.personnel as mcp
+import marcottievents.models.common.match as mcm
 
 
 def test_match_generic_insert(session, match_data):

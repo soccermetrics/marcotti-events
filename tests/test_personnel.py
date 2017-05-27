@@ -4,9 +4,9 @@ from datetime import date
 import pytest
 from sqlalchemy.exc import IntegrityError
 
-import models.common.enums as enums
-import models.common.overview as mco
-import models.common.personnel as mcp
+import marcottievents.models.common.enums as enums
+import marcottievents.models.common.overview as mco
+import marcottievents.models.common.personnel as mcp
 
 
 def test_person_generic_insert(session, person_data):

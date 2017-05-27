@@ -5,10 +5,10 @@ from datetime import date, time
 
 import pytest
 
-import models.common.enums as enums
-import models.common.overview as mco
-import models.common.personnel as mcp
-import models.club as mc
+import marcottievents.models.common.enums as enums
+import marcottievents.models.common.overview as mco
+import marcottievents.models.common.personnel as mcp
+import marcottievents.models.club as mc
 
 
 @pytest.fixture

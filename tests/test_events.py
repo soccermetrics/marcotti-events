@@ -2,8 +2,8 @@
 
 import pytest
 
-import models.common.enums as enums
-import models.common.events as mce
+import marcottievents.models.common.enums as enums
+import marcottievents.models.common.events as mce
 
 
 def test_modifiers(session, modifiers):

@@ -1,11 +1,11 @@
 # coding=utf-8
 import pytest
 
-import models.national as mn
-import models.common.overview as mco
-import models.common.personnel as mcp
-import models.common.events as mce
-import models.common.enums as enums
+import marcottievents.models.national as mn
+import marcottievents.models.common.overview as mco
+import marcottievents.models.common.personnel as mcp
+import marcottievents.models.common.events as mce
+import marcottievents.models.common.enums as enums
 
 
 natl_only = pytest.mark.skipif(

@@ -1,11 +1,17 @@
 import pytest
-from local import LocalConfig
 from sqlalchemy.engine import create_engine
 from sqlalchemy.orm.session import Session
 
+from marcottievents import MarcottiConfig
 
-class TestConfig(LocalConfig):
+
+class TestConfig(MarcottiConfig):
+    DIALECT = 'postgresql'
     DBNAME = 'test-marcotti-db'
+    DBUSER = ''
+    DBPASSWD = ''
+    HOSTNAME = 'localhost'
+    PORT = 5432
 
 
 def pytest_addoption(parser):
@@ -27,10 +33,10 @@ def db_connection(request, config, cmdopt):
     engine = create_engine(config.DATABASE_URI)
     connection = engine.connect()
     if cmdopt == 'club':
-        from models.club import ClubSchema
+        from marcottievents.models.club import ClubSchema
         schema = ClubSchema
     elif cmdopt == 'natl':
-        from models.national import NatlSchema
+        from marcottievents.models.national import NatlSchema
         schema = NatlSchema
     else:
         import models.common as common

@@ -2,6 +2,7 @@ from numpy import mean
 from sqlalchemy.sql.expression import false
 
 from .base import Analytics
+import marcottievents.models.club as mc
 import marcottievents.models.common.events as mce
 import marcottievents.models.common.suppliers as mcs
 import marcottievents.models.common.enums as enums
@@ -264,12 +265,17 @@ class MatchAnalytics(Analytics):
     def calc_effective_time(self, match_id, period):
         match_events = self.session.query(mce.MatchEvents.period,
                                           mce.MatchEvents.period_secs.label('secs'),
+                                          mce.MatchEvents.x,
+                                          mce.MatchEvents.y,
+                                          mc.ClubMatchLineups.team_id.label('team'),
+                                          mce.MatchActions.lineup_id.label('lineup'),
                                           mce.MatchActions.type.label('action'),
                                           mcs.MatchMap.remote_id.label('match')).join(
             mce.MatchActions).filter(
             mce.MatchEvents.match_id == match_id,
             mce.MatchEvents.period == period,
-            mcs.MatchMap.id == mce.MatchEvents.match_id
+            mcs.MatchMap.id == mce.MatchEvents.match_id,
+            mc.ClubMatchLineups.id == mce.MatchActions.lineup_id
         ).order_by(mce.MatchEvents.period_secs)
         c = parse_possessions_alt(interval_pipe=int_receiver())
         for event in match_events:

@@ -7,3 +7,4 @@ pandas>=0.16.0
 requests>=2.9.0
 jinja2>=2.7
 clint>=0.4.0
+numpy

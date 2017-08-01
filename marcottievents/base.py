@@ -8,8 +8,8 @@ from sqlalchemy.engine import create_engine
 from sqlalchemy.orm.session import Session
 
 from .version import __version__
-from etl.ecsv import CSVExtractor
-from etl import ETL, MarcottiTransform, MarcottiLoad
+from .etl.ecsv import CSVExtractor
+from .etl import ETL, MarcottiTransform, MarcottiLoad
 
 
 logger = logging.getLogger(__name__)

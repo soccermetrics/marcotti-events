@@ -322,6 +322,35 @@ class MarcottiLoad(WorkflowBase):
         self.session.bulk_save_objects(map_records)
         self.session.commit()
 
+    def group_matches(self, data_frame):
+        condition_records = []
+        match_records = []
+        remote_ids = []
+        local_ids = []
+        fields = ['match_date', 'competition_id', 'season_id', 'venue_id', 'home_team_id', 'away_team_id',
+                  'home_manager_id', 'away_manager_id', 'referee_id', 'attendance', 'matchday',
+                  'group_round', 'group']
+        condition_fields = ['kickoff_time', 'kickoff_temp', 'kickoff_humidity',
+                            'kickoff_weather', 'halftime_weather', 'fulltime_weather']
+        for idx, row in data_frame.iterrows():
+            match_dict = {field: row[field] for field in fields if field in row and row[field] is not None}
+            condition_dict = {field: row[field] for field in condition_fields
+                              if field in row and row[field] is not None}
+            if not self.record_exists(mc.ClubGroupMatches, **match_dict):
+                match_dict.update(id=uuid.uuid4())
+                match_records.append(mc.ClubGroupMatches(**match_dict))
+                condition_records.append(mcm.MatchConditions(id=match_dict['id'], **condition_dict))
+                remote_ids.append(row['remote_id'])
+                local_ids.append(match_dict['id'])
+
+        self.session.bulk_save_objects(match_records)
+        self.session.bulk_save_objects(condition_records)
+
+        map_records = [mcs.MatchMap(id=local_id, remote_id=remote_id, supplier_id=self.supplier_id)
+                       for remote_id, local_id in zip(remote_ids, local_ids) if remote_id]
+        self.session.bulk_save_objects(map_records)
+        self.session.commit()
+
     def knockout_matches(self, data_frame):
         condition_records = []
         match_records = []

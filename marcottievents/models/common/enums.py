@@ -41,6 +41,7 @@ class KnockoutRoundType(DeclEnum):
     round_16 = "Round of 16 (1/8)", "Round of 16 (1/8)"
     quarterfinal = "Quarterfinal (1/4)", "Quarterfinal (1/4)"
     semifinal = "Semi-Final (1/2)", "Semi-Final (1/2)"
+    third_place = "Third Place Playoff", "Third Place Playoff"
     final = "Final", "Final"
     qualifying_final = "Qualifying Final", "Qualifying Final"
     prelim_final = "Preliminary Final", "Preliminary Final"

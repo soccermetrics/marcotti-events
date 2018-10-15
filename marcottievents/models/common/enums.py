@@ -124,7 +124,6 @@ class ActionType(DeclEnum):
     ball_out = "Out of Play", "Out of Play"
     shot = "Shot", "Shot"
     goal = "Goal", "Goal"
-    assist = "Assist", "Assist"
     penalty = "Penalty", "Penalty"
     offside = "Offside", "Offside"
     save = "Save", "Save"
@@ -254,6 +253,7 @@ class ModifierType(DeclEnum):
     through_pass = "Through ball", "Through ball"
     freekick_pass = "Free kick", "Free kick"
     corner_pass = "Corner kick", "Corner kick"
+    assist = "Goal assist", "Goal assist"
     # Setpiece Type
     attacking = "Attacking", "Attacking"
     defending = "Defending", "Defending"

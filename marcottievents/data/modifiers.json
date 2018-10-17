@@ -252,6 +252,10 @@
     "Category": "Goalkeeper Action"
   },
   {
+    "Modifier": "Keeper throw",
+    "Category": "Goalkeeper Action"
+  },
+  {
     "Modifier": "Anti KPI",
     "Category": "Important Play"
   },
@@ -264,6 +268,18 @@
     "Category": "Important Play"
   },
   {
+    "Modifier": "Referee delays play",
+    "Category": "Miscellaneous"
+  },
+  {
+    "Modifier": "Referee stops play",
+    "Category": "Miscellaneous"
+  },
+  {
+    "Modifier": "Weather stops play",
+    "Category": "Miscellaneous"
+  },
+  {
     "Modifier": "Crowd disturbance/invasion",
     "Category": "Miscellaneous"
   },
@@ -274,6 +290,34 @@
   {
     "Modifier": "Player injury stops play",
     "Category": "Miscellaneous"
+  },
+  {
+    "Modifier": "Long ball",
+    "Category": "Pass Type"
+  },
+  {
+    "Modifier": "Crossing ball",
+    "Category": "Pass Type"
+  },
+  {
+    "Modifier": "Head pass",
+    "Category": "Pass Type"
+  },
+  {
+    "Modifier": "Through ball",
+    "Category": "Pass Type"
+  },
+  {
+    "Modifier": "Free kick",
+    "Category": "Pass Type"
+  },
+  {
+    "Modifier": "Corner kick",
+    "Category": "Pass Type"
+  },
+  {
+    "Modifier": "Goal assist",
+    "Category": "Pass Type"
   },
   {
     "Modifier": "Ball Out",
@@ -313,6 +357,10 @@
   },
   {
     "Modifier": "Shot",
+    "Category": "Play Outcome"
+  },
+  {
+    "Modifier": "Goal Disallowed",
     "Category": "Play Outcome"
   },
   {
@@ -373,6 +421,10 @@
   },
   {
     "Modifier": "Hit post",
+    "Category": "Shot Outcome"
+  },
+  {
+    "Modifier": "Hit woodwork",
     "Category": "Shot Outcome"
   },
   {
@@ -440,6 +492,14 @@
     "Category": "Shot Type"
   },
   {
+    "Modifier": "Own goal",
+    "Category": "Shot Type"
+  },
+  {
+    "Modifier": "Shot from open play",
+    "Category": "Shot Type"
+  },
+  {
     "Modifier": "Shot from corner kick",
     "Category": "Shot Type"
   },
@@ -460,7 +520,7 @@
     "Category": "Shot Type"
   },
   {
-    "Modifier": "Injury",
+    "Modifier": "Injury substitution",
     "Category": "Substitution"
   },
   {
@@ -472,11 +532,11 @@
     "Category": "Substitution"
   },
   {
-    "Modifier": "Tactical",
+    "Modifier": "Tactical substitution",
     "Category": "Substitution"
   },
   {
-    "Modifier": "Withdrawal",
+    "Modifier": "Withdrawn player",
     "Category": "Substitution"
   }
 ]

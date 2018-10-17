@@ -78,6 +78,7 @@ Head pass,Pass Type
 Through ball,Pass Type
 Free kick,Pass Type
 Corner kick,Pass Type
+Goal assist,Pass Type
 Ball Out,Play Outcome
 Clearance,Play Outcome
 Corner Kick Conceded,Play Outcome

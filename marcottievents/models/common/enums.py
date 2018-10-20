@@ -254,6 +254,7 @@ class ModifierType(DeclEnum):
     freekick_pass = "Free kick", "Free kick"
     corner_pass = "Corner kick", "Corner kick"
     assist = "Goal assist", "Goal assist"
+    chance_created = "Scoring chance created", "Scoring chance created"
     # Setpiece Type
     attacking = "Attacking", "Attacking"
     defending = "Defending", "Defending"

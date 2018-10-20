@@ -320,6 +320,10 @@
     "Category": "Pass Type"
   },
   {
+    "Modifier": "Scoring chance created",
+    "Category": "Pass Type"
+  },
+  {
     "Modifier": "Ball Out",
     "Category": "Play Outcome"
   },

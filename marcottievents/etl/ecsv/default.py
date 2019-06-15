@@ -27,12 +27,17 @@ class CSVExtractor(BaseCSV):
 
     @extract
     def competitions(self, *args, **kwargs):
-        return [dict(remote_id=self.column("ID", **keys),
-                     name=self.column_unicode("Name", **keys),
-                     level=self.column_int("Level", **keys),
-                     country=self.column_unicode("Country", **keys),
-                     confed=self.column("Confederation", **keys))
-                for keys in kwargs.get('data')]
+        comp_data = []
+        for row in kwargs.get('data'):
+            row_dict = dict(remote_id=self.column("ID", **row),
+                            name=self.column_unicode("Name", **row),
+                            level=self.column_int("Level", **row))
+            if "Country" in row:
+                row_dict.update(country=self.column_unicode("Country", **row))
+            elif "Confederation" in row:
+                row_dict.update(confed=self.column("Confederation", **row))
+            comp_data.append(row_dict)
+        return comp_data
 
     @extract
     def venues(self, *args, **kwargs):

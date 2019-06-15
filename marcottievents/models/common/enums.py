@@ -124,6 +124,7 @@ class ActionType(DeclEnum):
     ball_out = "Out of Play", "Out of Play"
     shot = "Shot", "Shot"
     goal = "Goal", "Goal"
+    assist = "Assist", "Assist"
     penalty = "Penalty", "Penalty"
     offside = "Offside", "Offside"
     save = "Save", "Save"
